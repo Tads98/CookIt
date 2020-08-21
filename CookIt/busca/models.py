@@ -18,3 +18,15 @@ class Receita(models.Model):
 
     class Meta:
         verbose_name_plural = 'Nomes Receita'
+
+class Ingrediente(model.Model):
+    receita = models.ForeignKey(Receita, on_delete=models.DO_NOTHING)
+    nome_ingrediente = models.CharField('Nome Ingrediente:', max_length=100, blank=False)
+    quantidade = models.FloatField('Quantidade:', default=0, blank=False)
+
+    def __str__(self):
+        return self.nome_ingrediente()
+
+    class Meta:
+        verbose_name_plural = 'Nomes Ingrediente'
+
