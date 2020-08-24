@@ -13,8 +13,8 @@ class Receita(models.Model):
         'Tempo de Preparo:', max_length=100, blank=False)
     dono_receita = models.CharField(
         'Dono da Receita:', max_length=100, blank=False)
-    foto = models.ImageField(
-        upload_to='busca/imagens/%Y/%m', blank=True, null=True)
+    fotos = models.ImageField(
+        'Fotos', upload_to='busca/media', blank=True, null=True)
     dificuldade = models.IntegerField('Dificuldade:', blank=False)
     data_publicacao = models.DateField('data_publicacao', blank=False)
 
@@ -47,3 +47,14 @@ class Usuario(models.Model):
 
     class Meta:
         verbose_name_plural = 'Nome do Usuário'
+
+
+class Avaliacao(models.Model):
+    nota = models.FloatField('Nota', blank=False)
+    comentario = models.TextField('Comentário', max_length=200, blank=True, null=True)
+
+    def __str__(self):
+        return self.comentario()
+
+    class Meta:
+        verbose_name_plural = 'Avaliações'
