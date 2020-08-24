@@ -13,8 +13,8 @@ class Receita(models.Model):
         'Tempo de Preparo:', max_length=100, blank=False)
     dono_receita = models.CharField(
         'Dono da Receita:', max_length=100, blank=False)
-    # fotos = models.ImageField(
-    #    'Fotos', upload_to='busca/media', blank=True, null=True)
+    foto = models.ImageField(
+        upload_to='busca/imagens/%Y/%m', blank=True, null=True)
     dificuldade = models.IntegerField('Dificuldade:', blank=False)
     data_publicacao = models.DateField('data_publicacao', blank=False)
 
