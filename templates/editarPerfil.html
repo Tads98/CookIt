@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Editar Perfil</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="navbar.css" type="text/css">
+    <link rel="stylesheet" href="script.js">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/92b503f04d.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between fixed-top">
+        <a class="navbar-brand" href="#">
+          <img src="cookit_logo.svg" alt="" height="36px">
+        </a>
+        <form class="form-inline <!--mr-auto my-2 my-lg-0-->" >
+          <div id="search" class="input-group">
+            <input  id="search-input" class="form-control" type="search" placeholder="Search" aria-label="Search">
+            <button id="search-button" class="btn btn-success" type="submit">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+        </form>
+        <div class="" id="navbarSupportedContent">
+          <ul class="nav">
+            <li class="nav-item dropdown">
+              <a class="nav-link" href="#" role="button">
+                <h5><i class="fas fa-book"></i></h5>
+              </a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <h5><i class="fas fa-bell"></i></h5>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a id="nav-icon" class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <h5><i class="fas fa-heart"></i></h5>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src="cookit_user.svg" alt="" height="20px">
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <h4 class="font-weight-bold mb-3">Dados Gerais</h4>
+        <div class="row mb-3">
+            <div class="col-sm d-flex justify-content-center">
+                <img src="cookit_user.svg"/>
+            </div>
+            <div class="col-sm">
+                <textarea class="form-control h-100" rows="4" id="comment"></textarea>
+            </div>
+            <div class="col-sm">
+                <form>
+                    <div class="social form-group input-group">
+                        <div class="input-group-prepend" for="">
+                            <h4 class="input-group-text"><i class="fab fa-instagram"></i></h4>
+                        </div>
+                        <input type="text" class="form-control" placeholder="https://www.instagram.com/">
+                    </div>
+                    <div class="social form-group input-group">
+                        <div class="input-group-prepend" for="">
+                            <h4 class="input-group-text"><i class="fab fa-facebook-f"></i></h4>
+                        </div>
+                        <input type="text" class="form-control" placeholder="https://www.facebook.com/">
+                    </div>
+                    <div class="social form-group input-group">
+                        <div class="input-group-prepend" for="">
+                            <h4 class="input-group-text"><i class="fab fa-twitter"></i></h4>
+                        </div>
+                        <input type="text" class="form-control" placeholder="https://www.twitter.com/">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <h4 class="font-weight-bold mb-3">Notificações</h4>
+        <div class="row mb-3">
+            <div class="col-sm mb-4">
+                <div class="noti-config card">
+                    <div class="card-body">
+                        <h5 class="card-title font-weight-bold">Postagem de receita</h5>
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input">
+                            <label class="custom-control-label" for="customSwitch1">Email</label>
+                        </div>
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input">
+                            <label class="custom-control-label" for="customSwitch2">Perfil CookIt</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title font-weight-bold">Comentários de minhas receitas</h5>
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input">
+                            <label class="custom-control-label" for="customSwitch1">Email</label>
+                        </div>
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input">
+                            <label class="custom-control-label" for="customSwitch2">Perfil CookIt</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="w-100"></div>
+            <div class="col-sm">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title font-weight-bold">Seguidores</h5>
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input">
+                            <label class="custom-control-label" for="customSwitch1">Email</label>
+                        </div>
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input">
+                            <label class="custom-control-label" for="customSwitch2">Perfil CookIt</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title font-weight-bold">Postagem de seguidores</h5>
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input">
+                            <label class="custom-control-label" for="customSwitch1">Email</label>
+                        </div>
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input">
+                            <label class="custom-control-label" for="customSwitch2">Perfil CookIt</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h4 class="font-weight-bold mb-3">Segurança e Privacidade</h4>
+        <div class="row">
+            <div class="col-sm mb-4">
+                <div class="config-1 card">
+                    <div class="card-body">
+                        <h5 class="card-title font-weight-bold">Visibilidade de Perfil</h5>
+                        <div class="custom-control custom-switch">
+                             <input type="checkbox" class="custom-control-input">
+                            <label class="custom-control-label" for="customSwitch1">Visível para todos</label>
+                        </div>
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input">
+                            <label class="custom-control-label" for="customSwitch1">Somente Seguidores</label>
+                        </div>
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input">
+                            <label class="custom-control-label" for="customSwitch2">Somente quem sigo e me segue</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm mb-4">
+                <div class="card config-1 ">
+                    <div class="card-body form">
+                        <h5 class="card-title font-weight-bold">Nome de usuário</h5>
+                        <form action="">
+                            <input class="form-group form-control" type="text" placeholder="Maria Auxiliadora">
+                            <button type="form-group button" class="btn btn-secondary w-100">Trocar nome</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm mb-4">
+                <div class="card config-1 ">
+                    <div class="card-body">
+                        <h5 class="card-title font-weight-bold">Endereço de e-mail</h5>
+                        <form action="">
+                            <input class="form-group form-control" type="email" placeholder="maria@hotmail.com">
+                            <button type="button" class="form-group btn btn-primary w-100">Atualizar E-mail</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="w-100"></div>
+            <div class="col-sm mb-4">
+                <div class="config-2 card">
+                    <div class="card-body">
+                        <h5 class="card-title font-weight-bold">Trocar Senha</h5>
+                        <form action="">
+                            <input class="form-group form-control" type="password" placeholder="Senha Atual">
+                            <input class="form-group form-control" type="password" placeholder="Nova Senha">
+                            <input class="form-group form-control" type="password" placeholder="Confirme Nova Senha">
+                            <button type="button" class="form-group btn btn-primary w-100">Salvar</button>
+                            <button type="button" class="btn btn-secondary w-100">Esqueceu a senha?</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm mb-4">
+                <div class="config-2 card">
+                    <div class="card-body">
+                        <h5 class="card-title font-weight-bold">Celular</h5>
+                        <form action="">
+                            <input class="form-group form-control" type="text" placeholder="Número: +55 84 98654-3278">
+                            <button type="button" class="form-group btn btn-primary w-100">Salvar</button>
+                            <button type="button" class="form-group btn btn-secondary w-100">Atualizar número</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>       
+</body>
+</html>
