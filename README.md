@@ -5,4 +5,8 @@
     3. Instale a versão mais recente do pip: python -m pip install --upgrade pip
     4. Instale o Django: pip install django
     5. Instale o pillow: python -m pip install Pillow
-    6. Verificar se o servidor está funcionando: `python manage.py runserversudo dnf check-update
+    6. Verificar se o servidor está funcionando: `python manage.py runserver
+
+# Observações
+
+    1. Se estiver no Linux e der erro no arquivo Settings ao rodar o servidor, tente: alias python="python3.7"
