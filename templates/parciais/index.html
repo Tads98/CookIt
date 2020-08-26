@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookit!</title>
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="vendor/css/tela-inicial.css" type="text/css">
+    <link rel="stylesheet" href="vendor/css/navbar.css" type="text/css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/99ce75f39c.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between fixed-top">
+        <a class="navbar-brand" href="#">
+          <img src="cookit_logo.svg" alt="" height="36px">
+        </a>
+        <form class="form-inline <!--mr-auto my-2 my-lg-0-->" >
+          <div id="search" class="input-group">
+            <input  id="search-input" class="form-control" type="search" placeholder="Search" aria-label="Search">
+            <button id="search-button" class="btn btn-success" type="submit">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+        </form>
+        <div class="" id="navbarSupportedContent">
+          <ul class="nav">
+            <li class="nav-item dropdown">
+              <a class="nav-link" href="#" role="button">
+                <h5><i class="fas fa-book"></i></h5>
+              </a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <h5><i class="fas fa-bell"></i></h5>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a id="nav-icon" class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <h5><i class="fas fa-heart"></i></h5>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src="cookit_user.svg" alt="" height="20px">
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+    </nav>
+    <nav id="sidebar"> <!-- deixar responsiva -->
+        <div id="order-by">
+            <div class="form-group">
+                <label class="input-group-text">Ordenar:</label>
+                <select class="form-control custom-select">
+                  <option>Nome</option>
+                  <option>Visualizações</option>
+                  <option>Avaliações</option>
+                  <option>Mais recente</option>
+                  <option>Mais antigo</option>
+                </select>
+            </div>
+            <h4 class="stars">
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+            </h4>
+        </div>
+        <div id="intel">
+            <div class="form-group">
+                <label class="input-group-text">Porções</label>
+                <input class="form-control" id="portions" type="number" min="1">
+            </div>
+            <div class="form-group">
+                <label class="input-group-text">Tmp de prep</label>
+                <input id="prep-time" type="time" class="form-control">
+            </div>
+            <div class="form-group">
+                <label class="input-group-text">Dificuldade</label>
+                <select id="difficulty" class="form-control custom-select">
+                    <option id="easy" value="1">Fácil</option>
+                    <option id="medium" value="2">Médio</option>
+                    <option id="hard" value="3">Difícil</option>
+                    <option id="super" value="4">Super</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <h6><b>Sabor:</b></h6>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                    <label class="form-check-label" for="defaultCheck1">
+                        Doce
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                    <label class="form-check-label" for="defaultCheck1">
+                        Salgado
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div id="categories" class="form-group"> 
+            <h6><b>Categorias:</b></h6>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                    Café da manhã
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                    Almoço
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                    Lanche
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                    Janta
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                    Sobremesas
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                    Bebidas
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                    Vegana
+                </label>
+            </div>
+        </div>
+    </nav>
+    <div class="container col">
+        <div id="keywords" class="row">
+            <div class="col-sm form-group">
+                <input type="text" class="form-control rounded-pill" placeholder="Quero que tenha">
+            </div>
+            <div class="col-sm form-group">
+                <input type="text" class="form-control rounded-pill" placeholder="Quero que não tenha">
+            </div>
+        </div>
+        <div id="receitas" class="row">
+            <div class="col-sm">
+                <div class="receita">
+                    <a href="" class="row d-flex justify-content-between align-items-center">
+                        <h1 class="utensils d-flex justify-content-center align-items-center rounded-circle">
+                            <i class="fas fa-utensils"></i>
+                        </h1>
+                        <div class="col text-center">
+                            <h5>[Nome da receita]</h5>
+                            <p>publicado por</p>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="far fa-star"></span>
+                            <span class="far fa-star"></span>
+                        </div>
+                        <h3><i class="col far fa-heart"></i></h3>
+                    </a>
+                    <div class="prep-mode row">
+                        <p class="text-justify">
+                            <b>1.</b> Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Suspendisse cursus laoreet viverra. Cras non purus porttitor, rutrum metus at, vehicula sem.
+                            Sed maximus vitae lacus ut molestie. Proin posuere hendrerit aliquam.
+                            Curabitur vel nibh sapien. Suspendisse potenti. Nullam suscipit vehicula fermentum.
+                        </p>
+                        <p class="text-justify">
+                            <b>2.</b> Phasellus non faucibus erat. Nunc pharetra rutrum volutpat. Suspendisse potenti.
+                            Maecenas porta, dui luctus cursus lacinia, libero lectus tristique risus, vitae maximus neque nisi sit amet elit.
+                            Nunc fringilla odio magna. Aliquam vel feugiat lorem, eu condimentum sem.
+                            Vestibulum ullamcorper tortor in erat dignissim vehicula.
+                        </p>
+                    </div>
+                    <div class="row">
+                        <div class="info col">
+                            <div class="row">
+                                <div class="col">
+                                    <i class="far fa-clock"></i>
+                                    <p>15 minutos</p>
+                                </div>
+                                <div class="col">
+                                    <i class="fas fa-pizza-slice"></i>
+                                    <p>6 porções</p>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="ingredients col">
+                            <li>1 xicara de arroz</li>
+                            <li>1 cebola picada</li>
+                            <li>2 dentes de alho</li>
+                            <li>Azeite</li>
+                        </ul>
+                    </div>
+                    <button class="see-more btn">
+                        <i class="fas fa-book-open"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="receita">
+                    <a href="" class="row d-flex justify-content-between align-items-center">
+                        <h1 class="utensils d-flex justify-content-center align-items-center rounded-circle">
+                            <i class="fas fa-utensils"></i>
+                        </h1>
+                        <div class="col text-center">
+                            <h5>[Nome da receita]</h5>
+                            <p>publicado por</p>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="far fa-star"></span>
+                            <span class="far fa-star"></span>
+                        </div>
+                        <h3><i class="col far fa-heart"></i></h3>
+                    </a>
+                    <div class="prep-mode row">
+                        <p class="text-justify">
+                            <b>1.</b> Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Suspendisse cursus laoreet viverra. Cras non purus porttitor, rutrum metus at, vehicula sem.
+                            Sed maximus vitae lacus ut molestie. Proin posuere hendrerit aliquam.
+                            Curabitur vel nibh sapien. Suspendisse potenti. Nullam suscipit vehicula fermentum.
+                        </p>
+                        <p class="text-justify">
+                            <b>2.</b> Phasellus non faucibus erat. Nunc pharetra rutrum volutpat. Suspendisse potenti.
+                            Maecenas porta, dui luctus cursus lacinia, libero lectus tristique risus, vitae maximus neque nisi sit amet elit.
+                            Nunc fringilla odio magna. Aliquam vel feugiat lorem, eu condimentum sem.
+                            Vestibulum ullamcorper tortor in erat dignissim vehicula.
+                        </p>
+                    </div>
+                    <div class="row">
+                        <div class="info col">
+                            <div class="row">
+                                <div class="col">
+                                    <i class="far fa-clock"></i>
+                                    <p>15 minutos</p>
+                                </div>
+                                <div class="col">
+                                    <i class="fas fa-pizza-slice"></i>
+                                    <p>6 porções</p>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="ingredients col">
+                            <li>1 xicara de arroz</li>
+                            <li>1 cebola picada</li>
+                            <li>2 dentes de alho</li>
+                            <li>Azeite</li>
+                        </ul>
+                    </div>
+                    <button class="see-more btn">
+                        <i class="fas fa-book-open"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="w-100"></div>
+            <div class="col-sm">
+                <div class="receita">
+                    <a href="" class="row d-flex justify-content-between align-items-center">
+                        <h1 class="utensils d-flex justify-content-center align-items-center rounded-circle">
+                            <i class="fas fa-utensils"></i>
+                        </h1>
+                        <div class="col text-center">
+                            <h5>[Nome da receita]</h5>
+                            <p>publicado por</p>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="far fa-star"></span>
+                            <span class="far fa-star"></span>
+                        </div>
+                        <h3><i class="col far fa-heart"></i></h3>
+                    </a>
+                    <div class="prep-mode row">
+                        <p class="text-justify">
+                            <b>1.</b> Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Suspendisse cursus laoreet viverra. Cras non purus porttitor, rutrum metus at, vehicula sem.
+                            Sed maximus vitae lacus ut molestie. Proin posuere hendrerit aliquam.
+                            Curabitur vel nibh sapien. Suspendisse potenti. Nullam suscipit vehicula fermentum.
+                        </p>
+                        <p class="text-justify">
+                            <b>2.</b> Phasellus non faucibus erat. Nunc pharetra rutrum volutpat. Suspendisse potenti.
+                            Maecenas porta, dui luctus cursus lacinia, libero lectus tristique risus, vitae maximus neque nisi sit amet elit.
+                            Nunc fringilla odio magna. Aliquam vel feugiat lorem, eu condimentum sem.
+                            Vestibulum ullamcorper tortor in erat dignissim vehicula.
+                        </p>
+                    </div>
+                    <div class="row">
+                        <div class="info col">
+                            <div class="row">
+                                <div class="col">
+                                    <i class="far fa-clock"></i>
+                                    <p>15 minutos</p>
+                                </div>
+                                <div class="col">
+                                    <i class="fas fa-pizza-slice"></i>
+                                    <p>6 porções</p>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="ingredients col">
+                            <li>1 xicara de arroz</li>
+                            <li>1 cebola picada</li>
+                            <li>2 dentes de alho</li>
+                            <li>Azeite</li>
+                        </ul>
+                    </div>
+                    <button class="see-more btn">
+                        <i class="fas fa-book-open"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="receita">
+                    <a href="" class="row d-flex justify-content-between align-items-center">
+                        <h1 class="utensils d-flex justify-content-center align-items-center rounded-circle">
+                            <i class="fas fa-utensils"></i>
+                        </h1>
+                        <div class="col text-center">
+                            <h5>[Nome da receita]</h5>
+                            <p>publicado por</p>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="far fa-star"></span>
+                            <span class="far fa-star"></span>
+                        </div>
+                        <h3><i class="col far fa-heart"></i></h3>
+                    </a>
+                    <div class="prep-mode row">
+                        <p class="text-justify">
+                            <b>1.</b> Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Suspendisse cursus laoreet viverra. Cras non purus porttitor, rutrum metus at, vehicula sem.
+                            Sed maximus vitae lacus ut molestie. Proin posuere hendrerit aliquam.
+                            Curabitur vel nibh sapien. Suspendisse potenti. Nullam suscipit vehicula fermentum.
+                        </p>
+                        <p class="text-justify">
+                            <b>2.</b> Phasellus non faucibus erat. Nunc pharetra rutrum volutpat. Suspendisse potenti.
+                            Maecenas porta, dui luctus cursus lacinia, libero lectus tristique risus, vitae maximus neque nisi sit amet elit.
+                            Nunc fringilla odio magna. Aliquam vel feugiat lorem, eu condimentum sem.
+                            Vestibulum ullamcorper tortor in erat dignissim vehicula.
+                        </p>
+                    </div>
+                    <div class="row">
+                        <div class="info col">
+                            <div class="row">
+                                <div class="col">
+                                    <i class="far fa-clock"></i>
+                                    <p>15 minutos</p>
+                                </div>
+                                <div class="col">
+                                    <i class="fas fa-pizza-slice"></i>
+                                    <p>6 porções</p>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="ingredients col">
+                            <li>1 xicara de arroz</li>
+                            <li>1 cebola picada</li>
+                            <li>2 dentes de alho</li>
+                            <li>Azeite</li>
+                        </ul>
+                    </div>
+                    <button class="see-more btn">
+                        <i class="fas fa-book-open"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -21,7 +21,6 @@
     outline: none;
     box-shadow:none !important;
     border-radius: 36px 0 0 36px;
-    border: 1px solid gray;
     width: 20vw;
 }
 #search-button{
@@ -34,10 +33,4 @@
 }
 #search-button i{
     vertical-align: middle;
-}
-i{
-    color: black;
-}
-h4{
-    text-align: center;
 }
