@@ -11,4 +11,5 @@
 
     1. Se estiver no Linux e der erro no arquivo Settings ao rodar o servidor, tente: alias python="python3.7"
     2. Se tentar entrar na virtualvenv no Windows e der erro de segurança:
-        2.1 Entre no Windows Power Shell como Adm e execute: Set-ExecutionPolicy Unrestricted -Force 
+        2.1 Entre no Windows Power Shell como Adm e execute: Set-ExecutionPolicy Unrestricted -Force
+    3. Se for necessário criar uma virtual-venv: python3.7 -m venv venv
