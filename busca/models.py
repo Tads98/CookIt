@@ -19,7 +19,7 @@ class Receita(models.Model):
     data_publicacao = models.DateField('data_publicacao', blank=False)
 
     def __str__(self):
-        return self.nome_receita()
+        return self.nome_receita
 
     class Meta:
         verbose_name_plural = 'Nomes Receita'
@@ -32,7 +32,7 @@ class Ingrediente(models.Model):
     quantidade = models.FloatField('Quantidade:', default=0, blank=False)
 
     def __str__(self):
-        return self.nome_ingrediente()
+        return self.nome_ingrediente
 
     class Meta:
         verbose_name_plural = 'Nomes Ingrediente'
@@ -43,7 +43,7 @@ class Usuario(models.Model):
         'Nome do Usuário:', max_length=255, blank=False)
 
     def __str__(self):
-        return self.nome_usuario()
+        return self.nome_usuario
 
     class Meta:
         verbose_name_plural = 'Nome do Usuário'
@@ -54,7 +54,7 @@ class Avaliacao(models.Model):
     comentario = models.TextField('Comentário', max_length=200, blank=True, null=True)
 
     def __str__(self):
-        return self.comentario()
+        return self.comentario
 
     class Meta:
         verbose_name_plural = 'Avaliações'
