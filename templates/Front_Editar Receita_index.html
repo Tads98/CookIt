@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de receita</title>
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="vendor/css/style.css" type="text/css">
+    <link rel="stylesheet" href="vendor/css/navbar.css" type="text/css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/99ce75f39c.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  </head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between fixed-top">
+    <a class="navbar-brand" href="#">
+      <img src="cookit_logo.svg" alt="" height="36px">
+    </a>
+    <form class="form-inline <!--mr-auto my-2 my-lg-0-->" >
+      <div id="search" class="input-group">
+        <input  id="search-input" class="form-control" type="search" placeholder="Search" aria-label="Search">
+        <button id="search-button" class="btn btn-success" type="submit">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+    </form>
+    <div class="" id="navbarSupportedContent">
+      <ul class="nav">
+        <li class="nav-item dropdown">
+          <a class="nav-link" href="#" role="button">
+            <h5><i class="fas fa-book"></i></h5>
+          </a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <h5><i class="fas fa-bell"></i></h5>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a id="nav-icon" class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <h5><i class="fas fa-heart"></i></h5>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img src="cookit_user.svg" alt="" height="20px">
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+      <div class="container">
+        <h3>Inserindo Sua Receita</h3>
+        <form class="form">
+          <div class="form-group">
+            <input type="text" class="form-control rounded-pill" placeholder="Nome da receita">
+          </div>
+          <div class="form-group row">
+            <div class="f"></div>
+          </div>
+          <div class="form-group">
+            <ul id="thumbnail-input-group" class="jumbotron d-flex justify-content-around p-0">
+              <li class="form-control rounded-circle d-flex justify-content-center align-items-center" id="thumbnail-input">
+                <a href="">
+                  <i class="fas fa-camera"></i>
+                </a>
+              </li>
+              <li class="form-control rounded-circle d-flex justify-content-center align-items-center" id="thumbnail-input">
+                <a href="">
+                  <i class="fas fa-camera"></i>
+                </a>
+              </li>
+              <li class="form-control rounded-circle d-flex justify-content-center align-items-center" id="thumbnail-input">
+                <a href="">
+                  <i class="fas fa-camera"></i>
+                </a>
+              </li>
+              <li class="form-control rounded-circle d-flex justify-content-center align-items-center" id="thumbnail-input">
+                <a href="">
+                  <i class="fas fa-camera"></i>
+                </a>
+              </li>
+              <li class="form-control rounded-circle d-flex justify-content-center align-items-center" id="thumbnail-input">
+                <a href="">
+                  <i class="fas fa-camera"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="form-group row">
+            <div class="form-group col-sm">
+              <input multiple id="input" type="text" class="form-control rounded-pill" placeholder="Ingredientes">
+            </div>
+            <div class="form-group col-sm">
+              <input id="input" type="text" class="form-control rounded-pill" placeholder="Categorias">
+            </div>
+          </div>
+          <div id="prep" class="row">
+            <div id="prep-mode" class="form-group col-sm">
+              <div class="jumbotron">
+                <h4>Modo de Preparo</h4>
+                <div id="prep-input" class="form-group form-control d-flex">
+                  <label for="">1.</label>
+                  <textarea type="text"></textarea>
+                </div>
+                <div id="prep-input" class="form-group form-control d-flex">
+                  <label for="">2.</label>
+                  <textarea type="text"></textarea>
+                </div>
+                <div id="prep-input" class="form-group form-control d-flex">
+                  <label for="">3.</label>
+                  <textarea type="text"></textarea>
+                </div>
+                <button class="btn btn-primary btn-block rounded-pill">
+                  <i class="fas fa-plus"></i>
+                </button>
+              </div>
+            </div>
+            <div id="general" class="form-group col-sm">
+              <div class="jumbotron">
+                <h4>Caracteristicas gerais</h4>
+                <div class="form-group">
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
+                    <label class="custom-control-label" for="customRadioInline1">Doce</label>
+                  </div>
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+                    <label class="custom-control-label" for="customRadioInline2">Salgado</label>
+                  </div>
+                </div>
+                <div class="form-group input-group">
+                  <div class="input-group-prepend">
+                    <label class="input-group-text">Porções</label>
+                  </div>
+                  <input class="form-control" id="portions" type="number" min="1">
+                </div>
+                <div class="form-group input-group">
+                  <div class="input-group-prepend">
+                    <label class="input-group-text">Tempo de preparo</label>
+                  </div>
+                  <input id="prep-time" type="time" class="form-control">
+                </div>
+                <div class="form-group input-group">
+                  <div class="input-group-prepend">
+                    <label class="input-group-text">Nível de dificuldade</label>
+                  </div>
+                  <select id="difficulty" class="form-control custom-select">
+                    <option id="easy" value="1">Fácil</option>
+                    <option id="medium" value="2">Médio</option>
+                    <option id="hard" value="3">Difícil</option>
+                    <option id="super" value="4">Super</option>
+                  </select>
+                </div>
+                <textarea type="text" class="form-group form-control" placeholder="Observações adicionais"></textarea>
+              </div>
+            </div>
+          </div>
+          <button id="submit-button" type="submit" class="btn btn-primary btn-block rounded-pill">Postar</button>
+        </form>
+      </div>
+</body>
+</html>
