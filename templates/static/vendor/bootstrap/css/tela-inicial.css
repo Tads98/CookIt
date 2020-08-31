@@ -1,0 +1,113 @@
+*{
+    /*font-family: 'Quicksand', sans-serif;*/
+    font-family: 'Montserrat', sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #F3EFEF;
+    display: flex;
+    padding-top: 70px !important;
+}
+.container{
+    background-color: white;
+}
+input, select, .input-group-text, .receita{
+    border: 1px solid #707070 !important;
+}
+.input-group-text{
+    margin-bottom: -1px;
+}
+#sidebar{
+    padding: 1em;
+    width: 15%;
+    background-color: #F3EFEF;
+    border-right: 1px solid black;
+}
+#order-by{
+    border-bottom: 1px solid black;
+    padding-bottom: 1em;
+}
+#intel, #categories{
+    padding-top: 1em;
+}
+#intel{
+    border-bottom: 1px solid black;
+}
+#sidebar .input-group-text{
+    border-radius: 1em 1em 0 0;
+}
+#sidebar label, #sidebar select, #sidebar input{
+    font-size: 12px;
+    text-align: center;
+    padding: 0;
+}
+#sidebar select, #sidebar input{
+    border-radius: 0 0 1em 1em;
+}
+#receitas{
+    padding: 1em 0 0 1em ;
+    background-color: #F3EFEF;
+    margin: 1em 0 1em 0;
+    border-radius: 1em;
+    border: 1px solid #707070;
+}
+.receita{
+    padding: 2em 2em 0 2em !important;
+    background-color: white;
+    border-radius: 0.5em;
+    margin-bottom: 1em;
+}
+a{
+    text-decoration: none !important;
+    color: black;
+}
+a:hover{
+    color: black;
+}
+.utensils{
+    text-align: center;
+    height: 2em;
+    width: 2em;
+    border: 1px solid gray;
+    background-color: lightgray;
+}
+div p, ul li{
+    font-size: 12px;
+}
+.col-sm{
+    padding-left: 0 !important;
+}
+.prep-mode{
+    border-bottom: 1px solid gray;
+    margin-bottom: 1em;
+}
+.ingredients{
+    padding-left: 2em !important;
+    border-left: 1px solid gray;
+}
+.see-more, .see-more:hover{
+    width: 100%;
+    align-self: center;
+    border-radius: 1em 1em 0 0 !important;
+    border: 1px solid gray;
+    border-bottom-width: 0;
+    background-color: lightgray;
+    color: black;
+    font-size: 1.5em;
+}
+.info, .stars{
+    text-align: center;
+}
+.fa-star{
+    color: orange;
+}
+.col h5{
+    color: yellowgreen;
+}
+#keywords{
+    padding: 1em 1em 0 1em;
+    border-bottom: 1px solid black;
+    
+}
