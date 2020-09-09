@@ -89,7 +89,8 @@
 body, html {
     height: 100%;
   }
-  .bg {
+  
+.bg{
     /* The image used */
     background-image: url("https://i.pinimg.com/originals/d3/6d/46/d36d462db827833805497d9ea78a1343.jpg");
   
@@ -100,4 +101,4 @@ body, html {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-  }
+}

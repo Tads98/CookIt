@@ -19,3 +19,8 @@ def cadastro_usuario1(request):
 def cadastro_usuario2(request):
     return render(request, 'usuario/usuario_cadastro_parte_2.html', {
     })
+
+
+def CadastrarEditar_Receita(request):
+    return render(request, 'usuario/cadastro-editar_receita.html', {
+    })

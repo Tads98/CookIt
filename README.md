@@ -8,8 +8,9 @@
     6. Verificar se o servidor está funcionando: python manage.py runserver
 
 # Observações
+
 ## Semânticas
-        1. O nome de um app deve ser expirada em seu models, ou seja, os dados que vai armazenar.
+        1. O nome de um app deve ser baseado em seu models, ou seja, os dados que vai armazenar.
 
 ## Técnicas
         1. Se estiver no Linux e der erro no arquivo Settings ao rodar o servidor, tente: alias python="python3.7"
