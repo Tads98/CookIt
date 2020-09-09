@@ -1,0 +1,46 @@
+.verticalLine {
+    border-left: thick solid lightgrey;
+  }
+
+  .stars{
+    color:yellow;
+}
+
+.xis{
+    margin-left: 350px;
+    margin-top: -35px;
+}
+
+.coração{
+    margin-left: 320px;
+    margin-bottom: -25px;
+}
+
+.detalhes{
+    margin-left: 10%;
+}
+
+.ingredientes{
+    margin-left: 50%;
+    margin-top: -40%;
+}
+
+.form-inline{
+    margin-left: 40%;
+}
+
+/*========================================================================*/
+
+/* dropdown */
+
+.greenColor{
+    background-color: #33CC33;
+}
+
+.orangeColor{
+    background-color: #FF8C00;
+}
+
+.redColor{
+    background-color: #E60000;
+}

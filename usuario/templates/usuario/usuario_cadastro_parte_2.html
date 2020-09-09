@@ -1,0 +1,54 @@
+{%load static%}
+<!-- TODO:Ver se pode deixar load static nesta página-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>Cadastro</title>
+    {%include 'parciais/_head.html'%}
+
+</head>
+
+<body>
+    <div class="bg">
+        <div class="login-form">
+            <form action="#" method="post">
+                <img src="{%static 'imgs/cookit_logo.svg'%}" class="img-fluid">
+                <h2 class="text-center">Faça parte da cozinha!</h2>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <span class="fa fa-key"></span>
+                            </span>
+                        </div>
+                        <input type="password" class="form-control" name="password" placeholder="Senha"
+                            required="required">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <span class="fa fa-key"></span>
+                            </span>
+                        </div>
+                        <input type="password" class="form-control" name="password" placeholder="Nova senha"
+                            required="required">
+                    </div>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                    <label class="custom-control-label" for="customCheck1">Eu aceito os Termos de Uso e Privacidade do
+                        CookIt</label>
+                </div>
+                <div class="mt-2 form-group">
+                    <button type="submit" class="btn btn-info btn-block login-btn">Cadastrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
