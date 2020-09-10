@@ -9,7 +9,11 @@
 
 # Observações
 
-    1. Se estiver no Linux e der erro no arquivo Settings ao rodar o servidor, tente: alias python="python3.7"
-    2. Se tentar entrar na virtualvenv no Windows e der erro de segurança:
-        2.1 Entre no Windows Power Shell como Adm e execute: Set-ExecutionPolicy Unrestricted -Force
-    3. Se for necessário criar uma virtual-venv: python3.7 -m venv venv
+## Semânticas
+        1. O nome de um app deve ser baseado em seu models, ou seja, os dados que vai armazenar.
+
+## Técnicas
+        1. Se estiver no Linux e der erro no arquivo Settings ao rodar o servidor, tente: alias python="python3.7"
+        2. Se tentar entrar na virtualvenv no Windows e der erro de segurança:
+            2.1 Entre no Windows Power Shell como Adm e execute: Set-ExecutionPolicy Unrestricted -Force
+        3. Se for necessário criar uma virtual-venv: python3.7 -m venv venv
