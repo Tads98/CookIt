@@ -1,0 +1,684 @@
+/* Cad. Edit. Receita */
+
+.navbar {
+    background-color: #F3EFEF !important;
+    border-bottom: 1px solid #707070;
+}
+
+#nav-icon {
+    color: black;
+    vertical-align: middle;
+}
+
+.nav-link {
+    padding: 0 1vw 0 1vw;
+}
+
+.navbar-brand {
+    align-self: center;
+    justify-content: center;
+    font-size: 0;
+}
+
+#nav-icon-span {
+    font-size: 12px;
+}
+
+#search-input {
+    outline: none;
+    box-shadow: none !important;
+    border-radius: 36px 0 0 36px;
+    width: 20vw;
+}
+
+#search-button {
+    border-radius: 0 36px 36px 0;
+    padding: 0 1em 0 1em;
+    background-color: white;
+    border: 1px solid gray;
+    color: gray;
+    margin-left: -1px;
+}
+
+#search-button i {
+    vertical-align: middle;
+}
+
+i {
+    text-decoration: none !important;
+    color: black;
+}
+
+
+/* Cad. Edit. Receita */
+
+* {
+    /*font-family: 'Quicksand', sans-serif;*/
+    font-family: 'Montserrat', sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: lightgray;
+    margin-top: 70px;
+}
+
+.container {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    background-color: white;
+    border-left: 1px solid darkgray;
+    border-right: 1px solid darkgray;
+}
+
+#search-input {
+    outline: none;
+    box-shadow: none !important;
+    border-radius: 36px 0 0 36px;
+    width: 20vw;
+}
+
+#search-button {
+    border-radius: 0 36px 36px 0;
+    padding: 0 1em 0 1em;
+    background-color: white;
+    border: 1px solid gray;
+    color: gray;
+    margin-left: -1px;
+}
+
+#search-button i {
+    vertical-align: middle;
+}
+
+#thumbnail-input-group {
+    padding: 1em 0 1em 0 !important;
+}
+
+.jumbotron {
+    background-color: lightgray;
+    border: 1px solid gray;
+}
+
+#thumbnail-input {
+    list-style-type: none;
+    width: 10vw;
+    height: 10vw;
+    font-size: 4vw;
+    color: black;
+    border: 1px solid gray;
+}
+
+#thumbnail-input a {
+    color: black
+}
+
+#prep-time,
+textarea,
+#portions {
+    border: none;
+    outline: none;
+    box-shadow: none !important;
+}
+
+#prep-input {
+    height: 60px;
+}
+
+textarea {
+    width: 100%;
+    height: 100%;
+    resize: none;
+}
+
+h3,
+h4 {
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.form-control,
+.input-group-text,
+.custom-control-input {
+    border: 1px solid gray !important;
+}
+
+#portions,
+#prep-time,
+#difficulty {
+    border-radius: 0 36px 36px 0;
+}
+
+.input-group-text {
+    border-radius: 36px 0 0 36px !important;
+}
+
+#submit-button {
+    background-color: white;
+    font-weight: bold;
+    border: 1px solid gray !important;
+    color: black;
+    margin: 0 !important;
+}
+
+#prep button {
+    background-color: lightgray;
+    border: 1px solid gray !important;
+    color: black;
+}
+
+.form {
+    align-items: center;
+    justify-content: center;
+}
+
+#easy {
+    background-color: #B1FF62;
+}
+
+#medium {
+    background-color: #FFE132;
+}
+
+#hard {
+    background-color: #FC1D00;
+}
+
+#super {
+    background-color: #191919;
+}
+
+textarea,
+#prep-mode div div {
+    border-radius: 18px !important;
+}
+
+#prep .jumbotron {
+    height: 460px !important;
+}
+
+
+/* Edit. Perfil */
+
+* {
+    /*font-family: 'Quicksand', sans-serif;*/
+    font-family: 'Montserrat', sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin-top: 70px;
+    background-color: #F3EFEF;
+}
+
+.container {
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+    background-color: white;
+    padding-top: 1em;
+}
+
+.card {
+    background-color: #F3EFEF;
+}
+
+.config-1 {
+    height: 180px !important;
+}
+
+.config-2 {
+    height: 340px !important;
+}
+
+textarea {
+    resize: none;
+}
+
+textarea,
+.card {
+    border-radius: 1em !important;
+}
+
+.container button,
+.container input {
+    border-radius: 2em !important;
+}
+
+.social input {
+    border-radius: 0 2em 2em 0 !important;
+    width: 90%;
+}
+
+.social .input-group-text {
+    border-radius: 2em 0 0 2em !important;
+    width: 40px;
+}
+
+
+/* Edit. Perfil2 */
+
+.navbar {
+    background-color: #F3EFEF !important;
+    border-bottom: 1px solid #707070;
+}
+
+#nav-icon {
+    color: black;
+    vertical-align: middle;
+}
+
+.nav-link {
+    padding: 0 1vw 0 1vw;
+}
+
+.navbar-brand {
+    align-self: center;
+    justify-content: center;
+    font-size: 0;
+}
+
+#nav-icon-span {
+    font-size: 12px;
+}
+
+#search-input {
+    outline: none;
+    box-shadow: none !important;
+    border-radius: 36px 0 0 36px;
+    border: 1px solid gray;
+    width: 20vw;
+}
+
+#search-button {
+    border-radius: 0 36px 36px 0;
+    padding: 0 1em 0 1em;
+    background-color: white;
+    border: 1px solid gray;
+    color: gray;
+    margin-left: -1px;
+}
+
+#search-button i {
+    vertical-align: middle;
+}
+
+i {
+    color: black;
+}
+
+h4 {
+    text-align: center;
+}
+
+
+/* Fav. */
+
+.verticalLine {
+    border-left: thick solid lightgrey;
+}
+
+.stars {
+    color: yellow;
+}
+
+.xis {
+    margin-left: 350px;
+    margin-top: -35px;
+}
+
+.coração {
+    margin-left: 320px;
+    margin-bottom: -25px;
+}
+
+.detalhes {
+    margin-left: 10%;
+}
+
+.ingredientes {
+    margin-left: 50%;
+    margin-top: -40%;
+}
+
+.form-inline {
+    margin-left: 40%;
+}
+
+
+/*========================================================================*/
+
+
+/* dropdown */
+
+.greenColor {
+    background-color: #33CC33;
+}
+
+.orangeColor {
+    background-color: #FF8C00;
+}
+
+.redColor {
+    background-color: #E60000;
+}
+
+
+/* Navbar */
+
+.navbar {
+    background-color: #F3EFEF !important;
+    border-bottom: 1px solid #707070;
+}
+
+#nav-icon {
+    color: black;
+    vertical-align: middle;
+}
+
+.nav-link {
+    padding: 0 1vw 0 1vw;
+}
+
+.navbar-brand {
+    align-self: center;
+    justify-content: center;
+    font-size: 0;
+}
+
+#nav-icon-span {
+    font-size: 12px;
+}
+
+#search-input {
+    outline: none;
+    box-shadow: none !important;
+    border-radius: 36px 0 0 36px;
+    width: 20vw;
+}
+
+#search-button {
+    border-radius: 0 36px 36px 0;
+    padding: 0 1em 0 1em;
+    background-color: white;
+    border: 1px solid gray;
+    color: gray;
+    margin-left: -1px;
+}
+
+#search-button i {
+    vertical-align: middle;
+}
+
+
+/* Tela Inicial */
+
+* {
+    /*font-family: 'Quicksand', sans-serif;*/
+    font-family: 'Montserrat', sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #F3EFEF;
+    display: flex;
+    padding-top: 70px !important;
+}
+
+.container {
+    background-color: white;
+}
+
+input,
+select,
+.input-group-text,
+.receita {
+    border: 1px solid #707070 !important;
+}
+
+.input-group-text {
+    margin-bottom: -1px;
+}
+
+#sidebar {
+    padding: 1em;
+    width: 15%;
+    background-color: #F3EFEF;
+    border-right: 1px solid black;
+}
+
+#order-by {
+    border-bottom: 1px solid black;
+    padding-bottom: 1em;
+}
+
+#intel,
+#categories {
+    padding-top: 1em;
+}
+
+#intel {
+    border-bottom: 1px solid black;
+}
+
+#sidebar .input-group-text {
+    border-radius: 1em 1em 0 0;
+}
+
+#sidebar label,
+#sidebar select,
+#sidebar input {
+    font-size: 12px;
+    text-align: center;
+    padding: 0;
+}
+
+#sidebar select,
+#sidebar input {
+    border-radius: 0 0 1em 1em;
+}
+
+#receitas {
+    padding: 1em 0 0 1em;
+    background-color: #F3EFEF;
+    margin: 1em 0 1em 0;
+    border-radius: 1em;
+    border: 1px solid #707070;
+}
+
+.receita {
+    padding: 2em 2em 0 2em !important;
+    background-color: white;
+    border-radius: 0.5em;
+    margin-bottom: 1em;
+}
+
+a {
+    text-decoration: none !important;
+    color: black;
+}
+
+a:hover {
+    color: black;
+}
+
+.utensils {
+    text-align: center;
+    height: 2em;
+    width: 2em;
+    border: 1px solid gray;
+    background-color: lightgray;
+}
+
+div p,
+ul li {
+    font-size: 12px;
+}
+
+.col-sm {
+    padding-left: 0 !important;
+}
+
+.prep-mode {
+    border-bottom: 1px solid gray;
+    margin-bottom: 1em;
+}
+
+.ingredients {
+    padding-left: 2em !important;
+    border-left: 1px solid gray;
+}
+
+.see-more,
+.see-more:hover {
+    width: 100%;
+    align-self: center;
+    border-radius: 1em 1em 0 0 !important;
+    border: 1px solid gray;
+    border-bottom-width: 0;
+    background-color: lightgray;
+    color: black;
+    font-size: 1.5em;
+}
+
+.info,
+.stars {
+    text-align: center;
+}
+
+.fa-star {
+    color: orange;
+}
+
+.col h5 {
+    color: yellowgreen;
+}
+
+#keywords {
+    padding: 1em 1em 0 1em;
+    border-bottom: 1px solid black;
+}
+
+
+/* Usuario Cadastro */
+
+.header {
+    text-align: center;
+}
+
+.body {
+    background-color: grey;
+}
+
+.container {
+    margin-top: -100px;
+    margin-right: 30px;
+    margin-bottom: -75px;
+}
+
+.form-control {
+    display: inline-block;
+}
+
+.vertical-center {
+    min-height: 100%;
+    /* Fallback for browsers do NOT support vh unit */
+    min-height: 100vh;
+    /* These two lines are counted as one :-)       */
+    display: flex;
+    align-items: center;
+    margin-left: 460px;
+}
+
+.font-weight-bolder {
+    font-size: 150%;
+    margin-left: 50px;
+}
+
+.login-form {
+    width: 340px;
+    margin: 30px auto;
+    font-size: 15px;
+}
+
+.login-form form {
+    margin-bottom: 15px;
+    background: #f7f7f7;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+}
+
+.login-form h2 {
+    margin: 0 0 15px;
+}
+
+.login-form .hint-text {
+    color: #777;
+    padding-bottom: 15px;
+    text-align: center;
+    font-size: 13px;
+}
+
+.form-control,
+.btn {
+    min-height: 38px;
+    border-radius: 2px;
+}
+
+.login-btn {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.or-seperator {
+    margin: 20px 0 10px;
+    text-align: center;
+    border-top: 1px solid #ccc;
+}
+
+.or-seperator i {
+    padding: 0 10px;
+    background: #f7f7f7;
+    position: relative;
+    top: -11px;
+    z-index: 1;
+}
+
+.social-btn .btn {
+    margin: 10px 0;
+    font-size: 15px;
+    text-align: left;
+    line-height: 24px;
+}
+
+.social-btn .btn i {
+    float: left;
+    margin: 4px 15px 0 5px;
+    min-width: 15px;
+}
+
+.input-group-addon .fa {
+    font-size: 18px;
+}
+
+body,
+html {
+    height: 100%;
+}
+
+.bg {
+    /* The image used */
+    background-image: url("https://i.pinimg.com/originals/d3/6d/46/d36d462db827833805497d9ea78a1343.jpg");
+    /* Full height */
+    height: 100%;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
