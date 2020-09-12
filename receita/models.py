@@ -30,6 +30,7 @@ class Receita(models.Model):
             ('D', 'Dias'),
         )
     )
+    # TODO: discutir existência desta variavel neste model
     dono_receita = models.CharField(
         'Dono da Receita:', max_length=100)
     fotos = models.ImageField(
