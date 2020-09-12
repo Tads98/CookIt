@@ -16,9 +16,20 @@ class Receita(models.Model):
             ('S', 'Salgada'),
         )
     )
-    # TODO: procurar campo ideal para por tempo
+    # TODO: procurar formas de inserir dias, horas e minutos ao mesmo tempo
     tempo_preparo = models.PositiveIntegerField(
         'Tempo de preparo:', default=0, blank=False)
+    # variaçãoes de 'tempo_preparo'
+    tempo_unidade_medida = models.CharField(
+        default='M',
+        max_length=1,
+        # opções do select menu
+        choices=(
+            ('M', 'Minuto'),
+            ('H', 'Hora'),
+            ('D', 'Dias'),
+        )
+    )
     dono_receita = models.CharField(
         'Dono da Receita:', max_length=100)
     fotos = models.ImageField(
@@ -57,17 +68,6 @@ class Ingrediente(models.Model):
 
     class Meta:
         verbose_name_plural = 'Nomes Ingrediente'
-
-
-class Usuario(models.Model):
-    nome_usuario = models.CharField(
-        'Nome do Usuário:', max_length=255, blank=False)
-
-    def __str__(self):
-        return self.nome_usuario
-
-    class Meta:
-        verbose_name_plural = 'Nome do Usuário'
 
 
 class Avaliacao(models.Model):
