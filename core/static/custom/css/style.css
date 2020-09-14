@@ -51,6 +51,7 @@ i {
 
 
 /* Cad. Edit. Receita */
+/*-editarreceita*/
 
 * {
     /*font-family: 'Quicksand', sans-serif;*/
@@ -65,6 +66,12 @@ body {
     margin-top: 70px;
 }
 
+/*
+.Textefdp{
+    background-color: #FC1D00;
+}
+*/
+
 .container {
     padding-top: 4rem;
     padding-bottom: 4rem;
@@ -73,14 +80,14 @@ body {
     border-right: 1px solid darkgray;
 }
 
-#search-input {
+#search-input-editarreceita {
     outline: none;
     box-shadow: none !important;
     border-radius: 36px 0 0 36px;
     width: 20vw;
 }
 
-#search-button {
+#search-button-editarreceita {
     border-radius: 0 36px 36px 0;
     padding: 0 1em 0 1em;
     background-color: white;
@@ -89,11 +96,11 @@ body {
     margin-left: -1px;
 }
 
-#search-button i {
+#search-button-editarreceita i {
     vertical-align: middle;
 }
 
-#thumbnail-input-group {
+#thumbnail-input-group-editarreceita {
     padding: 1em 0 1em 0 !important;
 }
 
@@ -102,7 +109,7 @@ body {
     border: 1px solid gray;
 }
 
-#thumbnail-input {
+#thumbnail-input-editarreceita {
     list-style-type: none;
     width: 10vw;
     height: 10vw;
@@ -111,19 +118,19 @@ body {
     border: 1px solid gray;
 }
 
-#thumbnail-input a {
+#thumbnail-input-editarreceita a {
     color: black
 }
 
-#prep-time,
+#prep-time-editarreceita,
 textarea,
-#portions {
+#portions-editarreceita {
     border: none;
     outline: none;
     box-shadow: none !important;
 }
 
-#prep-input {
+#prep-input-editarreceita {
     height: 60px;
 }
 
@@ -146,9 +153,9 @@ h4 {
     border: 1px solid gray !important;
 }
 
-#portions,
-#prep-time,
-#difficulty {
+#portions-editarreceita,
+#prep-time-editarreceita,
+#difficulty-editarreceita {
     border-radius: 0 36px 36px 0;
 }
 
@@ -156,7 +163,7 @@ h4 {
     border-radius: 36px 0 0 36px !important;
 }
 
-#submit-button {
+#submit-button-editarreceita {
     background-color: white;
     font-weight: bold;
     border: 1px solid gray !important;
@@ -164,7 +171,7 @@ h4 {
     margin: 0 !important;
 }
 
-#prep button {
+#prep-button-editarreceita {
     background-color: lightgray;
     border: 1px solid gray !important;
     color: black;
@@ -175,33 +182,34 @@ h4 {
     justify-content: center;
 }
 
-#easy {
+#easy-editarreceita {
     background-color: #B1FF62;
 }
 
-#medium {
+#medium-editarreceita {
     background-color: #FFE132;
 }
 
-#hard {
+#hard-editarreceita {
     background-color: #FC1D00;
 }
 
-#super {
+#super-editarreceita {
     background-color: #191919;
 }
 
 textarea,
-#prep-mode div div {
+#prep-mode-editarreceita div div {
     border-radius: 18px !important;
 }
 
-#prep .jumbotron {
+#prep-editarreceita .jumbotron {
     height: 460px !important;
 }
 
 
 /* Edit. Perfil */
+/**/
 
 * {
     /*font-family: 'Quicksand', sans-serif;*/
