@@ -61,6 +61,20 @@ class Ingrediente(models.Model):
     receita = models.ForeignKey(Receita, on_delete=models.DO_NOTHING)
     nome_ingrediente = models.CharField(
         'Nome Ingrediente:', max_length=100, blank=False)
+        
+    unidadeMedida = models.CharField(
+        default='X',
+        max_length=1,
+        # opções do select menu
+        choices=(
+            ('X', 'Xícara'),
+            ('C', 'Colher de Sopa'),
+            ('D', 'Dente de Alho'),
+            ('M', 'ML'),
+            ('L', 'Litros'),
+
+        )
+    )
     quantidade = models.PositiveIntegerField(
         'Quantidade:', default=0, blank=False)
 
