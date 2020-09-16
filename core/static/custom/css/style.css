@@ -11,6 +11,7 @@ body {
     display: flex;
 }
 
+
 /* Cad. Edit. Receita */
 
 .navbar {
@@ -62,8 +63,12 @@ i {
     color: black;
 }
 
+
 /* Cad. Edit. Receita */
+
+
 /*-editarreceita*/
+
 
 /*
 .Textefdp{
@@ -206,7 +211,10 @@ textarea,
     height: 460px !important;
 }
 
+
 /* Edit. Perfil */
+
+
 /*-editarperfil*/
 
 .container {
@@ -252,20 +260,26 @@ textarea,
     width: 40px;
 }
 
+
 /* Fav. */
+
+
 /* -favoritos */
 
-.stars-favoritos{
-    color:yellow;
+.stars-favoritos {
+    color: yellow;
 }
-.receitas-favoritos{
-    background-color:  #F3EFEF;
+
+.receitas-favoritos {
+    background-color: #F3EFEF;
     border: 1px solid gray;
 }
-.receita-favoritos{
+
+.receita-favoritos {
     border: 1px solid gray;
 }
-.utensils-favoritos{
+
+.utensils-favoritos {
     text-align: center;
     font-size: 2em;
     height: 2em;
@@ -273,7 +287,9 @@ textarea,
     border: 1px solid gray;
     background-color: lightgray;
 }
-.see-more-favoritos, .see-more-favoritos:hover{
+
+.see-more-favoritos,
+.see-more-favoritos:hover {
     width: 20%;
     align-self: center;
     border-radius: 1em 1em 0 0 !important;
@@ -284,7 +300,9 @@ textarea,
     font-size: 1.5em;
 }
 
+
 /*========================================================================*/
+
 
 /* dropdown */
 
@@ -299,6 +317,7 @@ textarea,
 .redColor {
     background-color: #E60000;
 }
+
 
 /* Navbar */
 
@@ -346,6 +365,7 @@ textarea,
     vertical-align: middle;
 }
 
+
 /* Sidebar */
 
 #sidebar {
@@ -386,7 +406,10 @@ textarea,
     border-radius: 0 0 1em 1em;
 }
 
+
 /* Tela Inicial */
+
+
 /* -tela-inicial */
 
 .container {
