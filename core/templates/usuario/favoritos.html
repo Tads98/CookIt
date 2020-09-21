@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Favoritos</title>
+    {%include 'parciais/_head.html'%}
+
+</head>
+
+<body>
+    {%include 'parciais/_navbar.html'%}
+
+    {%include 'parciais/_sidebar.html'%}
+
+    
+    <!-- inicio do card das receitas-->
+    <div class="col container">
+        <h4 class="mt-2">Meus Favoritos(4)</h4>
+        <!--Tipo de exibicao-->
+        <div class="card receitas-favoritos">
+
+            <!--Blocos de Receitas-->
+
+
+
+            <div class="card-body">
+                <div class="row row-cols-1 row-cols-md-2">
+                    <div class="col mb-4">
+                        <div class="form-control">
+                            <label for="">Exibir por: </label>
+                            <select class="border-0 bg-white">
+                                <option selected>Data mais recente</option>
+                                <option value="1">Data mais antiga</option>
+                                <option value="2">Classificação mais alta</option>
+                                <option value="3">Classificação mais baixa</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="col mb-4">
+                        <div class="card receita-favoritos">
+                            <div class="card-body">
+                                <div class="row m-1 d-flex justify-content-between">
+                                    <div class="utensils-favoritos d-flex justify-content-center align-items-center rounded-circle">
+                                        <i class="fas fa-utensils"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="card-title text-center text-warning">
+                                            Arroz de Leite Nordestino
+                                        </h5>
+                                        <h6 class="card-title text-center">
+                                            Publicado por CookIt às 13hs
+                                        </h6>
+                                        <div class="stars-favoritos text-center">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <i class="far fa-heart"></i>
+                                </div>
+                                <p class="card-text">
+                                    1. Lave o arroz, numa panela refolgue a cebola e o alho no
+                                    azeite, acrescente o arroz e refolgue um pouco mais;
+                                </p>
+                                <p class="card-text">
+                                    2. Em seguida coloque água até que cubra o arroz, deixe
+                                    cozinhar aos poucos, acrescentando pouca água sempre que necessário...
+                                </p>
+                                <hr />
+                                <div class="row">
+                                    <div class="col">
+                                        <i class="far fa-clock fa-lg"></i>
+                                        <p>15 minutos</p>
+                                        <i class="fas fa-concierge-bell fa-lg"></i>
+                                        <p>6 porções</p>
+                                    </div>
+                                    <hr />
+                                    <div class="col">
+                                        <ul>
+                                            <li>1 xícara de arroz</li>
+                                            <li>1 Cebola picada</li>
+                                            <li>2 Dentes de alho picado</li>
+                                            <li>Azeite</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="align-bottom see-more-favoritos" style="margin: auto;">
+                                <i class="fas fa-book-open"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col mb-4">
+                        <div class="card receita-favoritos">
+                            <div class="card-body">
+                                <div class="row m-1 d-flex justify-content-between">
+                                    <div class="utensils-favoritos d-flex justify-content-center align-items-center rounded-circle">
+                                        <i class="fas fa-utensils"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="card-title text-center text-warning">
+                                            Arroz de Leite Nordestino
+                                        </h5>
+                                        <h6 class="card-title text-center">
+                                            Publicado por CookIt às 13hs
+                                        </h6>
+                                        <div class="stars-favoritos text-center">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <i class="far fa-heart"></i>
+                                </div>
+                                <p class="card-text">
+                                    1. Lave o arroz, numa panela refolgue a cebola e o alho no
+                                    azeite, acrescente o arroz e refolgue um pouco mais;
+                                </p>
+                                <p class="card-text">
+                                    2. Em seguida coloque água até que cubra o arroz, deixe
+                                    cozinhar aos poucos, acrescentando pouca água sempre que necessário...
+                                </p>
+                                <hr />
+                                <div class="row">
+                                    <div class="col">
+                                        <i class="far fa-clock fa-lg"></i>
+                                        <p>15 minutos</p>
+                                        <i class="fas fa-concierge-bell fa-lg"></i>
+                                        <p>6 porções</p>
+                                    </div>
+                                    <hr />
+                                    <div class="col">
+                                        <ul>
+                                            <li>1 xícara de arroz</li>
+                                            <li>1 Cebola picada</li>
+                                            <li>2 Dentes de alho picado</li>
+                                            <li>Azeite</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="align-bottom see-more-favoritos" style="margin: auto;">
+                                <i class="fas fa-book-open"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col mb-4">
+                        <div class="card receita-favoritos">
+                            <div class="card-body">
+                                <div class="row m-1 d-flex justify-content-between">
+                                    <div class="utensils-favoritos d-flex justify-content-center align-items-center rounded-circle">
+                                        <i class="fas fa-utensils"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="card-title text-center text-warning">
+                                            Arroz de Leite Nordestino
+                                        </h5>
+                                        <h6 class="card-title text-center">
+                                            Publicado por CookIt às 13hs
+                                        </h6>
+                                        <div class="stars-favoritos text-center">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <i class="far fa-heart"></i>
+                                </div>
+                                <p class="card-text">
+                                    1. Lave o arroz, numa panela refolgue a cebola e o alho no
+                                    azeite, acrescente o arroz e refolgue um pouco mais;
+                                </p>
+                                <p class="card-text">
+                                    2. Em seguida coloque água até que cubra o arroz, deixe
+                                    cozinhar aos poucos, acrescentando pouca água sempre que necessário...
+                                </p>
+                                <hr />
+                                <div class="row">
+                                    <div class="col">
+                                        <i class="far fa-clock fa-lg"></i>
+                                        <p>15 minutos</p>
+                                        <i class="fas fa-concierge-bell fa-lg"></i>
+                                        <p>6 porções</p>
+                                    </div>
+                                    <hr />
+                                    <div class="col">
+                                        <ul>
+                                            <li>1 xícara de arroz</li>
+                                            <li>1 Cebola picada</li>
+                                            <li>2 Dentes de alho picado</li>
+                                            <li>Azeite</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="align-bottom see-more-favoritos" style="margin: auto;">
+                                <i class="fas fa-book-open"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col mb-4">
+                        <div class="card receita-favoritos">
+                            <div class="card-body">
+                                <div class="row m-1 d-flex justify-content-between">
+                                    <div class="utensils-favoritos d-flex justify-content-center align-items-center rounded-circle">
+                                        <i class="fas fa-utensils"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="card-title text-center text-warning">
+                                            Arroz de Leite Nordestino
+                                        </h5>
+                                        <h6 class="card-title text-center">
+                                            Publicado por CookIt às 13hs
+                                        </h6>
+                                        <div class="stars-favoritos text-center">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <i class="far fa-heart"></i>
+                                </div>
+                                <p class="card-text">
+                                    1. Lave o arroz, numa panela refolgue a cebola e o alho no
+                                    azeite, acrescente o arroz e refolgue um pouco mais;
+                                </p>
+                                <p class="card-text">
+                                    2. Em seguida coloque água até que cubra o arroz, deixe
+                                    cozinhar aos poucos, acrescentando pouca água sempre que necessário...
+                                </p>
+                                <hr />
+                                <div class="row">
+                                    <div class="col">
+                                        <i class="far fa-clock fa-lg"></i>
+                                        <p>15 minutos</p>
+                                        <i class="fas fa-concierge-bell fa-lg"></i>
+                                        <p>6 porções</p>
+                                    </div>
+                                    <hr />
+                                    <div class="col">
+                                        <ul>
+                                            <li>1 xícara de arroz</li>
+                                            <li>1 Cebola picada</li>
+                                            <li>2 Dentes de alho picado</li>
+                                            <li>Azeite</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="align-bottom see-more-favoritos" style="margin: auto;">
+                                <i class="fas fa-book-open"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Fim do bloco de receitas-->
+        </div>
+    </div>
+    <!-- fim do card das receitas-->
+
+
+
+</body>
+
+</html>

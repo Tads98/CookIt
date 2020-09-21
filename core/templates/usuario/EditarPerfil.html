@@ -78,19 +78,19 @@
             </div>
             <div class="col-sm">
                 <form>
-                    <div class="social form-group input-group">
+                    <div class="social-editarperfil form-group input-group">
                         <div class="input-group-prepend" for="">
                             <h4 class="input-group-text"><i class="fab fa-instagram"></i></h4>
                         </div>
                         <input type="text" class="form-control" placeholder="https://www.instagram.com/">
                     </div>
-                    <div class="social form-group input-group">
+                    <div class="social-editarperfil form-group input-group">
                         <div class="input-group-prepend" for="">
                             <h4 class="input-group-text"><i class="fab fa-facebook-f"></i></h4>
                         </div>
                         <input type="text" class="form-control" placeholder="https://www.facebook.com/">
                     </div>
-                    <div class="social form-group input-group">
+                    <div class="social-editarperfil form-group input-group">
                         <div class="input-group-prepend" for="">
                             <h4 class="input-group-text"><i class="fab fa-twitter"></i></h4>
                         </div>
@@ -102,16 +102,16 @@
         <h4 class="font-weight-bold mb-3">Notificações</h4>
         <div class="row mb-3">
             <div class="col-sm mb-4">
-                <div class="noti-config card">
+                <div class="noti-config-editarperfil card">
                     <div class="card-body">
                         <h5 class="card-title font-weight-bold">Postagem de receita</h5>
                         <div class="custom-control custom-switch">
-                            <input type="checkbox" class="custom-control-input">
-                            <label class="custom-control-label" for="customSwitch1">Email</label>
+                            <input type="checkbox" class="custom-control-input" id="email">
+                            <label class="custom-control-label" for="email">E-mail</label>
                         </div>
                         <div class="custom-control custom-switch">
-                            <input type="checkbox" class="custom-control-input">
-                            <label class="custom-control-label" for="customSwitch2">Perfil CookIt</label>
+                            <input type="checkbox" class="custom-control-input" id="perfil">
+                            <label class="custom-control-label" for="perfil">Perfil CookIt</label>
                         </div>
                     </div>
                 </div>
@@ -121,12 +121,12 @@
                     <div class="card-body">
                         <h5 class="card-title font-weight-bold">Comentários de minhas receitas</h5>
                         <div class="custom-control custom-switch">
-                            <input type="checkbox" class="custom-control-input">
-                            <label class="custom-control-label" for="customSwitch1">Email</label>
+                            <input type="checkbox" class="custom-control-input" id="email2">
+                            <label class="custom-control-label" for="email2">E-mail</label>
                         </div>
                         <div class="custom-control custom-switch">
-                            <input type="checkbox" class="custom-control-input">
-                            <label class="custom-control-label" for="customSwitch2">Perfil CookIt</label>
+                            <input type="checkbox" class="custom-control-input" id="perfil2">
+                            <label class="custom-control-label" for="perfil2">Perfil CookIt</label>
                         </div>
                     </div>
                 </div>
@@ -136,13 +136,16 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title font-weight-bold">Seguidores</h5>
-                        <div class="custom-control custom-switch">
-                            <input type="checkbox" class="custom-control-input">
-                            <label class="custom-control-label" for="customSwitch1">Email</label>
-                        </div>
-                        <div class="custom-control custom-switch">
-                            <input type="checkbox" class="custom-control-input">
-                            <label class="custom-control-label" for="customSwitch2">Perfil CookIt</label>
+                        <div class="card-body">
+                            <h5 class="card-title font-weight-bold">Comentários de minhas receitas</h5>
+                            <div class="custom-control custom-switch">
+                                <input type="checkbox" class="custom-control-input" id="email3">
+                                <label class="custom-control-label" for="email3">E-mail</label>
+                            </div>
+                            <div class="custom-control custom-switch">
+                                <input type="checkbox" class="custom-control-input" id="perfil3">
+                                <label class="custom-control-label" for="perfil3">Perfil CookIt</label>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -151,13 +154,16 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title font-weight-bold">Postagem de seguidores</h5>
-                        <div class="custom-control custom-switch">
-                            <input type="checkbox" class="custom-control-input">
-                            <label class="custom-control-label" for="customSwitch1">Email</label>
-                        </div>
-                        <div class="custom-control custom-switch">
-                            <input type="checkbox" class="custom-control-input">
-                            <label class="custom-control-label" for="customSwitch2">Perfil CookIt</label>
+                        <div class="card-body">
+                            <h5 class="card-title font-weight-bold">Comentários de minhas receitas</h5>
+                            <div class="custom-control custom-switch">
+                                <input type="checkbox" class="custom-control-input" id="email4">
+                                <label class="custom-control-label" for="email4">E-mail</label>
+                            </div>
+                            <div class="custom-control custom-switch">
+                                <input type="checkbox" class="custom-control-input" id="perfil4">
+                                <label class="custom-control-label" for="perfil4">Perfil CookIt</label>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -166,26 +172,26 @@
         <h4 class="font-weight-bold mb-3">Segurança e Privacidade</h4>
         <div class="row">
             <div class="col-sm mb-4">
-                <div class="config-1 card">
+                <div class="config-1-editarperfil card">
                     <div class="card-body">
                         <h5 class="card-title font-weight-bold">Visibilidade de Perfil</h5>
                         <div class="custom-control custom-switch">
-                            <input type="checkbox" class="custom-control-input">
-                            <label class="custom-control-label" for="customSwitch1">Visível para todos</label>
+                            <input type="checkbox" class="custom-control-input" id="visivel">
+                            <label class="custom-control-label" for="visivel">Visível para todos</label>
                         </div>
                         <div class="custom-control custom-switch">
-                            <input type="checkbox" class="custom-control-input">
-                            <label class="custom-control-label" for="customSwitch1">Somente Seguidores</label>
+                            <input type="checkbox" class="custom-control-input" id="somente">
+                            <label class="custom-control-label" for="somente">Somente Seguidores</label>
                         </div>
                         <div class="custom-control custom-switch">
-                            <input type="checkbox" class="custom-control-input">
-                            <label class="custom-control-label" for="customSwitch2">Somente quem sigo e me segue</label>
+                            <input type="checkbox" class="custom-control-input" id="somente2">
+                            <label class="custom-control-label" for="somente2">Somente quem sigo e me segue</label>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-sm mb-4">
-                <div class="card config-1 ">
+                <div class="card config-1-editarperfil">
                     <div class="card-body form">
                         <h5 class="card-title font-weight-bold">Nome de usuário</h5>
                         <form action="">
@@ -196,7 +202,7 @@
                 </div>
             </div>
             <div class="col-sm mb-4">
-                <div class="card config-1 ">
+                <div class="card config-1-editarperfil">
                     <div class="card-body">
                         <h5 class="card-title font-weight-bold">Endereço de e-mail</h5>
                         <form action="">
@@ -208,7 +214,7 @@
             </div>
             <div class="w-100"></div>
             <div class="col-sm mb-4">
-                <div class="config-2 card">
+                <div class="config-2-editarperfil card">
                     <div class="card-body">
                         <h5 class="card-title font-weight-bold">Trocar Senha</h5>
                         <form action="">
@@ -222,7 +228,7 @@
                 </div>
             </div>
             <div class="col-sm mb-4">
-                <div class="config-2 card">
+                <div class="config-2-editarperfil card">
                     <div class="card-body">
                         <h5 class="card-title font-weight-bold">Celular</h5>
                         <form action="">
