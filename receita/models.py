@@ -1,4 +1,7 @@
 from django.db import models
+from django.conf import settings
+import os
+from PIL import Image
 
 
 class Receita(models.Model):
@@ -50,11 +53,56 @@ class Receita(models.Model):
     )
     data_publicacao = models.DateField('data_publicacao', blank=False)
 
+    #################### Redimensionar imagem ######################
+
+    @staticmethod
+    def resize_image(img, new_widht=800):
+        # caminho completo da imagem
+        img_full_path = os.path.join(settings.MEDIA_ROOT, img.name)
+
+        # abrir a imagem usando o Image(que foi importado)
+        img_pil = Image.open(img_full_path)
+
+        # tamanho original da imagem (img_pill.size retorna dois valores: largura e altura)
+        original_width, original_height = img_pil.size
+
+        if original_width <= new_widht:
+            img_pil.close()
+            # termina a função se a largura original for menor que a nova largura
+            return
+
+        new_height = round((new_widht * original_height) / original_width)
+        # 'Image.LANCZOS' é cálculo matemático que diminui a imagem de fato em PIXELS
+        # redemencionando de fato a imagem de acordo com os parâmentros calculado acima
+        new_img = img_pil.resize((new_widht, new_height), Image.LANCZOS)
+        new_img.save(
+            # caminho onde a imagem redemensionada deve sobrescrever a imagem antiga
+            img_full_path,
+
+            optimize=True,
+            # qualidade da imagem
+            quality=50
+        )
+        print('Tamanho da imagem atualizada:', Image.open(img_full_path).size)
+
+    # metodo para redimencionar imagens ao dar upload e chamar o método de redemencionar imagens
+    # no momento em que recebe o último upload
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+
+        max_image_size = 800
+
+        # chamando função para redemencionar imagem
+        if self.fotos:
+            self.resize_image(self.fotos, max_image_size)
+    #################### Redimensionar imagem FIM ######################
+
     def __str__(self):
         return self.nome_receita
 
     class Meta:
         verbose_name_plural = 'Receita'
+
 
 class Ingrediente(models.Model):
     receita = models.ForeignKey(Receita, on_delete=models.DO_NOTHING)
