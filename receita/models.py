@@ -54,8 +54,7 @@ class Receita(models.Model):
         return self.nome_receita
 
     class Meta:
-        verbose_name_plural = 'Nomes Receita'
-
+        verbose_name_plural = 'Receita'
 
 class Ingrediente(models.Model):
     receita = models.ForeignKey(Receita, on_delete=models.DO_NOTHING)
@@ -83,7 +82,7 @@ class Ingrediente(models.Model):
         return self.nome_ingrediente
 
     class Meta:
-        verbose_name_plural = 'Nomes Ingrediente'
+        verbose_name_plural = 'Ingredientes'
 
 
 class Avaliacao(models.Model):

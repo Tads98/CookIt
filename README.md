@@ -18,3 +18,4 @@
             2.1 Entre no Windows Power Shell como Adm e execute: Set-ExecutionPolicy Unrestricted -Force
         3. Se for necessário criar uma virtual-venv: python3.7 -m venv venv
         4. Se a branch estiver remota, para mover para local: git checkout -t origin/nomeDaBranch
+        5. Para trazer uma branch remota para local: git checkout -t origin/nomedaBranch
