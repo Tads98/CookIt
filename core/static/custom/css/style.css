@@ -138,7 +138,7 @@ textarea,
     height: 60px;
 }
 
-#prep-input-editarreceita textarea{
+#prep-input-editarreceita textarea {
     min-width: 40px;
     resize: none;
 }
@@ -238,7 +238,6 @@ h4 {
 .config-2-editarperfil {
     height: 340px !important;
 }
-
 
 textarea,
 .card {
@@ -463,8 +462,6 @@ div p,
 ul li {
     font-size: 12px;
 }
-
-
 
 .prep-mode-tela-inicial {
     border-bottom: 1px solid gray;
