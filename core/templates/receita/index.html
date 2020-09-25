@@ -7,7 +7,7 @@
         <div class="receita-tela-inicial">
             <a href="" class="row d-flex justify-content-between align-items-center">
                 {% if receita.fotos %}
-                <img src="{{ receita.fotos.url }}" alt="{{ receita.nome_receita }}" class="img-thumbnail">
+                <img src="{{ receita.fotos.url }}" alt="{{ receita.nome_receita }}" class="thumbnail img-thumbnail">
                 {% else %}
                 <h1 class="utensils-tela-inicial d-flex justify-content-center align-items-center rounded-circle">
                     <i class="fas fa-utensils" aria-hidden="true"></i>
@@ -37,11 +37,11 @@
                     <div class="row">
                         <div class="col">
                             <i class="far fa-clock"></i>
-                            <p>{{ receita.tempo_preparo }}</p>
+                            <p>{{ receita.tempo_preparo }} minutos</p>
                         </div>
                         <div class="col">
                             <i class="fas fa-pizza-slice"></i>
-                            <p>{{ receita.porcoes }}</p>
+                            <p>{{ receita.porcoes }} porções</p>
                         </div>
                     </div>
                 </div>
