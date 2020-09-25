@@ -1,18 +1,18 @@
 {% extends 'base.html'%}
 
 {%  block miniatura_receita %}
-    <div id="receitas-tela-inicial" class="row">
+<div id="receitas-tela-inicial" class="card-columns">
     {% for receita in receitas %}
-    <div class="col-sm">
+    <div class="card">
         <div class="receita-tela-inicial">
             <a href="" class="row d-flex justify-content-between align-items-center">
-                    {% if receita.fotos %}
-                        <img src="{{ receita.fotos.url }}" alt="{{ receita.nome_receita }}" class="img-thumbnail">
-                    {% else %}
-                        <h1 class="utensils-tela-inicial d-flex justify-content-center align-items-center rounded-circle">
-                            <i class="fas fa-utensils" aria-hidden="true"></i>
-                        </h1>
-                    {% endif %}
+                {% if receita.fotos %}
+                <img src="{{ receita.fotos.url }}" alt="{{ receita.nome_receita }}" class="img-thumbnail">
+                {% else %}
+                <h1 class="utensils-tela-inicial d-flex justify-content-center align-items-center rounded-circle">
+                    <i class="fas fa-utensils" aria-hidden="true"></i>
+                </h1>
+                {% endif %}
                 <div class="col text-center">
                     <h5>{{ receita.nome_receita }}</h5>
                     <p>{{ receita.dono_receita }}</p>
@@ -29,7 +29,7 @@
                 <p class="text-justify">
                     {{ receita.modo_preparo }}
                 </p>
-    
+
             </div>
 
             <div class="row">
