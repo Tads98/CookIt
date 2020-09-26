@@ -46,7 +46,15 @@
                 </div>
                 <!--TODO: Implementar rendenrização de ingredientes-->
                 <ul class="ingredients-tela-inicial col">
-                    <li>1 xicara de arroz</li>
+
+                    <!--TODO: fazer renderizar o sabor da maneira correta-->
+                    {%if receita.sabor_receita == 'D'%}
+                    <li>Doce</li>
+                    {%else%}
+                    <li>Salgado</li>
+                    {%endif%}
+
+                    <li>{{receita.nome_ingrediente}}</li>
                     <li>1 cebola picada</li>
                     <li>2 dentes de alho</li>
                     <li>Azeite</li>
