@@ -36,9 +36,9 @@
                         <br>
 
                         {% if ingrediente.tempo_preparo <= 1 %}
-                        <p>{{ingrediente.tempo_preparo}} {{ingrediente.get_tempo_unidade_medida_display}}s</p>
-                        {%else%}
                         <p>{{ingrediente.tempo_preparo}} {{ingrediente.get_tempo_unidade_medida_display}}</p>
+                        {%else%}
+                        <p>{{ingrediente.tempo_preparo}} {{ingrediente.get_tempo_unidade_medida_display}}s</p>
                         {%endif%}
 
                     </div>
