@@ -44,21 +44,6 @@
                         </div>
                     </div>
                 </div>
-                <!--TODO: Implementar rendenrização de ingredientes-->
-                <ul class="ingredients-tela-inicial col">
-
-                    <!--TODO: fazer renderizar o sabor da maneira correta-->
-                    {%if receita.sabor_receita == 'D'%}
-                    <li>Doce</li>
-                    {%else%}
-                    <li>Salgado</li>
-                    {%endif%}
-
-                    <li>{{receita.nome_ingrediente}}</li>
-                    <li>1 cebola picada</li>
-                    <li>2 dentes de alho</li>
-                    <li>Azeite</li>
-                </ul>
             </div>
             <button class="see-more-tela-inicial btn">
                 <i class="fas fa-book-open"></i>
