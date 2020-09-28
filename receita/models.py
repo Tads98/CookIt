@@ -54,7 +54,7 @@ class Receita(models.Model):
     )
     data_publicacao = models.DateField('data_publicacao', blank=False)
 
-    slug = models.SlugField(unique = True, blank=True, null=True)
+    slug = models.SlugField(unique=True, blank=True, null=True)
 
     #################### Redimensionar imagem ######################
 
@@ -109,6 +109,8 @@ class Receita(models.Model):
     class Meta:
         verbose_name_plural = 'Receita'
 
+# TODO: fazer checagem de ingrediente repetido nos models
+
 
 class Ingrediente(models.Model):
     receita = models.ForeignKey(Receita, on_delete=models.DO_NOTHING)
@@ -117,15 +119,19 @@ class Ingrediente(models.Model):
 
     unidadeMedida = models.CharField(
         default='U',
-        max_length=1,
+        max_length=3,
         # opções do select menu
         choices=(
             ('U', 'Unidade'),
             ('X', 'Xícara'),
             ('C', 'Colher de Sopa'),
+            ('CH', 'Colher de Chá'),
             ('D', 'Dente de Alho'),
-            ('M', 'ML'),
+            ('M', 'Mililitro(ml)'),
             ('L', 'Litros'),
+            ('G', 'Gramas(g)'),
+            ('KG', 'Quilograma(kg)'),
+            ('AGS', 'ao gosto'),
         )
     )
     quantidade = models.PositiveIntegerField(

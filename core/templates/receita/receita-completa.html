@@ -16,9 +16,9 @@
                 </div>
                 <div id="thumbnails-receita-completa" class="col">
                     <div class="row">
-                            {% if ingrediente.fotos %}
-                                    <img style="width:25%" src="{{ ingrediente.fotos.url }}" alt="{{ ingrediente.nome_receita }}">
-                            {% endif %}
+                        {% if ingrediente.fotos %}
+                        <img style="width:25%" src="{{ ingrediente.fotos.url }}" alt="{{ ingrediente.nome_receita }}">
+                        {% endif %}
                     </div>
                 </div>
                 <div id="opcoes-receita-completa" class="col-1">
@@ -34,23 +34,29 @@
                     <div class="icon-text-receita-completa">
                         <i class="far fa-clock"></i>
                         <br>
-                        <p>{{ingrediente.tempo_preparo}}{{ingrediente.tempo_unidade_medida}}</p>
+
+                        {% if ingrediente.tempo_preparo <= 1 %}
+                        <p>{{ingrediente.tempo_preparo}} {{ingrediente.get_tempo_unidade_medida_display}}s</p>
+                        {%else%}
+                        <p>{{ingrediente.tempo_preparo}} {{ingrediente.get_tempo_unidade_medida_display}}</p>
+                        {%endif%}
+
                     </div>
                     <div class="line-receita-completa"></div>
                     <div class="icon-text-receita-completa">
                         <i class="fas fa-concierge-bell"></i>
                         <br>
                         {% if ingrediente.porcoes <= 1 %}
-                            <p>{{ingrediente.porcoes}} porção</p>
+                        <p>{{ingrediente.porcoes}} porção</p>
                         {% else %}
-                            <p>{{ingrediente.porcoes}} porções</p>
+                        <p>{{ingrediente.porcoes}} porções</p>
                         {% endif %}
                     </div>
                     <div class="line-receita-completa"></div>
                     <div class="icon-text-receita-completa">
                         <i class="fas fa-burn"></i>
                         <br>
-                        <p>Dificuldade: {{ingrediente.dificuldade}}</p>
+                        <p>Dificuldade: {{ingrediente.get_dificuldade_display}}</p>
                     </div>
                     <div class="line-receita-completa"></div>
                     <div class="icon-text-receita-completa">
@@ -73,28 +79,49 @@
                 </div>
             </div>
             <div class="row">
-                {% for ingrediente in ingrediente.ingrediente_set.all %}
+
                 <div id="ingredientes-receita-completa" class="col">
                     <h3>Ingredientes</h3>
+
+                    <!-- TODO: CSS alinhar ingredientes lado a lado, e tamanho de tags de acordo com seu contéudo -->
                     <ul>
-                        <li>
-                            {{ingrediente.unidadeMedida}} de 
-                            {{ingrediente.nome_ingrediente}}
+                        {% for ingrediente in ingrediente.ingrediente_set.all %}
+
+                        {%if ingrediente.unidadeMedida == 'AGS' %}
+                        <li style="margin-bottom: 10px; padding:4px;">
+                            <strong style="color: #F0A916;">{{ingrediente.nome_ingrediente}}</strong>
+                            {{ingrediente.get_unidadeMedida_display}}
+
                         </li>
+                        {%else%}
+                        <li style="margin-bottom: 10px; padding:4px;">
+                            {{ingrediente.quantidade}} {{ingrediente.get_unidadeMedida_display}} de
+                            <strong style="color: #F0A916;">{{ingrediente.nome_ingrediente}}</strong>
+                        </li>
+                        {%endif%}
+
+                        {% endfor %}
                     </ul>
+
                 </div>
-                {% endfor %}
+
                 <div id="modo-de-preparo-receita-completa" class="col">
                     <h3>Modo de Preparo</h3>
-                    <p>{{ingrediente.modo_preparo}}</p>
+                    <ol>
+                        <li>{{ingrediente.modo_preparo}}</li>
+                    </ol>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
                     <h3>Observações Adicionais</h3>
                     <div id="obad-receita-completa">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu dapibus eros, at interdum odio. Integer at enim eu ligula fermentum gravida. Pellentesque non odio a diam accumsan blandit accumsan vitae lectus. Etiam vitae placerat
-                            justo. Etiam vel volutpat nisi. Fusce eleifend arcu vel consequat vestibulum. Aliquam vulputate hendrerit tincidunt. Nulla in porta nunc, nec pulvinar lacus. Nullam vel eros justo. Phasellus quis lacus vel velit mollis bibendum.
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu dapibus eros, at interdum
+                            odio. Integer at enim eu ligula fermentum gravida. Pellentesque non odio a diam accumsan
+                            blandit accumsan vitae lectus. Etiam vitae placerat
+                            justo. Etiam vel volutpat nisi. Fusce eleifend arcu vel consequat vestibulum. Aliquam
+                            vulputate hendrerit tincidunt. Nulla in porta nunc, nec pulvinar lacus. Nullam vel eros
+                            justo. Phasellus quis lacus vel velit mollis bibendum.
                             Etiam volutpat enim non gravida maximus.
                         </p>
                     </div>
@@ -106,7 +133,8 @@
                             <i class="fas fa-user-circle col-2"></i>
                             <div class="col">
                                 <h4>{{ingrediente.dono_receita}}</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu dapibus eros, at interdum odio. Integer at enim eu ligula fermentum gravida.
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu dapibus eros, at
+                                    interdum odio. Integer at enim eu ligula fermentum gravida.
                                 </p>
                             </div>
                         </div>

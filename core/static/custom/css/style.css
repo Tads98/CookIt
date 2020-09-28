@@ -603,13 +603,12 @@ ul li {
     border: 1px solid grey;
     border-radius: 1em;
 }
-
 #modo-de-preparo-receita-completa ol {
     border: 1px solid grey;
     background-color: darkgray;
     border-radius: 1em;
-    list-style: decimal inside;
-    padding: 1em;
+    list-style-type: decimal;
+    font-size: 12px;
 }
 
 textarea {
