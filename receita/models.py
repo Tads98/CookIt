@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from django.utils.text import slugify
 import os
 from PIL import Image
 
@@ -53,6 +54,8 @@ class Receita(models.Model):
     )
     data_publicacao = models.DateField('data_publicacao', blank=False)
 
+    slug = models.SlugField(unique = True, blank=True, null=True)
+
     #################### Redimensionar imagem ######################
 
     @staticmethod
@@ -88,6 +91,9 @@ class Receita(models.Model):
     # metodo para redimencionar imagens ao dar upload e chamar o método de redemencionar imagens
     # no momento em que recebe o último upload
     def save(self, *args, **kwargs):
+        if not self.slug:
+            slug = f'{slugify(self.nome_receita)}'
+            self.slug = slug
         super().save(*args, **kwargs)
 
         max_image_size = 800
@@ -120,7 +126,6 @@ class Ingrediente(models.Model):
             ('D', 'Dente de Alho'),
             ('M', 'ML'),
             ('L', 'Litros'),
-
         )
     )
     quantidade = models.PositiveIntegerField(

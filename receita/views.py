@@ -12,4 +12,8 @@ class ListarReceita(ListView):
 
 
 class DetalheReceita(DetailView):
-    model = models.Ingrediente
+    model = models.Receita
+    template_name  = 'receita/receita-completa.html'
+    context_object_name = 'ingrediente'
+    slug_url_kwargs = 'slug' 
+
