@@ -1,1 +1,63 @@
 {% extends 'base.html'%}
+
+{%  block miniatura_receita %}
+<div class="cards-tela-inicial row row-cols-1 row-cols-md-3">
+    {% for receita in receitas %}
+    <div class="col mb-4">
+        <div class="card receita-tela-inicial h-100">
+            <a href="{{ receita.slug }}">
+                {% if receita.fotos %}
+                <img src="{{ receita.fotos.url }}" alt="{{ receita.nome_receita }}" class="card-img-top">
+                {% else %}
+                <img src="cocktail.jpeg" class="card-img-top" alt="...">
+                {% endif %}
+            </a>
+            <div class="card-body">
+                <a href="" class="fav-tela-inicial">
+                    <i class="far fa-heart"></i>
+                </a>
+                <a href="{{ receita.slug }}">
+                    <h5 class="card-title">{{ receita.nome_receita }}</h5>
+                </a>
+                <p class="card-text"><small class="text-muted">Publicado por <a
+                            href="">{{ receita.dono_receita }}</a></small>
+                </p>
+                <p class="card-text">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                </p>
+                <p class="card-text descricao-tela-inicial">
+                    {{ receita.modo_preparo }}
+                </p>
+                <hr>
+                <div class="row">
+                    <div class="info-tela-inicial col">
+                        <div class="row">
+                            <div class="col">
+                                <i class="far fa-clock"></i>
+                                <p><small>{{ receita.tempo_preparo }} minutos</small></p>
+                            </div>
+                            <div class="col">
+                                <i class="fas fa-concierge-bell"></i>
+                                <p><small>{{ receita.porcoes }} porções</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button onclick="window.location.href='{{ receita.slug }}';" class="see-more-tela-inicial btn">
+                <i class="fas fa-book-open"></i>
+            </button>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<div class="row mt-3">
+    <div class="col">
+        {%include 'parciais/_pagination.html'%}
+    </div>
+</div>
+{%  endblock %}

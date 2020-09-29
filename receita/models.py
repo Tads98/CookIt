@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from django.utils.text import slugify
 import os
 from PIL import Image
 
@@ -53,6 +54,8 @@ class Receita(models.Model):
     )
     data_publicacao = models.DateField('data_publicacao', blank=False)
 
+    slug = models.SlugField(unique=True, blank=True, null=True)
+
     #################### Redimensionar imagem ######################
 
     @staticmethod
@@ -88,6 +91,9 @@ class Receita(models.Model):
     # metodo para redimencionar imagens ao dar upload e chamar o método de redemencionar imagens
     # no momento em que recebe o último upload
     def save(self, *args, **kwargs):
+        if not self.slug:
+            slug = f'{slugify(self.nome_receita)}'
+            self.slug = slug
         super().save(*args, **kwargs)
 
         max_image_size = 800
@@ -103,6 +109,8 @@ class Receita(models.Model):
     class Meta:
         verbose_name_plural = 'Receita'
 
+# TODO: fazer checagem de ingrediente repetido nos models
+
 
 class Ingrediente(models.Model):
     receita = models.ForeignKey(Receita, on_delete=models.DO_NOTHING)
@@ -111,16 +119,19 @@ class Ingrediente(models.Model):
 
     unidadeMedida = models.CharField(
         default='U',
-        max_length=1,
+        max_length=3,
         # opções do select menu
         choices=(
             ('U', 'Unidade'),
             ('X', 'Xícara'),
             ('C', 'Colher de Sopa'),
+            ('CH', 'Colher de Chá'),
             ('D', 'Dente de Alho'),
-            ('M', 'ML'),
+            ('M', 'Mililitro(ml)'),
             ('L', 'Litros'),
-
+            ('G', 'Gramas(g)'),
+            ('KG', 'Quilograma(kg)'),
+            ('AGS', 'ao gosto'),
         )
     )
     quantidade = models.PositiveIntegerField(
