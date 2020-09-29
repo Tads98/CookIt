@@ -1,51 +1,54 @@
 {% extends 'base.html'%}
 
 {%  block miniatura_receita %}
-<div id="receitas-tela-inicial" class="card-columns">
+<div class="cards-tela-inicial row row-cols-1 row-cols-md-3">
     {% for receita in receitas %}
-    <div class="card">
-        <div class="receita-tela-inicial">
-            <a href="{{ receita.slug }}" class="row d-flex justify-content-between align-items-center">
+    <div class="col mb-4">
+        <div class="card receita-tela-inicial h-100">
+            <a href="{{ receita.slug }}">
                 {% if receita.fotos %}
-                <img src="{{ receita.fotos.url }}" alt="{{ receita.nome_receita }}" class="thumbnail img-thumbnail">
+                <img src="{{ receita.fotos.url }}" alt="{{ receita.nome_receita }}" class="card-img-top">
                 {% else %}
-                <h1 class="utensils-tela-inicial d-flex justify-content-center align-items-center rounded-circle">
-                    <i class="fas fa-utensils" aria-hidden="true"></i>
-                </h1>
+                <img src="cocktail.jpeg" class="card-img-top" alt="...">
                 {% endif %}
-                <div class="col text-center">
-                    <h5>{{ receita.nome_receita }}</h5>
-                    <p>{{ receita.dono_receita }}</p>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="far fa-star"></span>
-                    <span class="far fa-star"></span>
-                </div>
-                <h3><i class="col far fa-heart"></i></h3>
             </a>
-            <div class="prep-mode-tela-inicial row">
-                <p class="text-justify" maxlength="50">
+            <div class="card-body">
+                <a href="" class="fav-tela-inicial">
+                    <i class="far fa-heart"></i>
+                </a>
+                <a href="{{ receita.slug }}">
+                    <h5 class="card-title">{{ receita.nome_receita }}</h5>
+                </a>
+                <p class="card-text"><small class="text-muted">Publicado por <a
+                            href="">{{ receita.dono_receita }}</a></small>
+                </p>
+                <p class="card-text">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                </p>
+                <p class="card-text descricao-tela-inicial">
                     {{ receita.modo_preparo }}
                 </p>
-
-            </div>
-
-            <div class="row">
-                <div class="info-tela-inicial col">
-                    <div class="row">
-                        <div class="col">
-                            <i class="far fa-clock"></i>
-                            <p>{{ receita.tempo_preparo }} minutos</p>
-                        </div>
-                        <div class="col">
-                            <i class="fas fa-pizza-slice"></i>
-                            <p>{{ receita.porcoes }} porções</p>
+                <hr>
+                <div class="row">
+                    <div class="info-tela-inicial col">
+                        <div class="row">
+                            <div class="col">
+                                <i class="far fa-clock"></i>
+                                <p><small>{{ receita.tempo_preparo }} minutos</small></p>
+                            </div>
+                            <div class="col">
+                                <i class="fas fa-concierge-bell"></i>
+                                <p><small>{{ receita.porcoes }} porções</small></p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <button class="see-more-tela-inicial btn">
+            <button onclick="window.location.href='{{ receita.slug }}';" class="see-more-tela-inicial btn">
                 <i class="fas fa-book-open"></i>
             </button>
         </div>

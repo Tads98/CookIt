@@ -11,16 +11,6 @@ body {
     display: flex;
 }
 
-.thumbnail {
-    object-fit: cover;
-    /* Do not scale the image */
-    object-position: center;
-    /* Center the image within the element */
-    width: 100%;
-    max-height: 180px;
-    margin-bottom: 1rem;
-}
-
 p {
     display: -webkit-box;
     -webkit-line-clamp: 4;
@@ -430,34 +420,17 @@ button {
 
 /* -tela-inicial */
 
-.container {
-    background-color: white;
-}
-
-input,
-select,
-.input-group-text,
-.receita {
-    border: 1px solid #707070 !important;
-}
-
-.input-group-text {
-    margin-bottom: -1px;
-}
-
-#receitas-tela-inicial {
-    padding: 1em;
-    background-color: #F3EFEF;
-    margin: 1em 0 1em 0;
-    border-radius: 1em;
-    border: 1px solid #707070;
-}
-
 .receita-tela-inicial {
-    padding: 2em 2em 0 2em !important;
+    /*    padding: 2em 2em 0 2em !important; */
     background-color: white;
-    border-radius: 0.5em;
-    margin-bottom: 1em;
+    /*    border-radius: 0.5em; */
+}
+
+.cards-tela-inicial {
+    /*    margin: 1em !important;
+        border-radius: 1em;
+        border: 1px solid #707070; */
+    padding-top: 1em;
 }
 
 a {
@@ -482,12 +455,16 @@ ul li {
     font-size: 12px;
 }
 
+.col-sm {
+    padding-left: 0 !important;
+}
+
 .prep-mode-tela-inicial {
     border-bottom: 1px solid gray;
     margin-bottom: 1em;
 }
 
-.ingredients-tela-inicials {
+.ingredients-tela-inicial {
     padding-left: 2em !important;
     border-left: 1px solid gray;
 }
@@ -496,16 +473,16 @@ ul li {
 .see-more-tela-inicial:hover {
     width: 100%;
     align-self: center;
-    border-radius: 1em 1em 0 0 !important;
-    border: 1px solid gray;
-    border-bottom-width: 0;
+    /*    border-radius: 1em 1em 0 0 !important; */
+    border-top: 1px solid gray;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
     background-color: lightgray;
     color: black;
-    font-size: 1.5em;
+    /*    font-size: 1.5em; */
 }
 
-.info-tela-inicial,
-.stars {
+.info-tela-inicial {
     text-align: center;
 }
 
@@ -517,9 +494,49 @@ ul li {
     color: yellowgreen;
 }
 
-#keywords-tela-inicial {
+#keywords {
     padding: 1em 1em 0 1em;
     border-bottom: 1px solid black;
+}
+
+.card-img-top {
+    object-fit: cover;
+    object-position: center;
+    max-height: 180px;
+}
+
+.descricao-tela-inicial {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: justify !important;
+    margin-bottom: 1em;
+}
+
+.card-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: yellowgreen;
+    font-weight: bold;
+    text-align: center;
+}
+
+.fav-tela-inicial {
+    position: relative !important;
+    float: right !important;
+}
+
+.card-text {
+    text-align: center;
+}
+
+hr {
+    border-color: black;
 }
 
 
@@ -574,10 +591,17 @@ ul li {
 
 .icon-text-receita-completa {
     text-align: center;
+    padding-left: 1em;
+    padding-right: 1em;
+    max-width: 7em;
 }
 
 .icon-text-receita-completa i {
     font-size: 2em;
+}
+
+.icon-text-receita-completa p {
+    margin-bottom: 0;
 }
 
 .utensils-receita-completa {
@@ -603,12 +627,15 @@ ul li {
     border: 1px solid grey;
     border-radius: 1em;
 }
-#modo-de-preparo-receita-completa ol {
+
+#modo-de-preparo-receita-completa p {
     border: 1px solid grey;
     background-color: darkgray;
     border-radius: 1em;
     list-style-type: decimal;
     font-size: 12px;
+    padding: 1em;
+    list-style: decimal inside;
 }
 
 textarea {
@@ -645,4 +672,15 @@ textarea {
 
 .fa-star {
     color: orange;
+}
+
+.receita-foto {
+    object-fit: cover;
+    /* Do not scale the image */
+    object-position: center;
+    /* Center the image within the element */
+    width: 120px;
+    height: 120px;
+    margin-bottom: 1rem;
+    border: 1px solid gray;
 }
