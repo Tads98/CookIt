@@ -30,6 +30,7 @@
                     <a href=""><i class="fas fa-flag"></i></a>
                 </div>
             </div>
+            <div class="col-sm">
 
             <div class="row">
                 <div class="col mb-3">
@@ -95,27 +96,28 @@
             </div>
 
 
-            <div class="row">
+            <div class="row mb-3">
 
                 <div id="ingredientes-receita-completa" class="col">
                     <h3>Ingredientes</h3>
 
-                    <!-- TODO: CSS alinhar ingredientes lado a lado, e tamanho de tags de acordo com seu contéudo -->
-                    <ul>
+                    <div id="alinhamento-ingredientes">
+
                         {% for ingrediente in ingrediente.ingrediente_set.all %}
                         {%if ingrediente.unidadeMedida == 'AGS' %}
-                        <li style="margin-bottom: 10px; padding:4px;">
+                        <p style="margin-bottom: 10px; padding:5px;">
                             <strong style="color: #F0A916;">{{ingrediente.nome_ingrediente}}</strong>
                             {{ingrediente.get_unidadeMedida_display}}
 
-                        </li>
+                        </p>
                         {%else%}
-                        <li style="margin-bottom: 10px; padding:4px;">
+                        <p style="margin-bottom: 10px; padding:5px;">
                             {{ingrediente.quantidade}} {{ingrediente.get_unidadeMedida_display}} de
                             <strong style="color: #F0A916;">{{ingrediente.nome_ingrediente}}</strong>
-                        </li>
+                        </p>
                         {%endif%} {% endfor %}
-                    </ul>
+                    </div>
+                        
 
                 </div>
 
@@ -169,6 +171,8 @@
                         </div>
                     </div>
                 </div>
+
+            </div>
 
             </div>
 

@@ -617,15 +617,21 @@ hr {
     margin-right: 0.5em;
 }
 
-#ingredientes-receita-completa ul {
-    padding: 1em;
-}
-
-#ingredientes-receita-completa ul,
-#ingredientes-receita-completa ul li {
-    list-style: none;
-    border: 1px solid grey;
+#alinhamento-ingredientes{
+    border: 1px solid #707070;
     border-radius: 1em;
+    padding: 1em;
+    display: flex;
+    flex-wrap: wrap;
+}
+#alinhamento-ingredientes p{
+    margin: 5px;
+    font-size: 12px;
+    display: inline-block;
+    border: 1px solid black;
+    border-radius: 1.5em;
+    height: 28px;
+    max-width: 220px;
 }
 
 #modo-de-preparo-receita-completa p {
