@@ -578,8 +578,11 @@ hr {
 }
 
 #opcoes-receita-completa {
-    text-align: right;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
+
 
 #icones-receita-completa {
     border: 1px solid #707070;

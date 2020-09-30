@@ -17,20 +17,20 @@
                 <div id="thumbnails-receita-completa" class="col">
                     <div class="row">
                         {% if ingrediente.fotos %}
-                        <img class="receita-foto rounded-circle" style="width:25%" src="{{ ingrediente.fotos.url }}"
+                        <img class="receita-foto rounded-circle" style="max-width:800px" src="{{ ingrediente.fotos.url }}"
                             alt="{{ ingrediente.nome_receita }}"></img>
                         {% endif %}
                     </div>
                 </div>
                 <div id="opcoes-receita-completa" class="col-1">
-                    <a href=""><i class="far fa-heart"></i></a>
+                    <a href=""><i class="far fa-heart fa-lg"></i></a>
                     <br>
                     <a href=""><i class="fas fa-share-alt"></i></a>
                     <br>
                     <a href=""><i class="fas fa-flag"></i></a>
                 </div>
             </div>
-            <div class="col-sm">
+            <div class="col-md">
 
             <div class="row">
                 <div class="col mb-3">
