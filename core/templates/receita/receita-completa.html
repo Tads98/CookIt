@@ -30,51 +30,71 @@
                     <a href=""><i class="fas fa-flag"></i></a>
                 </div>
             </div>
+
             <div class="row">
-                <div id="icones-receita-completa" class="col">
-                    <div class="icon-text-receita-completa">
-                        <i class="far fa-clock"></i>
-                        <br> {% if ingrediente.tempo_preparo <= 1 %}
-                        <p>{{ingrediente.tempo_preparo}} {{ingrediente.get_tempo_unidade_medida_display}}</p>
-                        {% else %}
-                        <p>{{ingrediente.tempo_preparo}} {{ingrediente.get_tempo_unidade_medida_display}}s</p>
-                        {% endif %}
-                    </div>
-                    <div class="line-receita-completa"></div>
-                    <div class="icon-text-receita-completa">
-                        <i class="fas fa-concierge-bell"></i>
-                        <br> {% if ingrediente.porcoes <= 1 %}
-                        <p>{{ingrediente.porcoes}} Porção</p>
-                        {% else %}
-                        <p>{{ingrediente.porcoes}} Porções</p>
-                        {% endif %}
-                    </div>
-                    <div class="line-receita-completa"></div>
-                    <div class="icon-text-receita-completa">
-                        <i class="fas fa-burn"></i>
-                        <br>
-                        <p>Dificuldade: {{ingrediente.get_dificuldade_display}}</p>
-                    </div>
-                    <div class="line-receita-completa"></div>
-                    <div class="icon-text-receita-completa">
-                        <i class="far fa-heart"></i>
-                        <br>
-                        <p>Favoritos</p>
-                    </div>
-                    <div class="line-receita-completa"></div>
-                    <div class="icon-text-receita-completa">
-                        <i class="far fa-comment-alt"></i>
-                        <br>
-                        <p>Comentários</p>
-                    </div>
-                    <div class="line-receita-completa"></div>
-                    <div class="icon-text-receita-completa">
-                        <i class="far fa-calendar-alt"></i>
-                        <br>
-                        <p>{{ingrediente.data_publicacao}}</p>
+                <div class="col mb-3">
+                    <div id="icones-receita-completa" class="col">
+                        
+                        <div class="line-receita-completa" class="col" style="border: none;">
+                            <div class="icon-text-receita-completa">
+                                <i class="far fa-clock"></i>
+                                <br> {% if ingrediente.tempo_preparo <= 1 %}
+                                <p>{{ingrediente.tempo_preparo}} {{ingrediente.get_tempo_unidade_medida_display}}</p>
+                                {% else %}
+                                <p>{{ingrediente.tempo_preparo}} {{ingrediente.get_tempo_unidade_medida_display}}s</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                        
+                        <div class="line-receita-completa" class="col">
+                            <div class="icon-text-receita-completa">
+                                <i class="fas fa-concierge-bell"></i>
+                                <br> {% if ingrediente.porcoes <= 1 %}
+                                <p>{{ingrediente.porcoes}} Porção</p>
+                                {% else %}
+                                <p>{{ingrediente.porcoes}} Porções</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                        
+                        <div class="line-receita-completa" class="col">
+                            <div class="icon-text-receita-completa">
+                                <i class="fas fa-burn"></i>
+                                <br>
+                                <p>Dificuldade: {{ingrediente.get_dificuldade_display}}</p>
+                            </div>
+                        </div>
+                        
+
+                        <div class="line-receita-completa" class="col">
+                            <div class="icon-text-receita-completa">
+                                <i class="far fa-heart"></i>
+                                <br>
+                                <p>Favoritos</p>
+                            </div>
+                        </div>
+
+                        <div class="line-receita-completa" class="col">
+                            <div class="icon-text-receita-completa">
+                                <i class="far fa-comment-alt"></i>
+                                <br>
+                                <p>Comentários</p>
+                            </div>
+                        </div>
+                        
+                        <div class="line-receita-completa" class="col">
+                            <div class="icon-text-receita-completa">
+                                <i class="far fa-calendar-alt"></i>
+                                <br>
+                                <p>{{ingrediente.data_publicacao}}</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                
             </div>
+
+
             <div class="row">
 
                 <div id="ingredientes-receita-completa" class="col">
@@ -103,12 +123,16 @@
                     <h3>Modo de Preparo</h3>
                     <p>{{ingrediente.modo_preparo}}</p>
                 </div>
+
             </div>
+
             <div class="row">
+
                 <div class="col">
                     <h3>Observações Adicionais</h3>
                     <div id="obad-receita-completa">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu dapibus eros, at interdum
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu dapibus eros, at
+                            interdum
                             odio. Integer at enim eu ligula fermentum gravida. Pellentesque non odio a diam accumsan
                             blandit accumsan vitae lectus. Etiam vitae placerat
                             justo. Etiam vel volutpat nisi. Fusce eleifend arcu vel consequat vestibulum. Aliquam
@@ -145,8 +169,9 @@
                         </div>
                     </div>
                 </div>
+
             </div>
+
+            <div id="comentarios-receita-completa"></div>
         </div>
-        <div id="comentarios-receita-completa"></div>
     </div>
-</div>
