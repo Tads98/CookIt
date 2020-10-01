@@ -18,12 +18,9 @@ class BasePerfil(View):
          # TODO: o que é super()?
         super().setup(*args, **kwargs)
 
-        self.perfil = None
+        self.usuario = None
 
         if self.request.user.is_authenticated:
-            self.perfil = models.Usuario.objects.filter(
-                usuario=self.request.user
-            ).first()  # TODO: o que é 'first()' ?
 
                 # self.contexto é um objeto que passa dados para uma classe em 'forms.py'
             self.contexto = {
@@ -55,6 +52,7 @@ class BasePerfil(View):
 
     def get(self, *args, **kwargs):
         return self.renderizar
+
 
 # classe para criar e atualizar perfis
 
@@ -121,29 +119,36 @@ class Criar(BasePerfil):
                 # método login requer como parâmetro uma requisisão e um id user
                 login(self.request, user=usuario)
 
-        # colocar algum lugar para redirecionar return redirect('produto:carrinho')
+        return redirect('receita:index')
+
+class Login(View):
+    def post(self, *args, **kwargs):
+        username = self.request.POST.get('username')
+        password = self.request.POST.get('password')
+
+        #TODO: adicionar mensagem de erro 'Usuário ou senha inválidos'
+
+        usuario = authenticate(
+            self.request, username=username, password=password)
+
+        #TODO: adicionar mensagem de erro 'Usuário ou senha inválidos'
+
+        login(self.request, user=usuario)
+
+        #TODO: adicionar mensagem de erro 'Você fez login no sistema e pode concluir sua compra.'
+        return redirect('receita:index')
+
+class Logout(View):
+    def get(self, *args, **kwargs):
+        logout(self.request)
+        return redirect('receita:index')
 
 
-def editarPerfil(request):
-    return render(request, 'usuario/EditarPerfil.html', {
-    })
+class CadastrarEditar_Receita(View):
+    #TODO: adicionar retorno 'render' para tela de cadastrar receita 
+    pass
 
+class favoritos(View):
+    #TODO: adicionar retorno 'render' para tela de favoritos
+    pass
 
-def favoritos(request):
-    return render(request, 'usuario/favoritos.html', {
-    })
-
-
-def cadastro_usuario1(request):
-    return render(request, 'usuario/usuario_cadastro_parte_1.html', {
-    })
-
-
-def cadastro_usuario2(request):
-    return render(request, 'usuario/usuario_cadastro_parte_2.html', {
-    })
-
-
-def CadastrarEditar_Receita(request):
-    return render(request, 'usuario/cadastro-editar_receita.html', {
-    })

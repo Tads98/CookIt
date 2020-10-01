@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'receita',
     'usuario',
     'core',
-    'crispy_forms',
+    'crispy_forms', 
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -134,3 +134,11 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 # MEDIA_ROOT define uma pasta raiz para armazenamento de mídia. O caminho é especificado em Models
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+
+# Sessão em dias: 60s * 60m * 24h * 1d
+SESSION_COOKIE_AGE = 60 * 60 * 24 * 7
+
+# Salvar a cada requisição
+SESSION_SAVE_EVERY_REQUEST = False
