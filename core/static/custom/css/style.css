@@ -11,7 +11,7 @@ body {
     display: flex;
 }
 
-p {
+.descricao-tela-inicial {
     display: -webkit-box;
     -webkit-line-clamp: 4;
     /* number of lines to show */
@@ -634,7 +634,6 @@ hr {
     border: 1px solid black;
     border-radius: 1.5em;
     height: 28px;
-    max-width: 220px;
 }
 
 #modo-de-preparo-receita-completa p {
@@ -649,7 +648,8 @@ hr {
 
 #alinhamento-ingredientes,
 #modo-de-preparo-receita-completa p {
-    height: 120px;
+    min-height: 120px;
+    max-height: 240px;
     overflow: auto;
 }
 
