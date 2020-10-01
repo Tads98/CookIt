@@ -512,6 +512,7 @@ ul li {
     text-overflow: ellipsis;
     text-align: justify !important;
     margin-bottom: 1em;
+    height: 70px;
 }
 
 .card-title {
@@ -572,7 +573,8 @@ hr {
 #titulo-receita-completa {
     text-align: center;
 }
-#titulo-receita-completa h3{
+
+#titulo-receita-completa h3 {
     color: #ABA11B;
 }
 
@@ -581,7 +583,6 @@ hr {
     align-items: center;
     flex-direction: column;
 }
-
 
 #icones-receita-completa {
     border: 1px solid #707070;
@@ -619,15 +620,15 @@ hr {
     margin-right: 0.5em;
 }
 
-#alinhamento-ingredientes{
+#alinhamento-ingredientes {
     border: 1px solid #707070;
     border-radius: 1em;
-    padding: 1em;
     display: flex;
     flex-wrap: wrap;
 }
-#alinhamento-ingredientes p{
-    margin: 5px;
+
+#alinhamento-ingredientes p {
+    margin: 1em;
     font-size: 12px;
     display: inline-block;
     border: 1px solid black;
@@ -640,10 +641,16 @@ hr {
     border: 1px solid #707070;
     background-color: #F3EFEF;
     border-radius: 1em;
-    list-style-type: decimal;
     font-size: 12px;
     padding: 1em;
-    list-style: decimal inside;
+    text-align: justify;
+    text-justify: initial;
+}
+
+#alinhamento-ingredientes,
+#modo-de-preparo-receita-completa p {
+    height: 120px;
+    overflow: auto;
 }
 
 textarea {
