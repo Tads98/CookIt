@@ -17,6 +17,7 @@
                 <div id="thumbnails-receita-completa" class="col">
                     <div class="row">
                         {% if ingrediente.fotos %}
+                        <!--TODO: ver uma formatação melhor para a imagem-->
                         <img class="receita-foto rounded-circle" style="max-width:800px"
                             src="{{ ingrediente.fotos.url }}" alt="{{ ingrediente.nome_receita }}"></img>
                         {% endif %}
@@ -107,14 +108,14 @@
 
                             {% for ingrediente in ingrediente.ingrediente_set.all %}
                             {%if ingrediente.unidadeMedida == 'AGS' %}
-                            <p style="margin-bottom: 10px; padding:5px;">
+                            <p>
                                 <strong style="color: #F0A916;">{{ingrediente.nome_ingrediente}}</strong>
-                                {{ingrediente.get_unidadeMedida_display}}
+                                <strong>{{ingrediente.get_unidadeMedida_display}}</strong>
 
                             </p>
                             {%else%}
-                            <p style="margin-bottom: 10px; padding:5px;">
-                                {{ingrediente.quantidade}} {{ingrediente.get_unidadeMedida_display}} de
+                            <p>
+                                <strong>{{ingrediente.quantidade}} {{ingrediente.get_unidadeMedida_display}} de</strong>
                                 <strong style="color: #F0A916;">{{ingrediente.nome_ingrediente}}</strong>
                             </p>
                             {%endif%} {% endfor %}
