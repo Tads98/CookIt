@@ -22,7 +22,7 @@ class BasePerfil(View):
 
         if self.request.user.is_authenticated:
 
-                # self.contexto é um objeto que passa dados para uma classe em 'forms.py'
+            # self.contexto é um objeto que passa dados para uma classe em 'forms.py'
             self.contexto = {
                 'usuarioform': forms.UsuarioForm(
                     data=self.request.POST or None,
@@ -50,17 +50,20 @@ class BasePerfil(View):
         self.renderizar = render(  # 'self.contexto' será interpretado no documento HTML. EX: {{ userform|crispy }}
             self.request, self.template_name, self.contexto)
 
+    
     def get(self, *args, **kwargs):
         return self.renderizar
+    
+    ######################################################################
+    # Tudo isso apenas para renderizar o formulário 
+
 
 
 # classe para criar e atualizar perfis
-
-
 class Criar(BasePerfil):
     def post(self, *args, **kwargs):
 
-        # se o formulário de criar o perfil não for válido, retornar uma nova renderização da tela
+        # se o formulário de criar o usuarop não for válido, retornar uma nova renderização da tela
         # o django forms possui um método chamado 'is_valid()' que executa validações para todos os campos do formuário
         # Se todos os campos do formulário for válido ele retorna True e armazena os dados em 'cleaned_data'
         if not self.usuarioform.is_valid():
@@ -79,7 +82,7 @@ class Criar(BasePerfil):
 # ------------------------------------------------------------------------------------------------------
 # A partir de agora, usando as variáveis com os dados com formulário
 
-        # checando se o usuário está logado
+        # checando se o usuário está logado, se estiver logado quer dizer que está atualizando perfil
         if self.request.user.is_authenticated:
             # procurando usuário no model de tipo User recebendo como parâmetro o nome do usuário
             # se não achar o nome do usuário retorna erro 404
