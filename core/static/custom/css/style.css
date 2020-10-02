@@ -251,7 +251,7 @@ h4 {
 
 textarea,
 .card {
-    border-radius: 1em !important;
+    border-radius: .75em !important;
 }
 
 .editarperfil button {
@@ -435,6 +435,8 @@ ul li {
     border-top: 1px solid gray;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
+    border-bottom-right-radius: .50em;
+    border-bottom-left-radius: .50em;
     background-color: lightgray;
     color: black;
     /*    font-size: 1.5em; */
@@ -457,6 +459,8 @@ ul li {
     object-fit: cover;
     object-position: center;
     max-height: 180px;
+    border-top-left-radius: .50em;
+    border-top-right-radius: .50em;
 }
 
 .descricao-tela-inicial {
