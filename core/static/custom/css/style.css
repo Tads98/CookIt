@@ -21,7 +21,7 @@ body {
 }
 
 
-/* Cad. Edit. Receita */
+/* Navbar */
 
 .navbar {
     background-color: #F3EFEF !important;
@@ -60,6 +60,7 @@ body {
     border: 1px solid gray;
     color: gray;
     margin-left: -1px;
+    border-radius: 0 36px 36px 0 !important;
 }
 
 #search-button i {
@@ -176,7 +177,7 @@ h4 {
     border-radius: 0 36px 36px 0;
 }
 
-.input-group-text {
+.input-label-editarreceita {
     border-radius: 36px 0 0 36px !important;
 }
 
@@ -253,8 +254,7 @@ textarea,
     border-radius: 1em !important;
 }
 
-.container button,
-button {
+.editarperfil button {
     border-radius: 2em !important;
 }
 
@@ -301,7 +301,7 @@ button {
     width: 20%;
     align-self: center;
     border-radius: 1em 1em 0 0 !important;
-    border: 1px solid gray;
+    border: 1px solid gray !important;
     border-bottom-width: 0;
     background-color: lightgray;
     color: black;
@@ -327,60 +327,17 @@ button {
 }
 
 
-/* Navbar */
-
-.navbar {
-    background-color: #F3EFEF !important;
-    border-bottom: 1px solid #707070;
-}
-
-#nav-icon {
-    color: black;
-    vertical-align: middle;
-}
-
-.nav-link {
-    padding: 0 1vw 0 1vw;
-}
-
-.navbar-brand {
-    align-self: center;
-    justify-content: center;
-    font-size: 0;
-}
-
-#nav-icon-span {
-    font-size: 12px;
-}
-
-#search-input {
-    outline: none;
-    box-shadow: none !important;
-    border-radius: 36px 0 0 36px;
-    width: 20vw;
-}
-
-#search-button {
-    border-radius: 0 36px 36px 0;
-    padding: 0 1em 0 1em;
-    background-color: white;
-    border: 1px solid gray;
-    color: gray;
-    margin-left: -1px;
-}
-
-#search-button i {
-    vertical-align: middle;
-}
-
-
 /* Sidebar */
 
 #sidebar {
     padding: 1em;
-    width: 15%;
+    width: 12%;
     background-color: #F3EFEF;
     border-right: 1px solid black;
+}
+
+.stars-sidebar {
+    font-size: 1em;
 }
 
 #order-by {
@@ -397,8 +354,9 @@ button {
     border-bottom: 1px solid black;
 }
 
-#sidebar .input-group-text {
+#sidebar .input-label-sidebar {
     border-radius: 1em 1em 0 0;
+    margin-bottom: -1px;
 }
 
 #sidebar label,
@@ -491,7 +449,7 @@ ul li {
 }
 
 #keywords {
-    padding: 1em 1em 0 1em;
+    padding-left: 1em;
     border-bottom: 1px solid black;
 }
 
@@ -514,7 +472,7 @@ ul li {
 
 .card-title {
     display: -webkit-box;
-    /*-webkit-line-clamp: 1;*/
+    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
