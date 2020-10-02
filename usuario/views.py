@@ -4,6 +4,7 @@ from django.views import View
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages 
 import copy
 
 from . import models
@@ -67,7 +68,10 @@ class Criar(BasePerfil):
         # o django forms possui um método chamado 'is_valid()' que executa validações para todos os campos do formuário
         # Se todos os campos do formulário for válido ele retorna True e armazena os dados em 'cleaned_data'
         if not self.usuarioform.is_valid():
-            # TODO: mensagem de error pra fazer
+            messages.error(
+                self.request,
+                'VERIFIQUE SE OS CAMPOS ESTÃO PREENCHIDOS CORRETAMENTE!!!'
+            )
             return self.renderizar
 
         # pegando todos os campos do formulário herdado da classe acima e armazenando em variáveis
@@ -129,16 +133,29 @@ class Login(View):
         username = self.request.POST.get('username')
         password = self.request.POST.get('password')
 
-        #TODO: adicionar mensagem de erro 'Usuário ou senha inválidos'
+        if not username or not password:
+            messages.error(
+                self.request,
+                'USUÁRIO OU SENHA INVALIDOS!!!'
+            )
+            return redirect('usuario:criar')
 
         usuario = authenticate(
             self.request, username=username, password=password)
 
-        #TODO: adicionar mensagem de erro 'Usuário ou senha inválidos'
+        if not usuario:
+            messages.error(
+                self.request,
+                'USUÁRIO OU SENHA INVALIDOS!!!'
+            )
+            return redirect('usuario:criar')
 
         login(self.request, user=usuario)
 
-        #TODO: adicionar mensagem de erro 'Você fez login no sistema e pode concluir sua compra.'
+        messages.success(
+            self.request,
+                'VOCE FEZ LOGIN!!!'
+        )
         return redirect('receita:index')
 
 class Logout(View):
