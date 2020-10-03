@@ -27,5 +27,5 @@ class UsuarioForm(forms.ModelForm):
         model = User
         # campos que serão exibidos para prencher no formulário
         # alguns campos são herdados de forms, outros podem ser criados como 'password' e 'password2'
-        fields = ('first_name', 'last_name', 'username',
-                  'password', 'password2', 'email')
+        fields = ('username', 'first_name', 'last_name', 'email',
+                  'password', 'password2')

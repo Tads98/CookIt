@@ -20,7 +20,6 @@ class Receita(models.Model):
             ('S', 'Salgada'),
         )
     )
-    # TODO: procurar formas de inserir dias, horas e minutos ao mesmo tempo
     tempo_preparo = models.PositiveIntegerField(
         'Tempo de preparo:', default=0, blank=False)
     # variaçãoes de 'tempo_preparo'
@@ -110,8 +109,6 @@ class Receita(models.Model):
         verbose_name_plural = 'Receita'
 
 # TODO: fazer checagem de ingrediente repetido nos models
-
-
 class Ingrediente(models.Model):
     receita = models.ForeignKey(Receita, on_delete=models.DO_NOTHING)
     nome_ingrediente = models.CharField(

@@ -6,6 +6,7 @@
 {% include 'parciais/_navbar.html' %}
 
 <div class="container">
+    {%include 'parciais/_messages.html'%}
     <div class="row">
 
         {% if not request.user.is_authenticated %}

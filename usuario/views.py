@@ -78,7 +78,7 @@ class Criar(BasePerfil):
         username = self.usuarioform.cleaned_data.get('username')
         password = self.usuarioform.cleaned_data.get('password')
         email = self.usuarioform.cleaned_data.get('email')
-        # TODO: questionar a equipe sobre a existência do primeiro e segundo nome
+        # TODO: retirar 'first_name' e 'last_name'
         first_name = self.usuarioform.cleaned_data.get('first_name')
         last_name = self.usuarioform.cleaned_data.get('last_name')
 
@@ -129,6 +129,7 @@ class Criar(BasePerfil):
         return redirect('receita:index')
 
 class Login(View):
+    # TODO: fazer formulário de login renderizar na tela de login
     def post(self, *args, **kwargs):
         username = self.request.POST.get('username')
         password = self.request.POST.get('password')
@@ -161,6 +162,10 @@ class Login(View):
 class Logout(View):
     def get(self, *args, **kwargs):
         logout(self.request)
+        messages.info(
+            self.request,
+                'Vc deslogou'
+        )
         return redirect('receita:index')
 
 
