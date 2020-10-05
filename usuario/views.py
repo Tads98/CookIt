@@ -4,7 +4,7 @@ from django.views import View
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
-from django.contrib import messages 
+from django.contrib import messages
 import copy
 
 from . import models
@@ -16,7 +16,7 @@ class BasePerfil(View):
     template_name = 'usuario/cadastro-editar_usuario.html'
 
     def setup(self, *args, **kwargs):
-         # TODO: o que é super()?
+        # TODO: o que é super()?
         super().setup(*args, **kwargs)
 
         self.usuario = None
@@ -51,13 +51,11 @@ class BasePerfil(View):
         self.renderizar = render(  # 'self.contexto' será interpretado no documento HTML. EX: {{ userform|crispy }}
             self.request, self.template_name, self.contexto)
 
-    
     def get(self, *args, **kwargs):
         return self.renderizar
-    
-    ######################################################################
-    # Tudo isso apenas para renderizar o formulário 
 
+    ######################################################################
+    # Tudo isso apenas para renderizar o formulário
 
 
 # classe para criar e atualizar perfis
@@ -81,7 +79,6 @@ class Criar(BasePerfil):
         # TODO: retirar 'first_name' e 'last_name'
         first_name = self.usuarioform.cleaned_data.get('first_name')
         last_name = self.usuarioform.cleaned_data.get('last_name')
-
 
 # ------------------------------------------------------------------------------------------------------
 # A partir de agora, usando as variáveis com os dados com formulário
@@ -119,14 +116,14 @@ class Criar(BasePerfil):
             autentica = authenticate(
                 self.request,
                 username=usuario,
-                password=password
+                password=password,
             )
 
             if autentica:
                 # método login requer como parâmetro uma requisisão e um id user
                 login(self.request, user=usuario)
-
         return redirect('receita:index')
+
 
 class Login(View):
     # TODO: fazer formulário de login renderizar na tela de login
@@ -155,25 +152,26 @@ class Login(View):
 
         messages.success(
             self.request,
-                'VOCE FEZ LOGIN!!!'
+            'VOCE FEZ LOGIN!!!'
         )
         return redirect('receita:index')
+
 
 class Logout(View):
     def get(self, *args, **kwargs):
         logout(self.request)
         messages.info(
             self.request,
-                'Vc deslogou'
+            'Vc deslogou'
         )
         return redirect('receita:index')
 
 
 class CadastrarEditar_Receita(View):
-    #TODO: adicionar retorno 'render' para tela de cadastrar receita 
+    # TODO: adicionar retorno 'render' para tela de cadastrar receita
     pass
+
 
 class favoritos(View):
-    #TODO: adicionar retorno 'render' para tela de favoritos
+    # TODO: adicionar retorno 'render' para tela de favoritos
     pass
-

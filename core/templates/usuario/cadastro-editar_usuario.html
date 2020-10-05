@@ -13,8 +13,8 @@
         <div class="col-lg mt-3">
             <h3>Login</h3>
             <p>Se você já fez cadastro, basta entrar com seu usuário e senha abaixo:</p>
-    
-    
+
+
             <form method="POST" action="{% url 'usuario:login' %}">
                 {% csrf_token %}
                 <div class="form-group">
@@ -35,18 +35,26 @@
                     </div>
                 </div>
             </form>
-    
-    
+
+
         </div>
         {% endif %}
-    
+
         <div class="col-lg mt-3">
-    
+
             <form method="POST" action="">
                 {% csrf_token %}
-                <h3>Cadastro</h3>
+                {% if request.user.is_authenticated %}
+
+                <h3>Atualizar dados</h3>
                 {{ usuarioform|crispy }}
-    
+
+                {% else %}
+                <h3>Cadastrar</h3>
+                {{ usuarioform|crispy }}
+
+                {% endif %}
+
                 <div class="row">
                     <div class="col">
                         <button type="submit" class="btn btn-primary btn-block btn-lg">
@@ -55,8 +63,7 @@
                     </div>
                 </div>
             </form>
-    
+
         </div>
     </div>
 </div>
-
