@@ -13,7 +13,7 @@ from . import forms
 
 class BasePerfil(View):
 
-    template_name = 'usuario/cadastro-editar_usuario.html'
+    template_name = 'usuario/cadastro_nova.html'
 
     def setup(self, *args, **kwargs):
         # TODO: o que é super()?
