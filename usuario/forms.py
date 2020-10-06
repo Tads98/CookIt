@@ -7,17 +7,52 @@ from . import models
 
 class UsuarioForm(forms.ModelForm):
     # criando um novo campo no formulário
-    password = forms.CharField(
-        required=False,
-        widget=forms.PasswordInput(),
-        label='Senha'
+
+    username = forms.CharField(widget=forms.TextInput(
+        attrs={
+            'class': 'form-group form-contro rounded-pill',
+            'placeholder': 'Nome de Usuário',
+        }
+    ), label='')
+
+    email = forms.CharField(widget=forms.EmailInput(
+        attrs={
+            'class': 'form-group form-control rounded-pill',
+            'placeholder': 'Email',
+        }
+    ), label='')
+
+    password = forms.CharField(widget=forms.PasswordInput(
+        attrs={
+            'class': 'form-group form-control rounded-pill',
+            'placeholder': 'Senha',
+        }
+    ),  required=False,
+        label=''
     )
     # criando um novo campo no formulário
-    password2 = forms.CharField(
-        required=False,
-        widget=forms.PasswordInput(),
-        label='Confirmação senha'
+    password2 = forms.CharField(widget=forms.PasswordInput(
+        attrs={
+            'class': 'form-group form-control rounded-pill',
+            'placeholder': 'Confirmar Senha',
+        }
+    ),  required=False,
+        label=''
     )
+
+    first_name = forms.CharField(widget=forms.TextInput(
+        attrs={
+            'class': 'form-group form-control rounded-pill',
+            'placeholder': 'Nome'
+        }
+    ), label='')
+
+    last_name = forms.CharField(widget=forms.TextInput(
+        attrs={
+            'class': 'form-group form-control rounded-pill',
+            'placeholder': 'Sobrenome'
+        }
+    ), label='')
 
     def __init__(self, usuario=None, *args, **kwargs):
         super().__init__(*args, **kwargs)

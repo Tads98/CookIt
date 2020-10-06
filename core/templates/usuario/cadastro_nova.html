@@ -1,62 +1,93 @@
-{% load static %}
-{% load crispy_forms_tags %}
-{%include 'parciais/_head.html'%}
-{%include 'parciais/_messages.html'%}
-<div class="bg" style="background-image: url({% static 'imgs/bosch_cookit.jpg' %}) ; width:100%; height:100%">
-    <div class="container" style="background:none">
-        <div class="row">
-            {% if not request.user.is_authenticated %}
-            <div class="col-lg mt-3">
-                <h3>Login</h3>
-                <p>Se você já fez cadastro, basta entrar com seu usuário e senha abaixo:</p>
+{% load static %} {% load crispy_forms_tags %} {%include 'parciais/_head.html'%} {%include 'parciais/_messages.html'%}
 
 
-                <form method="POST" action="{% url 'usuario:login' %}">
-                    {% csrf_token %}
-                    <div class="form-group">
-                        <label for="InputUsuario1">Usuário:</label>
-                        <input type="text" name='username' class="form-control" id="InputUsuario1"
-                            aria-describedby="usuarioHelp" placeholder="Digite seu usuário:">
+<body style="
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    ">
+    <div class="bg" style="
+    margin-top: -70px !important;
+    background-image: url({% static 'imgs/bosch_cookit.jpg' %}) ;
+    background-size: contain;
+    width: 100%;
+    
+    height: 100%;
+    ">
+        <div class="container" style="background:none">
+            <img class="rounded mx-auto d-block" src="{% static 'imgs/cookit_logo.svg' %}" alt="Logo" height="90px" style="margin: 1em;">
+            <div class="row">
+                {% if not request.user.is_authenticated %}
+                <div class="col-lg mt-3" style="
+                background-color: white;
+                border-radius: 1em;
+                padding: 0 !important;
+                padding-bottom: 1em !important;
+                margin: 1em;
+            ">
+                    <h3 style="
+                background-color: grey;
+                border-top-left-radius: 0.5em;
+                border-top-right-radius: 0.5em;
+                padding: 0.5em;
+                ">Login</h3>
+                    <div>
+
                     </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Senha:</label>
-                        <input name='password' type="password" class="form-control" id="exampleInputPassword1"
-                            placeholder="Digite sua senha:">
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <button type="submit" class="btn btn-primary btn-block btn-lg">
-                                Login
-                            </button>
+                    <form method="POST" action="{% url 'usuario:login' %}" style="
+                    padding-left: 1em !important;
+                    padding-right: 1em;
+                ">
+                        <p>Se você já fez cadastro, basta entrar com seu usuário e senha abaixo:</p>
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <input type="text" name='username' class="form-control rounded-pill" id="InputUsuario1" aria-describedby="usuarioHelp" placeholder="Nome de Usuário">
                         </div>
-                    </div>
-                </form>
-            </div>
-        {% endif %}
-        <div class="col-lg mt-3">
+                        <div class="form-group">
+                            <input name='password' type="password" class="form-control rounded-pill" id="exampleInputPassword1" placeholder="Senha:">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block btn-lg rounded-pill">
+                                Login
+                        </button>
+                    </form>
+                </div>
+                {% endif %}
+                <div class="col-lg mt-3" style="
+                background-color: white;
+                border-radius: 1em;
+                padding: 0 !important;
+                padding-bottom: 1em !important;
+                margin: 1em;
+                ">
 
-                <form method="POST" action="">
-                    {% csrf_token %}
-                    {% if request.user.is_authenticated %}
+                    <form method="POST" action="">
+                        {% csrf_token %} {% if request.user.is_authenticated %}
 
-                    <h3>Atualizar dados</h3>
-                    {{ usuarioform|crispy }}
+                        <h3>Atualizar dados</h3>
+                        {{ usuarioform|crispy }} {% else %}
+                        <h3 style="
+                    background-color: grey;
+                    border-top-left-radius: 0.5em;
+                    border-top-right-radius: 0.5em;
+                    padding: 0.5em;
+                    ">Cadastrar</h3>
+                        <div style="
+                    padding-left: 1em !important;
+                    padding-right: 1em;
+                ">
+                            {{ usuarioform|crispy }} {% endif %}
 
-                    {% else %}
-                    <h3>Cadastrar</h3>
-                    {{ usuarioform|crispy }}
-
-                    {% endif %}
-
-                    <div class="row">
-                        <div class="col">
-                            <button type="submit" class="btn btn-primary btn-block btn-lg">
+                            <button type="submit" class="btn btn-primary btn-block btn-lg rounded-pill">
                                 Enviar
                             </button>
                         </div>
-                    </div>
-                </form>
+
+
+
+
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</body>
