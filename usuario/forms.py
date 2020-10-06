@@ -40,6 +40,20 @@ class UsuarioForm(forms.ModelForm):
         label=''
     )
 
+    first_name = forms.CharField(widget=forms.TextInput(
+        attrs={
+            'class': 'form-group form-control rounded-pill',
+            'placeholder': 'Nome'
+        }
+    ), label='')
+
+    last_name = forms.CharField(widget=forms.TextInput(
+        attrs={
+            'class': 'form-group form-control rounded-pill',
+            'placeholder': 'Sobrenome'
+        }
+    ), label='')
+
     def __init__(self, usuario=None, *args, **kwargs):
         super().__init__(*args, **kwargs)
         # TODO: entender da onde vem esse 'self.usuario'
@@ -49,7 +63,8 @@ class UsuarioForm(forms.ModelForm):
         model = User
         # campos que serão exibidos para prencher no formulário
         # alguns campos são herdados de forms, outros podem ser criados como 'password' e 'password2'
-        fields = ('username', 'email', 'password', 'password2')
+        fields = ('username', 'first_name', 'last_name', 'email',
+                  'password', 'password2')
 
 
 ###############################################################################

@@ -1,22 +1,22 @@
-{% load static %}
-{% load crispy_forms_tags %}
-{%include 'parciais/_head.html'%}
+{% load static %} {% load crispy_forms_tags %} {%include 'parciais/_head.html'%} {%include 'parciais/_messages.html'%}
 
 
-<body style="width: 100%;height: 100%;position: fixed;">
-    <div class="bg" style="margin-top: -70px !important;
-    background-image: url({% static 'imgs/bosch_cookit.jpg' %});
+<body style="
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    ">
+    <div class="bg" style="
+    margin-top: -70px !important;
+    background-image: url({% static 'imgs/bosch_cookit.jpg' %}) ;
     background-size: contain;
-    width: 100%;height: 100%;
+    width: 100%;
+    
+    height: 100%;
     ">
         <div class="container" style="background:none">
-            <img class="rounded mx-auto d-block" src="{% static 'imgs/cookit_logo.svg' %}" alt="Logo" height="90px"
-                style="margin: 1em;">
+            <img class="rounded mx-auto d-block" src="{% static 'imgs/cookit_logo.svg' %}" alt="Logo" height="90px" style="margin: 1em;">
             <div class="row">
-
-                {%block formulario%}
-
-
                 {% if not request.user.is_authenticated %}
                 <div class="col-lg mt-3" style="
                 background-color: white;
@@ -32,29 +32,26 @@
                 padding: 0.5em;
                 ">Login</h3>
                     <div>
-                        {%include 'parciais/_messages.html'%}
+
                     </div>
                     <form method="POST" action="{% url 'usuario:login' %}" style="
                     padding-left: 1em !important;
                     padding-right: 1em;
                 ">
+                        <p>Se você já fez cadastro, basta entrar com seu usuário e senha abaixo:</p>
                         {% csrf_token %}
                         <div class="form-group">
-                            <input type="text" name='username' class="form-control rounded-pill" id="InputUsuario1"
-                                aria-describedby="usuarioHelp" placeholder="Nome de Usuário">
+                            <input type="text" name='username' class="form-control rounded-pill" id="InputUsuario1" aria-describedby="usuarioHelp" placeholder="Nome de Usuário">
                         </div>
                         <div class="form-group">
-                            <input name='password' type="password" class="form-control rounded-pill"
-                                id="exampleInputPassword1" placeholder="Senha:">
+                            <input name='password' type="password" class="form-control rounded-pill" id="exampleInputPassword1" placeholder="Senha:">
                         </div>
-                        <p><a href="{% url 'usuario:cadastrar' %}">Inscreva-se</a> no Cookit</p>
                         <button type="submit" class="btn btn-primary btn-block btn-lg rounded-pill">
-                            Login
+                                Login
                         </button>
                     </form>
                 </div>
-                {%else%}
-
+                {% endif %}
                 <div class="col-lg mt-3" style="
                 background-color: white;
                 border-radius: 1em;
@@ -84,15 +81,12 @@
                                 Enviar
                             </button>
                         </div>
+
+
+
+
                     </form>
-
                 </div>
-
-                {% endif %}
-
-                {% endblock%}
-
-
             </div>
         </div>
     </div>

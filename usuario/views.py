@@ -46,7 +46,7 @@ class BasePerfil(View):
 
         # se o usuário já estiver logado ele vai ser redirecionado para uma página diferente, que é a att de perfil
         if self.request.user.is_authenticated:
-            self.template_name = 'usuario/cadastrar_ou_att.html'
+            self.template_name = 'usuario/atualizar.html'
 
         self.renderizar = render(  # 'self.contexto' será interpretado no documento HTML. EX: {{ userform|crispy }}
             self.request, self.template_name, self.contexto)
@@ -59,7 +59,7 @@ class BasePerfil(View):
 
 
 # classe para criar e atualizar perfis
-class Atualizar(BasePerfil):
+class Criar(BasePerfil):
     def post(self, *args, **kwargs):
 
         # se o formulário de criar o usuarop não for válido, retornar uma nova renderização da tela
@@ -76,6 +76,9 @@ class Atualizar(BasePerfil):
         username = self.usuarioform.cleaned_data.get('username')
         password = self.usuarioform.cleaned_data.get('password')
         email = self.usuarioform.cleaned_data.get('email')
+        # TODO: retirar 'first_name' e 'last_name'
+        first_name = self.usuarioform.cleaned_data.get('first_name')
+        last_name = self.usuarioform.cleaned_data.get('last_name')
 
 # ------------------------------------------------------------------------------------------------------
 # A partir de agora, usando as variáveis com os dados com formulário
@@ -95,45 +98,12 @@ class Atualizar(BasePerfil):
                 usuario.set_password(password)
 
             usuario.email = email
+            usuario.fisrt_name = first_name
+            usuario.last_name = last_name
             usuario.save()
-        else:
-            return redirect('usuario:login')
-
-        return redirect('receita:index')
-
-
-class Cadastrar(BasePerfil):
-    def post(self, *args, **kwargs):
-
-        # TODO: solucionar renderização de tela
-        template_name = 'usuario/cadastrar_ou_att.html'
-        self.renderizar = render(
-            self.request, self.template_name, self.contexto)
-
-        def get(self, *args, **kwargs):
-            return self.renderizar
-
-        # se o formulário de criar o usuarop não for válido, retornar uma nova renderização da tela
-        # o django forms possui um método chamado 'is_valid()' que executa validações para todos os campos do formuário
-        # Se todos os campos do formulário for válido ele retorna True e armazena os dados em 'cleaned_data'
-        if not self.usuarioform.is_valid():
-            messages.error(
-                self.request,
-                'VERIFIQUE SE OS CAMPOS ESTÃO PREENCHIDOS CORRETAMENTE!!!'
-            )
-            return self.renderizar
-
-        # pegando todos os campos do formulário herdado da classe acima e armazenando em variáveis
-        username = self.usuarioform.cleaned_data.get('username')
-        password = self.usuarioform.cleaned_data.get('password')
-        email = self.usuarioform.cleaned_data.get('email')
-
-        if self.request.user.is_authenticated:
-            return redirect('receita:atualizar')
 
         # Usuário não logado (novo)
         else:
-
             # criando novo usuário
             # 'commit=False' é para não salvar na base de dados
             usuario = self.usuarioform.save(commit=False)
@@ -166,7 +136,7 @@ class Login(View):
                 self.request,
                 'USUÁRIO OU SENHA INVALIDOS!!!'
             )
-            return redirect('usuario:atualizar')
+            return redirect('usuario:criar')
 
         usuario = authenticate(
             self.request, username=username, password=password)
@@ -176,7 +146,7 @@ class Login(View):
                 self.request,
                 'USUÁRIO OU SENHA INVALIDOS!!!'
             )
-            return redirect('usuario:atualizar')
+            return redirect('usuario:criar')
 
         login(self.request, user=usuario)
 
