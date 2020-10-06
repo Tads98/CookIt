@@ -4,7 +4,8 @@ from . import views
 app_name = 'usuario'
 
 urlpatterns = [
-    path('', views.Criar.as_view(), name='criar'),
+    path('', views.Atualizar.as_view(), name='atualizar'),
+    path('cadastrar', views.Cadastrar.as_view(), name='cadastrar'),
     path('login/', views.Login.as_view(), name='login'),
     path('logout/', views.Logout.as_view(), name='logout'),
     path('favoritos', views.favoritos, name='favoritos'),
