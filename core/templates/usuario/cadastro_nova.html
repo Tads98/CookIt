@@ -18,7 +18,7 @@
             <img class="rounded mx-auto d-block" src="{% static 'imgs/cookit_logo.svg' %}" alt="Logo" height="90px" style="margin: 1em;">
             <div class="row">
                 {% if not request.user.is_authenticated %}
-                <div class="col-lg mt-3" style="
+                <div class="col-lg mt-3" id="login" style="
                 background-color: white;
                 border-radius: 1em;
                 padding: 0 !important;
@@ -46,18 +46,22 @@
                         <div class="form-group">
                             <input name='password' type="password" class="form-control rounded-pill" id="exampleInputPassword1" placeholder="Senha:">
                         </div>
+                        
+                        <a href="javascript:cadastroOpen()">cadastro</a>
                         <button type="submit" class="btn btn-primary btn-block btn-lg rounded-pill">
                                 Login
                         </button>
                     </form>
+                    <button  onclick="cadastroOpen()">Cadastro</button>
                 </div>
                 {% endif %}
-                <div class="col-lg mt-3" style="
+                <div class="col-lg mt-3" id="cadastro" style="
                 background-color: white;
                 border-radius: 1em;
                 padding: 0 !important;
                 padding-bottom: 1em !important;
                 margin: 1em;
+                display:none;
                 ">
 
                     <form method="POST" action="">
