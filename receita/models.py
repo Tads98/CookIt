@@ -51,7 +51,7 @@ class Receita(models.Model):
 
         )
     )
-    data_publicacao = models.DateField('data_publicacao', blank=False)
+    data_publicacao = models.DateTimeField('data_publicacao', blank=False)
 
     slug = models.SlugField(unique=True, blank=True, null=True)
 
