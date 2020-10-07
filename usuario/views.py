@@ -126,7 +126,6 @@ class Criar(BasePerfil):
 
 
 class Login(View):
-    # TODO: fazer formulário de login renderizar na tela de login
     def post(self, *args, **kwargs):
         username = self.request.POST.get('username')
         password = self.request.POST.get('password')
