@@ -16,4 +16,3 @@ class DetalheReceita(DetailView):
     template_name  = 'receita/receita-completa.html'
     context_object_name = 'ingrediente'
     slug_url_kwargs = 'slug' 
-
