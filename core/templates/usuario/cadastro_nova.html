@@ -14,6 +14,10 @@
         height: 100%;
     }
     
+    .container {
+        width: 420px;
+    }
+    
     #login,
     #cadastro {
         background-color: white;
@@ -21,22 +25,45 @@
         padding: 0 !important;
         padding-bottom: 1em !important;
     }
-    
-    h3 {
+    /*    h3 {
         background-color: grey;
         border-top-left-radius: 0.5em;
         border-top-right-radius: 0.5em;
         padding: 0.5em;
     }
+*/
     
-    #login form,
-    .crispy-form {
+    #login form {
         padding-left: 1em !important;
         padding-right: 1em;
     }
     
-    #cadastro {
+    #cadastro-form {
         display: none;
+    }
+    
+    button {
+        width: 100%;
+    }
+    
+    #login-button {
+        border-top-left-radius: 0.5em;
+        background-color: gray;
+    }
+    
+    #cadastro-button {
+        border-top-right-radius: 0.5em;
+        background-color: lightgray;
+    }
+    
+    #login-button,
+    #cadastro-button {
+        border: none;
+        font-size: 2em;
+        font-weight: bold;
+        padding: 0.1em;
+        border: none;
+        outline: none;
     }
 </style>
 
@@ -46,12 +73,21 @@
             <img class="rounded mx-auto d-block" src="{% static 'imgs/cookit_logo.svg' %}" alt="Logo" height="90px" style="margin: 1em;">
             <div class="row">
                 {% if not request.user.is_authenticated %}
-                <div class="col-lg mt-3" id="login" style=" ">
-                    <h3 style="">Login</h3>
-                    <div>
-
+                <div class="col-lg mt-3" id="login">
+                    <div class="row mb-3 no-gutters">
+                        <div class="col">
+                            <button id="login-button" onclick="loginOpen()">
+                                Login
+                            </button>
+                        </div>
+                        <div class="col">
+                            <button id="cadastro-button" onclick="cadastroOpen()">
+                                Cadastro
+                            </button>
+                        </div>
                     </div>
-                    <form method="POST" action="{% url 'usuario:login' %}">
+
+                    <form id="login-form" method="POST" action="{% url 'usuario:login' %}">
                         <p>Se você já fez cadastro, basta entrar com seu usuário e senha abaixo:</p>
                         {% csrf_token %}
                         <div class="form-group">
@@ -63,16 +99,11 @@
                         <a href="javascript:cadastroOpen()">Ainda não tem cadastro?</a>
                         <button type="submit" class="btn btn-primary btn-block btn-lg rounded-pill">Login</button>
                     </form>
-                </div>
-                {% endif %}
-                <div class="col-lg mt-3" id="cadastro">
-
-                    <form method="POST" action="">
+                    <form id="cadastro-form" method="POST" action="">
                         {% csrf_token %} {% if request.user.is_authenticated %}
 
                         <h3>Atualizar dados</h3>
                         {{ usuarioform|crispy }} {% else %}
-                        <h3>Cadastrar</h3>
                         <div class="crispy-form">
                             {{ usuarioform|crispy }} {% endif %}
 
@@ -82,6 +113,7 @@
                         </div>
                     </form>
                 </div>
+                {% endif %}
             </div>
         </div>
     </div>
