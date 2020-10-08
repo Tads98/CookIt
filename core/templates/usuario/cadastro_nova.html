@@ -6,18 +6,18 @@
         height: 100%;
         position: fixed;
     }
-    
+
     .bg {
         margin-top: -70px !important;
         background-size: contain;
         width: 100%;
         height: 100%;
     }
-    
+
     .container {
         width: 420px;
     }
-    
+
     #login,
     #cadastro {
         background-color: white;
@@ -25,6 +25,7 @@
         padding: 0 !important;
         padding-bottom: 1em !important;
     }
+
     /*    h3 {
         background-color: grey;
         border-top-left-radius: 0.5em;
@@ -32,30 +33,30 @@
         padding: 0.5em;
     }
 */
-    
+
     #login form {
         padding-left: 1em !important;
         padding-right: 1em;
     }
-    
+
     #cadastro-form {
         display: none;
     }
-    
+
     button {
         width: 100%;
     }
-    
+
     #login-button {
         border-top-left-radius: 0.5em;
         background-color: gray;
     }
-    
+
     #cadastro-button {
         border-top-right-radius: 0.5em;
         background-color: lightgray;
     }
-    
+
     #login-button,
     #cadastro-button {
         border: none;
@@ -71,7 +72,8 @@
     <div class="bg" style="background-image: url({% static 'imgs/bosch_cookit.jpg' %});">
         <div class="container" style="background:none">
             <a href="{% url 'receita:index' %}">
-                <img class="rounded mx-auto d-block" src="{% static 'imgs/cookit_logo.svg' %}" alt="Logo" height="90px" style="margin: 1em;">
+                <img class="rounded mx-auto d-block" src="{% static 'imgs/cookit_logo.svg' %}" alt="Logo" height="90px"
+                    style="margin: 1em;">
             </a>
             <div class="row">
                 {% if not request.user.is_authenticated %}
@@ -90,15 +92,15 @@
                     </div>
 
                     <form id="login-form" method="POST" action="{% url 'usuario:login' %}">
-                        <p>Se você já fez cadastro, basta entrar com seu usuário e senha abaixo:</p>
                         {% csrf_token %}
                         <div class="form-group">
-                            <input type="text" name='username' class="form-control rounded-pill" id="InputUsuario1" aria-describedby="usuarioHelp" placeholder="Nome de Usuário">
+                            <input type="text" name='username' class="form-control rounded-pill" id="InputUsuario1"
+                                aria-describedby="usuarioHelp" placeholder="Nome de Usuário">
                         </div>
                         <div class="form-group">
-                            <input name='password' type="password" class="form-control rounded-pill" id="exampleInputPassword1" placeholder="Senha:">
+                            <input name='password' type="password" class="form-control rounded-pill"
+                                id="exampleInputPassword1" placeholder="Senha:">
                         </div>
-                        <a href="javascript:cadastroOpen()">Ainda não tem cadastro?</a>
                         <button type="submit" class="btn btn-primary btn-block btn-lg rounded-pill">Login</button>
                     </form>
                     <form id="cadastro-form" method="POST" action="">
@@ -110,7 +112,7 @@
                             {{ usuarioform|crispy }} {% endif %}
 
                             <button type="submit" class="btn btn-primary btn-block btn-lg rounded-pill">
-                                Enviar
+                                Cadastrar
                             </button>
                         </div>
                     </form>

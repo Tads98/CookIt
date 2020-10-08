@@ -76,9 +76,6 @@ class Criar(BasePerfil):
         username = self.usuarioform.cleaned_data.get('username')
         password = self.usuarioform.cleaned_data.get('password')
         email = self.usuarioform.cleaned_data.get('email')
-        # TODO: retirar 'first_name' e 'last_name'
-        first_name = self.usuarioform.cleaned_data.get('first_name')
-        last_name = self.usuarioform.cleaned_data.get('last_name')
 
 # ------------------------------------------------------------------------------------------------------
 # A partir de agora, usando as variáveis com os dados com formulário
@@ -98,8 +95,6 @@ class Criar(BasePerfil):
                 usuario.set_password(password)
 
             usuario.email = email
-            usuario.fisrt_name = first_name
-            usuario.last_name = last_name
             usuario.save()
 
         # Usuário não logado (novo)
