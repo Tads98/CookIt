@@ -70,7 +70,9 @@
 <body>
     <div class="bg" style="background-image: url({% static 'imgs/bosch_cookit.jpg' %});">
         <div class="container" style="background:none">
-            <img class="rounded mx-auto d-block" src="{% static 'imgs/cookit_logo.svg' %}" alt="Logo" height="90px" style="margin: 1em;">
+            <a href="{% url 'receita:index' %}">
+                <img class="rounded mx-auto d-block" src="{% static 'imgs/cookit_logo.svg' %}" alt="Logo" height="90px" style="margin: 1em;">
+            </a>
             <div class="row">
                 {% if not request.user.is_authenticated %}
                 <div class="col-lg mt-3" id="login">
