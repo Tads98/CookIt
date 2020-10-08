@@ -20,6 +20,6 @@ from django.conf.urls.static import static  # Para upload de imagens
 
 urlpatterns = [
     path('', include('receita.urls')),
-    path('', include('usuario.urls')),
+    path('usuario/', include('usuario.urls')),
     path('admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  # Para upload de imagens

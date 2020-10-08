@@ -8,8 +8,8 @@ class ListarReceita(ListView):
     model = models.Receita
     template_name = 'receita/index.html'
     context_object_name = 'receitas'
-    paginate_by = 3
-
+    paginate_by = 12
+    queryset = models.Receita.objects.order_by('-data_publicacao')
 
 class DetalheReceita(DetailView):
     model = models.Receita

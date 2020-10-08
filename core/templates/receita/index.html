@@ -1,11 +1,12 @@
 {% extends 'base.html'%}
 
 {%  block miniatura_receita %}
-<div class="cards-tela-inicial row row-cols-1 row-cols-md-3">
+<div class="cards-tela-inicial row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3">
     {% for receita in receitas %}
     <div class="col mb-4">
         <div class="card receita-tela-inicial h-100">
             <a href="{{ receita.slug }}">
+                <!--TODO: o tamanho da imagem precisa ser fixo e seu container também-->
                 {% if receita.fotos %}
                 <img src="{{ receita.fotos.url }}" alt="{{ receita.nome_receita }}" class="card-img-top">
                 {% else %}
@@ -19,8 +20,8 @@
                 <a href="{{ receita.slug }}">
                     <h5 class="card-title">{{ receita.nome_receita }}</h5>
                 </a>
-                <p class="card-text"><small class="text-muted">Publicado por <a
-                            href="">{{ receita.dono_receita }}</a></small>
+                <p class="card-text">Publicado por <a
+                             style="font-size: 10px;" href="">{{ receita.dono_receita }}</a>
                 </p>
                 <p class="card-text">
                     <i class="fa fa-star"></i>
@@ -37,12 +38,12 @@
                     <div class="info-tela-inicial col">
                         <div class="row">
                             <div class="col">
-                                <i class="far fa-clock"></i>
-                                <p><small>{{ receita.tempo_preparo }} minutos</small></p>
+                                <i style="font-size: 25px;" class="far fa-clock"></i>
+                                <p>{{ receita.tempo_preparo }} minutos</p>
                             </div>
                             <div class="col">
-                                <i class="fas fa-concierge-bell"></i>
-                                <p><small>{{ receita.porcoes }} porções</small></p>
+                                <i style="font-size: 25px;" class="fas fa-concierge-bell"></i>
+                                <p>{{ receita.porcoes }} porções</p>
                             </div>
                         </div>
                     </div>

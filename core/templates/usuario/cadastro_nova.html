@@ -1,0 +1,126 @@
+{% load static %} {% load crispy_forms_tags %} {%include 'parciais/_head.html'%}
+<title>Login e Cadastro - CookIt</title>
+<style>
+    body {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+    }
+
+    .bg {
+        margin-top: -70px !important;
+        background-size: contain;
+        width: 100%;
+        height: 100%;
+    }
+
+    .container {
+        width: 420px;
+    }
+
+    #login,
+    #cadastro {
+        background-color: white;
+        border-radius: 1em;
+        padding: 0 !important;
+        padding-bottom: 1em !important;
+    }
+
+    /*    h3 {
+        background-color: grey;
+        border-top-left-radius: 0.5em;
+        border-top-right-radius: 0.5em;
+        padding: 0.5em;
+    }
+*/
+
+    #login form {
+        padding-left: 1em !important;
+        padding-right: 1em;
+    }
+
+    #cadastro-form {
+        display: none;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    #login-button {
+        border-top-left-radius: 0.5em;
+        background-color: gray;
+    }
+
+    #cadastro-button {
+        border-top-right-radius: 0.5em;
+        background-color: lightgray;
+    }
+
+    #login-button,
+    #cadastro-button {
+        border: none;
+        font-size: 2em;
+        font-weight: bold;
+        padding: 0.1em;
+        border: none;
+        outline: none;
+    }
+</style>
+
+<body>
+    <div class="bg" style="background-image: url({% static 'imgs/bosch_cookit.jpg' %});">
+        <div class="container" style="background:none">
+            <a href="{% url 'receita:index' %}">
+                <img class="rounded mx-auto d-block" src="{% static 'imgs/cookit_logo.svg' %}" alt="Logo" height="90px"
+                    style="margin: 1em;">
+            </a>
+            <div class="row">
+                {% if not request.user.is_authenticated %}
+                <div class="col-lg mt-3" id="login">
+                    <div class="row mb-3 no-gutters">
+                        <div class="col">
+                            <button id="login-button" onclick="loginOpen()">
+                                Login
+                            </button>
+                        </div>
+                        <div class="col">
+                            <button id="cadastro-button" onclick="cadastroOpen()">
+                                Cadastro
+                            </button>
+                        </div>
+                    </div>
+
+                    <form id="login-form" method="POST" action="{% url 'usuario:login' %}">
+                        {% csrf_token %}
+                        {%include 'parciais/_messages.html'%}
+                        <div class="form-group">
+                            <input type="text" name='username' class="form-control rounded-pill" id="InputUsuario1"
+                                aria-describedby="usuarioHelp" placeholder="Nome de Usuário">
+                        </div>
+                        <div class="form-group">
+                            <input name='password' type="password" class="form-control rounded-pill"
+                                id="exampleInputPassword1" placeholder="Senha">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block btn-lg rounded-pill">Entrar</button>
+                    </form>
+                    <form id="cadastro-form" method="POST" action="">
+                        {% csrf_token %} {% if request.user.is_authenticated %}
+
+                        <h3>Atualizar dados</h3>
+                        {%include 'parciais/_messages.html'%}
+                        {{ usuarioform|crispy }} {% else %}
+                        <div class="crispy-form">
+                            {{ usuarioform|crispy }} {% endif %}
+
+                            <button type="submit" class="btn btn-primary btn-block btn-lg rounded-pill">
+                                Cadastrar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
