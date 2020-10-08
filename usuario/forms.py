@@ -70,7 +70,12 @@ class UsuarioForm(forms.ModelForm):
         password2_data = cleaned.get('password2')
 
         usuario_db = User.objects.filter(username=usuario_data).first()
+        print(f'Usuario depois da consulta: {usuario_db}')
+
         email_db = User.objects.filter(email=email_data).first()
+        print(f'Email depois da consulta: {email_db}')
+
+        print(' ')
 
         error_msg_user_exists = 'Usuário já existe'
         error_msg_email_exists = 'E-mail já existe'
@@ -80,9 +85,8 @@ class UsuarioForm(forms.ModelForm):
 
         # usuários logados atualização
         if self.usuario:
-            if usuario_db:
-                if usuario_data != usuario_db.username:
-                    validation_error_msgs['username'] = error_msg_user_exists
+            if not usuario_db:
+                validation_error_msgs['username'] = error_msg_user_exists
 
             if email_db:
                 if email_data != email_db.email:

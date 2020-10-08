@@ -84,11 +84,12 @@ class Criar(BasePerfil):
         if self.request.user.is_authenticated:
             # procurando usuário no model de tipo User recebendo como parâmetro o nome do usuário
             # se não achar o nome do usuário retorna erro 404
+            # TODO: usuario não pode alterar o nome (ficar de acordo com o CDU), incluir campo de 'nickname' depois.
             usuario = get_object_or_404(
                 User, username=self.request.user.username)
 
             # atualizando nome
-            usuario.username = username
+            #usuario.username = username
 
             # atualizando senha
             if password:
@@ -117,6 +118,7 @@ class Criar(BasePerfil):
             if autentica:
                 # método login requer como parâmetro uma requisisão e um id user
                 login(self.request, user=usuario)
+
         return redirect('receita:index')
 
 
@@ -159,6 +161,8 @@ class Logout(View):
             'Vc deslogou'
         )
         return redirect('receita:index')
+
+# TODO: procurar um 'forms.py' para cadastrar receita
 
 
 class CadastrarEditar_Receita(View):
