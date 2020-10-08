@@ -13,7 +13,7 @@ from . import forms
 
 class BasePerfil(View):
 
-    template_name = 'usuario/editar_receita.html'
+    template_name = 'usuario/cadastro_nova.html'
 
     def setup(self, *args, **kwargs):
         # TODO: o que é super()?
@@ -168,6 +168,7 @@ class Logout(View):
 class CadastrarEditar_Receita(View):
     # TODO: adicionar retorno 'render' para tela de cadastrar receita
     pass
+
 
 class favoritos(View):
     # TODO: adicionar retorno 'render' para tela de favoritos
