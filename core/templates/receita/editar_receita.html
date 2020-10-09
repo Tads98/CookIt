@@ -1,0 +1,14 @@
+{% include 'parciais/_head.html' %}  
+{% include 'parciais/_navbar.html'%}
+{% load crispy_forms_tags %}
+      <div class="container">
+        <h3>Inserindo Sua Receita</h3>
+        <form class="form">
+          {% csrf_token %}
+
+          {{ receita_form|crispy }} 
+          <button id="submit-button" type="submit" class="btn btn-primary btn-block rounded-pill">Postar</button>
+        </form>
+      </div>
+</body>
+</html>
