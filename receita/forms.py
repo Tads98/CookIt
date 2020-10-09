@@ -22,16 +22,22 @@ class ReceitaForm(forms.ModelForm):
 
     tempo_preparo = forms.CharField(widget=forms.NumberInput(
         attrs={
-            'class': 'form-group form-control rounded-pill',
+            'class' : 'form-group form-control rounded-pill',
             'placeholder': 'Tempo de Preparo',
+            'id' : 'prep-time',
+            'type' : 'number',
+            'min' : '1'
         }
     ), label='')
 
     porcoes = forms.CharField(widget=forms.NumberInput(
         attrs={
-            'class': 'form-group form-control rounded-pill',
+            'class': 'form-control rounded-pill',
             'placeholder': 'Porções',
-        }
+            'id' : 'portions',
+            'type' : 'number',
+            'min' : '1',
+            }
     ), label='')
 
     tempo_unidade_medida = forms.ChoiceField(
@@ -60,7 +66,7 @@ class ReceitaForm(forms.ModelForm):
             'class': 'form-group',
             'placeholder': 'Fotos',
         }
-    ), label='')
+    ), label='Imagem')
 
     dificuldade = forms.ChoiceField(
         choices=(
@@ -72,8 +78,8 @@ class ReceitaForm(forms.ModelForm):
         ),
         widget=forms.Select(
             attrs={
-                'class': 'form-group form-control rounded-pill',
-                'placeholder': 'Dificuldade',
+                'id': 'difficulty',
+                'class' : 'form-control custom-select rounded-pill'
             }
         ), 
         label='Dificuldade')
@@ -82,13 +88,14 @@ class ReceitaForm(forms.ModelForm):
         choices={
             ('D', 'Doce'), ('S', 'Salgado')
         },
-        widget=forms.Select(
+        widget=forms.RadioSelect(
             attrs={
                 'class': 'form-group form-control rounded-pill',
                 'placeholder': 'Dificuldade',
+                'display' : 'inline',
             }
         ),
-        label='Sabor')
+        label='')
 
 #    def __init__(self, usuario=None, *args, **kwargs):
 #        super().__init__(*args, **kwargs)

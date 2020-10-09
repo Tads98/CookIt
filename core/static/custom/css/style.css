@@ -413,9 +413,12 @@ ul li {
     font-size: 12px;
 }
 
+
+/*
 .col-sm {
     padding-left: 0 !important;
 }
+*/
 
 .prep-mode-tela-inicial {
     border-bottom: 1px solid gray;
@@ -455,7 +458,6 @@ ul li {
 }
 
 #keywords {
-    padding-left: 1em;
     border-bottom: 1px solid black;
 }
 
