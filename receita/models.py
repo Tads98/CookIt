@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.utils.text import slugify
+from django.utils import timezone
 import os
 from PIL import Image
 
@@ -36,8 +37,9 @@ class Receita(models.Model):
     # TODO: discutir existência desta variavel neste model
     dono_receita = models.CharField(
         'Dono da Receita:', max_length=100)
+
     fotos = models.ImageField(
-        'Fotos', upload_to='receita/media', blank=True, null=True)
+        upload_to='receita/media', blank=True, null=True)
 
     dificuldade = models.CharField(
         default='F',
@@ -51,7 +53,7 @@ class Receita(models.Model):
 
         )
     )
-    data_publicacao = models.DateTimeField('data_publicacao', blank=False)
+    data_publicacao = models.DateTimeField(auto_now_add=True)
 
     slug = models.SlugField(unique=True, blank=True, null=True)
 
@@ -90,14 +92,14 @@ class Receita(models.Model):
     # metodo para redimencionar imagens ao dar upload e chamar o método de redemencionar imagens
     # no momento em que recebe o último upload
     def save(self, *args, **kwargs):
+
         if not self.slug:
             slug = f'{slugify(self.nome_receita)}'
             self.slug = slug
         super().save(*args, **kwargs)
 
-        max_image_size = 800
-
         # chamando função para redemencionar imagem
+        max_image_size = 800
         if self.fotos:
             self.resize_image(self.fotos, max_image_size)
     #################### Redimensionar imagem FIM ######################
@@ -109,8 +111,11 @@ class Receita(models.Model):
         verbose_name_plural = 'Receita'
 
 # TODO: fazer checagem de ingrediente repetido nos models
+
+
 class Ingrediente(models.Model):
-    receita = models.ForeignKey(Receita, on_delete=models.DO_NOTHING)
+    receita = models.ForeignKey(
+        Receita, on_delete=models.DO_NOTHING, blank=True, null=True)
     nome_ingrediente = models.CharField(
         'Nome Ingrediente:', max_length=100, blank=False)
 

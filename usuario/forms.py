@@ -42,7 +42,7 @@ class UsuarioForm(forms.ModelForm):
 
     def __init__(self, usuario=None, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        # TODO: entender da onde vem esse 'self.usuario'
+        # 'self.usuario' está armazendo um parâmento da função acima
         self.usuario = usuario
 
     class Meta:
@@ -62,6 +62,8 @@ class UsuarioForm(forms.ModelForm):
 
         # Se todos os campos do formulário for válido ele retorna True e armazena os dados em 'cleaned_data'
         cleaned = self.cleaned_data
+        cleaned_file = self.cleaned_file
+        print(f'#######################{cleaned_file}')
         validation_error_msgs = {}
 
         usuario_data = cleaned.get('username')

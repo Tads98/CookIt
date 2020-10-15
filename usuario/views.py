@@ -16,7 +16,7 @@ class BasePerfil(View):
     template_name = 'usuario/cadastro_nova.html'
 
     def setup(self, *args, **kwargs):
-        # TODO: o que é super()?
+        # estou colocando a requisição do métedo 'setup' no método 'super' para eu poder acessar a requisão em 'forms.py'
         super().setup(*args, **kwargs)
 
         self.usuario = None
@@ -58,11 +58,10 @@ class BasePerfil(View):
     # Tudo isso apenas para renderizar o formulário
 
 
-# classe para criar e atualizar perfis
+# classe para criar e atualizar receitas
 class Criar(BasePerfil):
     def post(self, *args, **kwargs):
 
-        # se o formulário de criar o usuarop não for válido, retornar uma nova renderização da tela
         # o django forms possui um método chamado 'is_valid()' que executa validações para todos os campos do formuário
         # Se todos os campos do formulário for válido ele retorna True e armazena os dados em 'cleaned_data'
         if not self.usuarioform.is_valid():
@@ -101,7 +100,7 @@ class Criar(BasePerfil):
         # Usuário não logado (novo)
         else:
             # criando novo usuário
-            # 'commit=False' é para não salvar na base de dados
+            # 'commit=False' é para deixa pronto para salvar, salvar
             usuario = self.usuarioform.save(commit=False)
             usuario.set_password(password)
             usuario.save()
@@ -163,11 +162,6 @@ class Logout(View):
         return redirect('receita:index')
 
 # TODO: procurar um 'forms.py' para cadastrar receita
-
-
-class CadastrarEditar_Receita(View):
-    # TODO: adicionar retorno 'render' para tela de cadastrar receita
-    pass
 
 
 class favoritos(View):
