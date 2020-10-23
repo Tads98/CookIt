@@ -39,6 +39,8 @@ class BaseCadastrar(View):
         # checando se o usuário está autenticado
         if self.request.user.is_authenticated:
 
+            self.nome = models.Receita.objects.filter().first()
+
             self.contexto = {
                 'receitaform': forms.ReceitaForm(
                     files=self.request.FILES,
@@ -46,8 +48,8 @@ class BaseCadastrar(View):
                     receita=self.request.POST,
                 ),
                 'ingredienteform': forms.IngredienteForm(
-                    data=self.request.POST,
-                    instance=self.request.POST
+                    data=self.request.POST
+
                 )
             }
 
@@ -77,7 +79,7 @@ class BaseCadastrar(View):
 class CadastrarReceita(BaseCadastrar):
     def post(self, *args, **kwargs):
 
-        if not self.receitaform.is_valid() or not self.ingredienteform.is_valid():
+        if not self.receitaform.is_valid():
             messages.error(
                 self.request,
                 'VERIFIQUE SE OS CAMPOS ESTÃO PREENCHIDOS CORRETAMENTE!!!'
@@ -104,13 +106,15 @@ class CadastrarReceita(BaseCadastrar):
 
         # checando se o usuário está logado, se estiver logado quer dizer que está atualizando a receita
         if self.request.user.is_authenticated:
-            receita = self.receitaform.save()
-            ingrediente = self.ingredienteform.save()
+            ingrediente = self.ingredienteform.save(commit=False)
+            ingrediente.receita = self.receitaform.save()
+            ingrediente.save()
 
         else:
             # cadastrando nova receita
-            # 'commit=False' é para deixa pronto para salvar, salvar
-            receita = self.receitaform.save()
-            ingrediente = self.ingredienteform.save()
+            # 'commit=False'cria um objeto com id mas sem salvar ainda na base de dados
+            ingrediente = self.ingredienteform.save(commit=False)
+            ingrediente.receita = self.receitaform.save()
+            ingrediente.save()
 
         return redirect('receita:index')

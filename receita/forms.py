@@ -101,9 +101,7 @@ class ReceitaForm(forms.ModelForm):
 
     def clean(self, *args, **kwargs):
         data = self.data
-        print(data)
         fotos = self.fotos
-        print(fotos)
 
         # Se todos os campos do formulário for válido ele retorna True e armazena os dados em 'cleaned_data'
         cleaned = self.cleaned_data
@@ -144,10 +142,10 @@ class ReceitaForm(forms.ModelForm):
             if porcoes < 1:
                 validation_error_msgs['porcoes'] = error_msg_time
 
-            if validation_error_msgs:
-                raise(
-                    forms.ValidationError(validation_error_msgs)
-                )
+        if validation_error_msgs:
+            raise(
+                forms.ValidationError(validation_error_msgs)
+            )
 
 
 class IngredienteForm(forms.ModelForm):
@@ -193,13 +191,12 @@ class IngredienteForm(forms.ModelForm):
         model = models.Ingrediente
         fields = ('nome_ingrediente', 'unidadeMedida', 'quantidade')
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, instance=None, *args, **kwargs):
         super().__init__(*args, **kwargs)
         # recebendo como parâmentro requisão do formulário
 
     def clean(self, *args, **kwargs):
         data = self.data
-        print(f'Ingrediente form: {data}')
         cleaned = self.cleaned_data
         validation_error_msgs = {}
 
