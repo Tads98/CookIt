@@ -7,6 +7,7 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from django.db.models import Q
 from django.utils import timezone
 
 from . import models
@@ -19,6 +20,25 @@ class ListarReceita(ListView):
     context_object_name = 'receitas'
     paginate_by = 12
     queryset = models.Receita.objects.order_by('-data_publicacao')
+
+
+class Busca(ListarReceita):
+    def get_queryset(self, *args, **kwargs):
+        termo = self.request.GET.get('termo') or self.request.session['termo']
+        qs = super().get_queryset(*args, **kwargs)
+
+        if not termo:
+            return qs
+
+        self.request.session['termo'] = termo
+
+        qs = qs.filter(
+            Q(nome_receita__icontains=termo)
+        )
+
+        self.request.session.save()
+
+        return qs
 
 
 class DetalheReceita(DetailView):
