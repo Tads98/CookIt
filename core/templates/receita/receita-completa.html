@@ -42,11 +42,9 @@
                             <div class="line-receita-completa" class="col" style="border: none;">
                                 <div class="icon-text-receita-completa">
                                     <i class="far fa-clock"></i>
-                                    <br> {% if ingrediente.tempo_preparo <= 1 %}
-                                    <p>{{ingrediente.tempo_preparo}} {{ingrediente.get_tempo_unidade_medida_display}}
-                                    </p>
-                                    {% else %}
-                                    <p>{{ingrediente.tempo_preparo}} {{ingrediente.get_tempo_unidade_medida_display}}s
+                                    <br> {% if ingrediente.tempo_preparo %}
+                                    <p>{{ingrediente.tempo_preparo}}
+                                        {{ingrediente.get_tempo_unidade_medida_display}}{{ingrediente.tempo_preparo | pluralize}}
                                     </p>
                                     {% endif %}
                                 </div>
@@ -55,10 +53,8 @@
                             <div class="line-receita-completa" class="col">
                                 <div class="icon-text-receita-completa">
                                     <i class="fas fa-concierge-bell"></i>
-                                    <br> {% if ingrediente.porcoes <= 1 %}
-                                    <p>{{ingrediente.porcoes}} Porção</p>
-                                    {% else %}
-                                    <p>{{ingrediente.porcoes}} Porções</p>
+                                    <br> {% if ingrediente.porcoes %}
+                                    <p>Por{{ingrediente.porcoes | pluralize:"ção,ções"}}</p>
                                     {% endif %}
                                 </div>
                             </div>
@@ -126,7 +122,7 @@
 
                     <div id="modo-de-preparo-receita-completa" class="col">
                         <h3>Modo de Preparo</h3>
-                        
+
                         <p>{{ingrediente.modo_preparo}}</p>
                     </div>
 
@@ -137,7 +133,7 @@
                     <div class="col">
                         <h3>Observações Adicionais</h3>
 
-                        <div id="obad-receita-completa" >
+                        <div id="obad-receita-completa">
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu dapibus eros, at
                                 interdum
                                 odio. Integer at enim eu ligula fermentum gravida. Pellentesque non odio a diam accumsan
