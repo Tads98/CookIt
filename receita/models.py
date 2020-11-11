@@ -93,6 +93,9 @@ class Receita(models.Model):
     # no momento em que recebe o último upload
     def save(self, *args, **kwargs):
 
+        if not self.dono_receita:
+            print(f'nome do usuário é {self.request.user}')
+
         if not self.slug:
             slug = f'{slugify(self.nome_receita)}'
             self.slug = slug
