@@ -6,7 +6,7 @@
     <form class="form-inline <!--mr-auto my-2 my-lg-0-->" method="GET" action="{% url 'receita:busca' %}">
         <div id="search" class="input-group">
             <input id="search-input" class="form-control" type="search" placeholder="Busque sua receita"
-                aria-label="Busca" name="termo">
+                aria-label="Busca" name="termo" value="{{ request.GET.termo }}">
             <button id="search-button" class="btn btn-success" type="submit">
                 <i class="fas fa-search"></i>
             </button>

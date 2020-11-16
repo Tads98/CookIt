@@ -40,16 +40,25 @@
         <div class="form-group">
             <h6><b>Sabor:</b></h6>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                <label class="form-check-label" for="defaultCheck1">
-                    Doce
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                <label class="form-check-label" for="defaultCheck1">
-                    Salgado
-                </label>
+                <form method="GET" action="{% url 'receita:busca' %}">
+                    <span>
+                        <label>
+                            <input type="checkbox" name="sabor" value="D">
+                            <i class="a-icon a-icon-checkbox"></i>
+                        </label>
+                        <span>Doce</span>
+                    </span>
+                    <span>
+                        <label>
+                            <input type="checkbox" name="sabor" value="S">
+                            <i class="a-icon a-icon-checkbox"></i>
+                        </label>
+                        <span>Salgado</span>
+                    </span>
+                    <button id="search-button" class="btn btn-success" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
             </div>
         </div>
     </div>

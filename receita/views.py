@@ -24,19 +24,37 @@ class ListarReceita(ListView):
 
 class Busca(ListarReceita):
     def get_queryset(self, *args, **kwargs):
+        print("Busca foi acionada!")
         termo = self.request.GET.get('termo') or self.request.session['termo']
+        sabor = self.request.GET.get('sabor')
+        print(f'Nome da receita: {termo}')
+        print(f'Sabor: {sabor}')
         qs = super().get_queryset(*args, **kwargs)
 
-        if not termo:
+        if not termo and not sabor:
+            print(qs.query)
             return qs
 
         self.request.session['termo'] = termo
 
-        qs = qs.filter(
-            Q(nome_receita__icontains=termo)
-        )
+        if termo:
+            qs = qs.filter(
+                Q(nome_receita__icontains=termo)
+            )
+
+        if sabor:
+            qs = qs.filter(
+                Q(sabor_receita=sabor)
+            )
+
+        if termo and sabor:
+            qs = qs.filter(
+                Q(nome_receita__icontains=termo) &
+                Q(sabor_receita=sabor)
+            )
 
         self.request.session.save()
+        print(qs)
 
         return qs
 
