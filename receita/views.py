@@ -22,13 +22,13 @@ class ListarReceita(ListView):
 class Busca(ListarReceita):
     def get_queryset(self, *args, **kwargs):
         print("Busca foi acionada!")
-        termo = self.request.GET.getlist(
+        termo = self.request.GET.get(
             'termo') or self.request.session['termo']
-        sabor = self.request.GET.get('sabor') or self.request.session['sabor']
+        sabor = self.request.GET.getlist(
+            'sabor') or self.request.session['sabor']
         dificuldade = self.request.GET.get(
             'dificuldade') or self.request.session['dificuldade']
         print(f'Nome da receita: {termo}')
-
         print(f'Sabor: {sabor}')
         print(f'Dificuldade: {dificuldade}')
         qs = super().get_queryset(*args, **kwargs)
@@ -44,7 +44,7 @@ class Busca(ListarReceita):
 
         if sabor:
             qs = qs.filter(
-                Q(sabor_receita__icontains=sabor)
+                Q(sabor_receita__in=sabor)
             )
 
         if dificuldade:
