@@ -22,7 +22,7 @@ class ListarReceita(ListView):
 class Busca(ListarReceita):
     def get_queryset(self, *args, **kwargs):
         print("Busca foi acionada!")
-        termo = self.request.GET.getlist(
+        termo = self.request.GET.get(
             'termo') or self.request.session['termo']
         sabor = self.request.GET.get('sabor') or self.request.session['sabor']
         dificuldade = self.request.GET.get(
