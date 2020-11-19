@@ -1,10 +1,11 @@
 {%load static%}
 <nav class="navbar navbar-expand-lg d-flex justify-content-between fixed-top">
-    <a class="navbar-brand" href="{% url 'receita:index' %}">
+    <a class="navbar-brand" href="{% url 'receita:limpar' %}">
         <img src="{% static 'imgs/cookit_logo.svg' %}" alt="Logo" height="36px">
     </a>
     <form class="form-inline <!--mr-auto my-2 my-lg-0-->" method="GET" action="{% url 'receita:busca' %}">
         <div id="search" class="input-group">
+            <!--TODO: implementar uma forma de limpar sessões neste campo abaixo-->
             <input id="search-input" class="form-control" type="search" placeholder="Busque sua receita"
                 aria-label="Busca" name="termo" value="{{ request.GET.termo }}">
             <button id="search-button" class="btn btn-success" type="submit">

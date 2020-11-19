@@ -5,7 +5,7 @@
     {% for receita in receitas %}
     <div class="col mb-4">
         <div class="card receita-tela-inicial h-100">
-            <a href="{{ receita.slug }}">
+            <a href="{% url 'receita:receita_completa' receita.slug %}">
                 <!--TODO: o tamanho da imagem precisa ser fixo e seu container também-->
                 {% if receita.fotos %}
                 <img src="{{ receita.fotos.url }}" alt="{{ receita.nome_receita }}" class="card-img-top">
@@ -20,8 +20,7 @@
                 <a href="{{ receita.slug }}">
                     <h5 class="card-title">{{ receita.nome_receita }}</h5>
                 </a>
-                <p class="card-text">Publicado por <a
-                             style="font-size: 10px;" href="">{{ receita.dono_receita }}</a>
+                <p class="card-text">Publicado por <a style="font-size: 10px;" href="">{{ receita.dono_receita }}</a>
                 </p>
                 <p class="card-text">
                     <i class="fa fa-star"></i>

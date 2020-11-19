@@ -1,14 +1,11 @@
-from receita.models import Ingrediente, Receita
+from django.db.models.query import QuerySet
+from django.views.generic.base import TemplateResponseMixin
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views import View
-from django.http import HttpResponse
-from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.db.models import Q
-from django.utils import timezone
 
 from . import models
 from . import forms
@@ -19,23 +16,26 @@ class ListarReceita(ListView):
     template_name = 'receita/index.html'
     context_object_name = 'receitas'
     paginate_by = 12
-    queryset = models.Receita.objects.order_by('-data_publicacao')
+    ordering = ['-data_publicacao']
 
 
 class Busca(ListarReceita):
     def get_queryset(self, *args, **kwargs):
         print("Busca foi acionada!")
-        termo = self.request.GET.get('termo') or self.request.session['termo']
-        sabor = self.request.GET.get('sabor')
+        termo = self.request.GET.getlist(
+            'termo') or self.request.session['termo']
+        sabor = self.request.GET.get('sabor') or self.request.session['sabor']
+        dificuldade = self.request.GET.get(
+            'dificuldade') or self.request.session['dificuldade']
         print(f'Nome da receita: {termo}')
+
         print(f'Sabor: {sabor}')
+        print(f'Dificuldade: {dificuldade}')
         qs = super().get_queryset(*args, **kwargs)
 
-        if not termo and not sabor:
-            print(qs.query)
-            return qs
-
         self.request.session['termo'] = termo
+        self.request.session['sabor'] = sabor
+        self.request.session['dificuldade'] = dificuldade
 
         if termo:
             qs = qs.filter(
@@ -44,19 +44,38 @@ class Busca(ListarReceita):
 
         if sabor:
             qs = qs.filter(
-                Q(sabor_receita=sabor)
+                Q(sabor_receita__icontains=sabor)
             )
 
-        if termo and sabor:
+        if dificuldade:
             qs = qs.filter(
-                Q(nome_receita__icontains=termo) &
-                Q(sabor_receita=sabor)
+                Q(dificuldade=dificuldade)
             )
 
-        self.request.session.save()
         print(qs)
+        self.request.session.save()
 
         return qs
+
+
+class Limpar(View):
+    def get(self, *args, **kwargs):
+
+        if self.request.session.has_key('termo'):
+            print("SESSÃO TERMO LIMPA!!!!!")
+            # TODO: procurar uma solução mais sofisticada onde o método flush ou clear
+            # consiga limpar uma chave específica e não exclui-la
+            self.request.session['termo'] = None
+
+        if self.request.session.has_key('sabor'):
+            print("SESSÃO SABOR LIMPA!!!!!")
+            self.request.session['sabor'] = None
+
+        if self.request.session.has_key('dificuldade'):
+            print("SESSÃO DIFICULDADE LIMPA!!!!!")
+            self.request.session['dificuldade'] = None
+
+        return redirect('receita:index')
 
 
 class DetalheReceita(DetailView):
