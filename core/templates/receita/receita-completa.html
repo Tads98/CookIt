@@ -54,7 +54,7 @@
                                 <div class="icon-text-receita-completa">
                                     <i class="fas fa-concierge-bell"></i>
                                     <br> {% if ingrediente.porcoes %}
-                                    <p>Por{{ingrediente.porcoes | pluralize:"ção,ções"}}</p>
+                                    <p>Por{{ingrediente.porcoes | pluralize:"ção,ções"}}: {{ingrediente.porcoes}}</p>
                                     {% endif %}
                                 </div>
                             </div>

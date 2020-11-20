@@ -20,6 +20,7 @@ class ListarReceita(ListView):
 
 
 class Busca(ListarReceita):
+    # TODO: perguntar pra Felipão como deve se dar métodos para ordenar a exibição de receitas
     def get_queryset(self, *args, **kwargs):
         print("Busca foi acionada!")
         termo = self.request.GET.get(
@@ -28,14 +29,18 @@ class Busca(ListarReceita):
             'sabor') or self.request.session['sabor']
         dificuldade = self.request.GET.get(
             'dificuldade') or self.request.session['dificuldade']
+        porcoes = self.request.GET.get(
+            'porcoes') or self.request.session['porcoes']
         print(f'Nome da receita: {termo}')
         print(f'Sabor: {sabor}')
         print(f'Dificuldade: {dificuldade}')
+        print(f'Porções: {porcoes}')
         qs = super().get_queryset(*args, **kwargs)
 
         self.request.session['termo'] = termo
         self.request.session['sabor'] = sabor
         self.request.session['dificuldade'] = dificuldade
+        self.request.session['porcoes'] = porcoes
 
         if termo:
             qs = qs.filter(
@@ -50,6 +55,11 @@ class Busca(ListarReceita):
         if dificuldade:
             qs = qs.filter(
                 Q(dificuldade=dificuldade)
+            )
+
+        if porcoes:
+            qs = qs.filter(
+                Q(porcoes__lte=porcoes)
             )
 
         print(qs)
@@ -74,6 +84,10 @@ class Limpar(View):
         if self.request.session.has_key('dificuldade'):
             print("SESSÃO DIFICULDADE LIMPA!!!!!")
             self.request.session['dificuldade'] = None
+
+        if self.request.session.has_key('porcoes'):
+            print("SESSÃO PORÇÕES LIMPA!!!!!")
+            self.request.session['porcoes'] = None
 
         return redirect('receita:index')
 

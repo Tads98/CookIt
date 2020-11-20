@@ -38,11 +38,11 @@
                         <div class="row">
                             <div class="col">
                                 <i style="font-size: 25px;" class="far fa-clock"></i>
-                                <p>{{ receita.tempo_preparo }} minutos</p>
+                                <p>{{ receita.tempo_preparo}} minuto{{ receita.tempo_preparo | pluralize }} </p>
                             </div>
                             <div class="col">
                                 <i style="font-size: 25px;" class="fas fa-concierge-bell"></i>
-                                <p>{{ receita.porcoes }} porções</p>
+                                <p>{{ receita.porcoes }} por{{ receita.porcoes | pluralize:"ção,ções" }} </p>
                             </div>
                         </div>
                     </div>
