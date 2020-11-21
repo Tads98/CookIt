@@ -42,10 +42,6 @@ INSTALLED_APPS = [
     'crispy_forms',
 ]
 
-SLUGIFY_PROCESSORS = [
-    'project.app.slugify_processors.my_processor'
-]
-
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
