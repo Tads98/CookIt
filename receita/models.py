@@ -1,6 +1,6 @@
 from django.db import models
 from django.conf import settings
-from django.utils.text import slugify
+from django_extensions.db.fields import AutoSlugField
 from django.utils import timezone
 import os
 from PIL import Image
@@ -55,7 +55,10 @@ class Receita(models.Model):
     )
     data_publicacao = models.DateTimeField(auto_now_add=True)
 
-    slug = models.SlugField(unique=True, blank=True, null=True)
+    slug = AutoSlugField(populate_from='nome_receita')
+
+    def slugify_function(self, content):
+        return content.replace('_', '-').lower()
 
     #################### Redimensionar imagem ######################
 
@@ -95,11 +98,6 @@ class Receita(models.Model):
 
         if not self.dono_receita:
             print(f'nome do usuário é {self.request.user}')
-
-        if not self.slug:
-            slug = f'{slugify(self.nome_receita)}'
-            self.slug = slug
-        super().save(*args, **kwargs)
 
         # chamando função para redemencionar imagem
         max_image_size = 800
