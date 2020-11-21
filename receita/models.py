@@ -55,10 +55,11 @@ class Receita(models.Model):
     )
     data_publicacao = models.DateTimeField(auto_now_add=True)
 
-    slug = AutoSlugField(populate_from='nome_receita')
+    # TODO: perguntar pra Felipão pq que tem que colocar 'default' quando muda o campo model
+    slug = AutoSlugField(populate_from='nome_receita', default='SOME STRING')
 
     def slugify_function(self, content):
-        return content.replace('_', '-').lower()
+        return content.replace(' ', '-').lower()
 
     #################### Redimensionar imagem ######################
 
@@ -96,13 +97,13 @@ class Receita(models.Model):
     # no momento em que recebe o último upload
     def save(self, *args, **kwargs):
 
-        if not self.dono_receita:
-            print(f'nome do usuário é {self.request.user}')
+        super().save(*args, **kwargs)
 
         # chamando função para redemencionar imagem
         max_image_size = 800
         if self.fotos:
             self.resize_image(self.fotos, max_image_size)
+
     #################### Redimensionar imagem FIM ######################
 
     def __str__(self):

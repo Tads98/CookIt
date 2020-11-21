@@ -20,3 +20,4 @@
         3. Se for necessário criar uma virtual-venv: python3.7 -m venv venv
         4. Se a branch estiver remota, para mover para local: git checkout -t origin/nomeDaBranch
         5. Para trazer uma branch remota para local: git checkout -t origin/nomedaBranch
+        6. Para deletar todas as linhas do banco de dados em django: rm db.sqlite3
