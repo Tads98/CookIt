@@ -157,6 +157,7 @@ class IngredienteForm(forms.ModelForm):
         }
     ), label='')
 
+    # TODO: perguntar pra Felipão como colocar Default nos campos choices do formulário
     unidadeMedida = forms.ChoiceField(
         choices={
             ('U', 'Unidade'),
