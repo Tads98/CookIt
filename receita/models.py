@@ -1,7 +1,7 @@
+from django.contrib.auth.models import User
 from django.db import models
 from django.conf import settings
 from django_extensions.db.fields import AutoSlugField
-from django.utils import timezone
 import os
 from PIL import Image
 
@@ -34,9 +34,7 @@ class Receita(models.Model):
             ('D', 'Dias'),
         )
     )
-    # TODO: discutir existência desta variavel neste model
-    dono_receita = models.CharField(
-        'Dono da Receita:', max_length=100)
+    dono_receita = models.ForeignKey(User, on_delete=models.DO_NOTHING)
 
     fotos = models.ImageField(
         upload_to='receita/media', blank=True, null=True)

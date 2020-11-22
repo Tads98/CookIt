@@ -62,8 +62,6 @@ class UsuarioForm(forms.ModelForm):
 
         # Se todos os campos do formulário for válido ele retorna True e armazena os dados em 'cleaned_data'
         cleaned = self.cleaned_data
-        cleaned_file = self.cleaned_file
-        print(f'#######################{cleaned_file}')
         validation_error_msgs = {}
 
         usuario_data = cleaned.get('username')

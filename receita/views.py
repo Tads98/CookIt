@@ -1,12 +1,9 @@
-from django.db.models.query import QuerySet
-from django.views.generic.base import TemplateResponseMixin
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, redirect
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views import View
 from django.contrib import messages
 from django.db.models import Q
-
 from . import models
 from . import forms
 
@@ -178,14 +175,18 @@ class CadastrarReceita(BaseCadastrar):
         # checando se o usuário está logado, se estiver logado quer dizer que está atualizando a receita
         if self.request.user.is_authenticated:
             ingrediente = self.ingredienteform.save(commit=False)
-            ingrediente.receita = self.receitaform.save()
+            ingrediente.receita = self.receitaform.save(commit=False)
+            ingrediente.receita.dono_receita = self.request.user
+            ingrediente.receita.save()
             ingrediente.save()
 
         else:
             # cadastrando nova receita
             # 'commit=False'cria um objeto com id mas sem salvar ainda na base de dados
             ingrediente = self.ingredienteform.save(commit=False)
-            ingrediente.receita = self.receitaform.save()
+            ingrediente.receita = self.receitaform.save(commit=False)
+            ingrediente.receita.dono_receita = self.request.user
+            ingrediente.receita.save()
             ingrediente.save()
 
         return redirect('receita:index')
