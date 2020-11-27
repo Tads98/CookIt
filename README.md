@@ -21,5 +21,9 @@
         4. Se a branch estiver remota, para mover para local: git checkout -t origin/nomeDaBranch
         5. Para trazer uma branch remota para local: git checkout -t origin/nomedaBranch
         6. Para deletar todas as linhas do banco de dados em django: rm db.sqlite3
+<<<<<<< HEAD
         7. Para tentar instalar requirements-dev.txt:pip install wheel, pip install -r requirements.txt
             7.1: Se não conseguir, instale: sudo apt-get install python-matplotlib no Linux, ou python -m pip install -U pip setuptools e python -m pip install matplotlib. Volte a tentar o passo 7.
+=======
+        7. Para pode usar 'AutoSlugField' é necessário instalar: pip install django-extensions
+>>>>>>> 0c050af910b31cf4fdab77eb3eef1ddf7b86fc83
