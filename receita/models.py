@@ -51,6 +51,7 @@ class Receita(models.Model):
 
         )
     )
+
     data_publicacao = models.DateTimeField(auto_now_add=True)
 
     # TODO: perguntar pra Felipão pq que tem que colocar 'default' quando muda o campo model
@@ -94,7 +95,6 @@ class Receita(models.Model):
     # metodo para redimencionar imagens ao dar upload e chamar o método de redemencionar imagens
     # no momento em que recebe o último upload
     def save(self, *args, **kwargs):
-
         super().save(*args, **kwargs)
 
         # chamando função para redemencionar imagem

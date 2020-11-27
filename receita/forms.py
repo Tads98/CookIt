@@ -8,7 +8,6 @@ from django.utils.datastructures import MultiValueDict
 
 class ReceitaForm(forms.ModelForm):
 
-    # TODO: erro ao tentar cadastrar uma receita de mesmo nome, (slug)
     nome_receita = forms.CharField(widget=forms.TextInput(
         attrs={
             'class': 'form-group form-control rounded-pill',

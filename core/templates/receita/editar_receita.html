@@ -3,7 +3,7 @@
 <div class="container">
     <div class="container">
         <h3>Inserindo Sua Receita</h3>
-        <form class="form" enctype="multipart/form-data" method="POST" action="">
+        <form class="form" enctype="multipart/form-data" method="POST">
             {% csrf_token %}
             {% include 'parciais/_messages.html' %}
             <div class="form-group">
@@ -74,8 +74,6 @@
             <button id="submit-button" type="submit" class="btn btn-primary btn-block rounded-pill">Postar</button>
         </form>
     </div>
-    <!--          {{ receita_form|crispy }}
-        <button id="submit-button" type="submit" class="btn btn-primary btn-block rounded-pill">Postar</button>-->
     </body>
 
     </html>
