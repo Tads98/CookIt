@@ -707,4 +707,30 @@ textarea {
 }
 
 
-/* scrollbar */
+/* tag-container */
+
+
+.tag-container {
+    display: flex !important;
+}
+
+.tag-container input {
+    border: none;
+    outline: none;
+}
+
+.tag {
+    border-radius: 5px;
+    padding: 0 5px 0 5px;
+}
+
+.tag input {
+    width: 100px;
+    -ms-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+}
+.fa-times{
+    color: white !important;
+}

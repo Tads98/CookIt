@@ -4,7 +4,7 @@ var tags = [];
 
 function createTag(label) {
     const div = document.createElement('div');
-    div.setAttribute('class', 'tag btn-primary');
+    div.setAttribute('class', 'tag btn-primary rounded-pill');
     const span = document.createElement('span');
     span.innerHTML = label;
     span.setAttribute('class', 'mr-1');
@@ -36,9 +36,9 @@ function addTags() {
 }
 
 input.addEventListener('keyup', function addTag(e) {
-    if (e.key == 'Space') {
+    if (e.code == 'Space') {
         str = input.value.slice(0, -1);
-        Console.log(str);
+        console.log(str);
         tags.push(str);
         addTags();
         input.value = '';
