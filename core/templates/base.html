@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,9 +13,11 @@
     
     <div class="container col">
         <div id="keywords" class="row">
-            <div class="col-sm form-group">
-                <input type="text" class="form-control rounded-pill" placeholder="Quero que tenha">
-            </div>
+            <form method="GET" class="col-sm form-group">
+                <div class="tag-container">
+                    <input id="queroQueTenha" type="text" class="form-control rounded-pill" placeholder="Quero que tenha">
+                </div>
+            </form>
             <div class="col-sm form-group">
                 <input type="text" class="form-control rounded-pill" placeholder="Quero que não tenha">
             </div>
@@ -27,3 +30,6 @@
     </div>
 </body>
 </html>
+
+
+<script src="{% static 'custom/js/tags.js' %}"></script>
