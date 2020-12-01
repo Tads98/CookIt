@@ -1,3 +1,4 @@
+from receita.models import Ingrediente
 from django.shortcuts import render, redirect
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
@@ -20,14 +21,26 @@ class Busca(ListarReceita):
     # TODO: perguntar pra Felipão como deve se dar métodos para ordenar a exibição de receitas
     def get_queryset(self, *args, **kwargs):
         print("Busca foi acionada!")
-        termo = self.request.GET.get(
-            'termo') or self.request.session['termo']
-        sabor = self.request.GET.getlist(
-            'sabor') or self.request.session['sabor']
-        dificuldade = self.request.GET.get(
-            'dificuldade') or self.request.session['dificuldade']
-        porcoes = self.request.GET.get(
-            'porcoes') or self.request.session['porcoes']
+        termo = self.request.GET.get('termo')
+        if termo == None:
+            if self.request.session.has_key('termo'):
+                termo = self.request.session['termo']
+
+        sabor = self.request.GET.getlist('sabor')
+        if sabor == []:
+            if self.request.session.has_key('sabor'):
+                sabor = self.request.session['sabor']
+
+        dificuldade = self.request.GET.get('dificuldade')
+        if dificuldade == None:
+            if self.request.session.has_key('dificuldade'):
+                dificuldade = self.request.session['dificuldade']
+
+        porcoes = self.request.GET.get('porcoes')
+        if porcoes == None:
+            if self.request.session.has_key('porcoes'):
+                porcoes = self.request.session['porcoes']
+
         print(f'Nome da receita: {termo}')
         print(f'Sabor: {sabor}')
         print(f'Dificuldade: {dificuldade}')
@@ -38,11 +51,6 @@ class Busca(ListarReceita):
         self.request.session['sabor'] = sabor
         self.request.session['dificuldade'] = dificuldade
         self.request.session['porcoes'] = porcoes
-
-        if termo:
-            qs = qs.filter(
-                Q(nome_receita__icontains=termo)
-            )
 
         if sabor:
             qs = qs.filter(
@@ -58,8 +66,12 @@ class Busca(ListarReceita):
             qs = qs.filter(
                 Q(porcoes__lte=porcoes)
             )
+        if termo:
+            qs = qs.filter(
+                Q(ingrediente__nome_ingrediente__icontains=termo)
+            )
 
-        print(qs)
+        print(qs.query)
         self.request.session.save()
 
         return qs
