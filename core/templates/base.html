@@ -13,10 +13,13 @@
     
     <div class="container col">
         <div id="keywords" class="row">
-            <form method="GET" class="col-sm form-group">
-                <div class="tag-container form-control rounded-pill">
-                    <input id="queroQueTenha" type="text" class="rounded-pill quero-que-tenha" placeholder="Quero que tenha">
+            <form method="GET" action="{% url 'receita:busca' %}" class="col-sm form-group">
+                <div class="form-control mr-sm-2 tag-container">
+                    <input class="" arial-label="Search">
                 </div>
+                <button class="search-button" class="btn btn-success" type="submit">
+                    <i class="fas fa-search"></i>
+                </button>
             </form>
             <div class="col-sm form-group">
                 <input type="text" class="form-control rounded-pill" placeholder="Quero que não tenha">

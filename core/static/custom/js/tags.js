@@ -16,20 +16,20 @@ function createTag(label) {
     const input = document.createElement('input');
     input.setAttribute('type', 'hidden');
     input.setAttribute('value', label);
-    input.setAttribute('name', 'search');
+    input.setAttribute('name', 'ingredientes');
     div.appendChild(input);
     return div;
 }
 
 function resetTags() {
-    document.querySelectorAll('.tag').forEach(function(tag) {
+    document.querySelectorAll('.tag').forEach(function (tag) {
         tag.parentElement.removeChild(tag);
     })
 }
 
 function addTags() {
     resetTags();
-    tags.slice().reverse().forEach(function(tag) {
+    tags.slice().reverse().forEach(function (tag) {
         const input = createTag(tag);
         tagContainer.prepend(input);
     })
@@ -45,12 +45,4 @@ input.addEventListener('keyup', function addTag(e) {
     }
 });
 
-document.addEventListener('click', function removeTag(e) {
-    if (e.target.tagName == 'I') {
-        const value = e.target.getAttribute('data-item');
-        const index = tags.indexOf(value);
-        console.log(index);
-        tags.splice(index, 1)
-        addTags();
-    }
-})
+/*TODO: adicionar função de remoção de tag remoção de tag */

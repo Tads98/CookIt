@@ -41,17 +41,31 @@ class Busca(ListarReceita):
             if self.request.session.has_key('porcoes'):
                 porcoes = self.request.session['porcoes']
 
+        ingredientes = self.request.GET.getlist('ingredientes')
+        if ingredientes == []:
+            if self.request.session.has_key('ingredientes'):
+                ingredientes = self.request.session['ingredientes']
+
+        print(self.request.GET)
+
         print(f'Nome da receita: {termo}')
         print(f'Sabor: {sabor}')
         print(f'Dificuldade: {dificuldade}')
         print(f'Porções: {porcoes}')
+        print(f'Ingredientes: {ingredientes}')
+
         qs = super().get_queryset(*args, **kwargs)
 
         self.request.session['termo'] = termo
         self.request.session['sabor'] = sabor
         self.request.session['dificuldade'] = dificuldade
         self.request.session['porcoes'] = porcoes
+        self.request.session['ingredientes'] = ingredientes
 
+        if termo:
+            qs = qs.filter(
+                Q(nome_receita__icontains=termo)
+            )
         if sabor:
             qs = qs.filter(
                 Q(sabor_receita__in=sabor)
@@ -66,9 +80,11 @@ class Busca(ListarReceita):
             qs = qs.filter(
                 Q(porcoes__lte=porcoes)
             )
-        if termo:
+
+        if ingredientes:
             qs = qs.filter(
-                Q(ingrediente__nome_ingrediente__icontains=termo)
+                Q(ingrediente__nome_ingrediente__iregex=r'(' +
+                  '|'.join(ingredientes) + ')')
             )
 
         print(qs.query)
@@ -97,6 +113,10 @@ class Limpar(View):
         if self.request.session.has_key('porcoes'):
             print("SESSÃO PORÇÕES LIMPA!!!!!")
             self.request.session['porcoes'] = None
+
+        if self.request.session.has_key('ingredientes'):
+            print("SESSÃO PORÇÕES LIMPA!!!!!")
+            self.request.session['ingredientes'] = None
 
         return redirect('receita:index')
 
