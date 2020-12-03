@@ -731,6 +731,6 @@ textarea {
     -webkit-box-sizing: content-box;
     box-sizing: content-box;
 }
-.fa-times{
+.tag .fa-times{
     color: white !important;
 }

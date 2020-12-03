@@ -1,6 +1,8 @@
 <nav id="sidebar">
+    <button onclick="Close(sidebar)" class="btn sidebar-close">
+        <i class="fas fa-times"></i>
+    </button>
     <form method="GET" action="{% url 'receita:busca' %}">
-        <!-- remover ids -->
         <div id="order-by">
             <div class="form-group">
                 <label class="input-group-text input-label-sidebar">Ordenar:</label>
@@ -108,7 +110,7 @@
             </div>
         </div>
         <button class="search-button btn btn-primary" class="btn btn-success" type="submit">
-            <i class="fas fa-search"></i>
+            Filtrar
         </button>
     </form>
 </nav>

@@ -1,0 +1,24 @@
+.sidebar-open, .sidebar-close{
+    display: none !important;
+}
+.sidebar-close{
+    color: black;
+}
+
+@media only screen and (max-width: 500px) {
+    .sidebar-open, .sidebar-close{
+        display: block !important;
+    }
+    #sidebar{
+        display: none;
+        width: 50%;
+        position: absolute;
+        z-index: 2;
+    }
+}
+
+@media only screen and (min-width:500px) {
+    #sidebar{
+        display: block;
+    }
+}

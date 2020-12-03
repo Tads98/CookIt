@@ -11,8 +11,12 @@
     {% include  'parciais/_sidebar.html'%}
 
     
+    
     <div class="container col">
         <div id="keywords" class="row">
+            <button class="btn btn-primary sidebar-open" onclick="Open(sidebar)">
+                Filtragem Avançada
+            </button>
             <form method="GET" action="{% url 'receita:busca' %}" class="col-sm form-group">
                 <div class="form-control mr-sm-2 tag-container form-control rounded-pill">
                     <input class="" arial-label="Search">
