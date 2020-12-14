@@ -43,9 +43,8 @@
                                 <div class="icon-text-receita-completa">
                                     <i class="far fa-clock"></i>
                                     <br> {% if ingredientes.tempo_preparo %}
-                                    <p>{{ingredientes.tempo_preparo}}
-                                        {{ingredientes.get_tempo_unidade_medida_display}}{{ingredientes.tempo_preparo |
-                                        pluralize}}
+                                    <p>
+                                        {{ingredientes.get_tempo_unidade_medida_display}}{{ingredientes.tempo_preparo|length|pluralize}}
                                     </p>
                                     {% endif %}
                                 </div>
