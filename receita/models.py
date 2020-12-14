@@ -1,48 +1,78 @@
-from django.contrib.auth.models import User
+
 from django.db import models
 from django.conf import settings
+from django.contrib.auth.models import User
 from django_extensions.db.fields import AutoSlugField
 import os
 from PIL import Image
 
+class Ingrediente(models.Model):
+    nome_ingrediente = models.CharField('Nome Ingrediente:', max_length=100, blank=False)
+    unidade_medida_ingrediente = models.CharField(
+        default='U',
+        max_length=3,
+        choices=(
+            ('U', 'Unidade'),
+            ('X', 'Xícara'),
+            ('C', 'Colher de Sopa'),
+            ('CH', 'Colher de Chá'),
+            ('D', 'Dente de Alho'),
+            ('M', 'Mililitro(ml)'),
+            ('L', 'Litros'),
+            ('G', 'Gramas(g)'),
+            ('KG', 'Quilograma(kg)'),
+            ('AGS', 'ao gosto'),
+        )
+    )
+    quantidade_ingrediente = models.PositiveIntegerField('Quantidade:', default=0, blank=False)
+
+    def __str__(self):
+        return self.nome_ingrediente
+    class Meta:
+        verbose_name_plural = 'Ingredientes'
+#TODO: resolver relacionamento de usuario
 
 class Receita(models.Model):
-    nome_receita = models.CharField(
-        'Nome Receita:', max_length=255)
-    modo_preparo = models.TextField(
-        'Modo de Preparo:', max_length=2000)
+    nome_receita = models.CharField('Nome Receita:', max_length=255)
+    modo_preparo = models.TextField('Modo de Preparo:', max_length=2000)
     porcoes = models.PositiveIntegerField('Porções:')
     sabor_receita = models.CharField(
         default='D',
         max_length=1,
-        # opções do select menu
         choices=(
             ('D', 'Doce'),
             ('S', 'Salgada'),
         )
     )
-    tempo_preparo = models.PositiveIntegerField(
-        'Tempo de preparo:', default=0, blank=False)
-    # variaçãoes de 'tempo_preparo'
+    tempo_preparo = models.PositiveIntegerField('Tempo de preparo:', default=0, blank=False)
     tempo_unidade_medida = models.CharField(
         default='M',
         max_length=1,
-        # opções do select menu
         choices=(
             ('M', 'Minuto'),
             ('H', 'Hora'),
             ('D', 'Dias'),
         )
     )
-    dono_receita = models.ForeignKey(User, on_delete=models.DO_NOTHING)
-
-    fotos = models.ImageField(
-        upload_to='receita/media', blank=True, null=True)
-
+    dono_receita = models.ForeignKey(User, on_delete=models.CASCADE,)
+    #TODO: configurar este model para receber somente imagens
+    fotos = models.ImageField(upload_to='receita/media', blank=True, null=True)
+    categoria = models.CharField(
+        default='A',
+        max_length=2,
+        choices=(
+            ('C', 'Café da manhã'),
+            ('A', 'Almoço'),
+            ('L', 'Lanche'),
+            ('J', 'Janta'),
+            ('S', 'Sobremesas'),
+            ('B', 'Bebidas'),
+            ('V', 'Vegana'),
+        )
+    )
     dificuldade = models.CharField(
         default='F',
         max_length=1,
-        # opções do select menu
         choices=(
             ('F', 'Fácil'),
             ('M', 'Médio'),
@@ -51,17 +81,17 @@ class Receita(models.Model):
 
         )
     )
-
     data_publicacao = models.DateTimeField(auto_now_add=True)
-
-    # TODO: perguntar pra Felipão pq que tem que colocar 'default' quando muda o campo model
     slug = AutoSlugField(populate_from='nome_receita', default='SOME STRING')
-
     def slugify_function(self, content):
         return content.replace(' ', '-').lower()
 
-    #################### Redimensionar imagem ######################
+    observacoes_adicionais = models.TextField('Observações adicionais:', max_length=800)
 
+    ingredientes = models.ManyToManyField(Ingrediente)
+    
+
+    #################### Redimensionar imagem ######################
     @staticmethod
     def resize_image(img, new_widht=800):
         # caminho completo da imagem
@@ -90,7 +120,6 @@ class Receita(models.Model):
             # qualidade da imagem
             quality=50
         )
-        print('Tamanho da imagem atualizada:', Image.open(img_full_path).size)
 
     # metodo para redimencionar imagens ao dar upload e chamar o método de redemencionar imagens
     # no momento em que recebe o último upload
@@ -102,48 +131,11 @@ class Receita(models.Model):
         if self.fotos:
             self.resize_image(self.fotos, max_image_size)
 
-    #################### Redimensionar imagem FIM ######################
-
     def __str__(self):
         return self.nome_receita
 
     class Meta:
         verbose_name_plural = 'Receita'
-
-# TODO: fazer checagem de ingrediente repetido nos models
-
-
-class Ingrediente(models.Model):
-    receita = models.ForeignKey(
-        Receita, on_delete=models.DO_NOTHING, blank=True, null=True)
-    nome_ingrediente = models.CharField(
-        'Nome Ingrediente:', max_length=100, blank=False)
-
-    unidadeMedida = models.CharField(
-        default='U',
-        max_length=3,
-        # opções do select menu
-        choices=(
-            ('U', 'Unidade'),
-            ('X', 'Xícara'),
-            ('C', 'Colher de Sopa'),
-            ('CH', 'Colher de Chá'),
-            ('D', 'Dente de Alho'),
-            ('M', 'Mililitro(ml)'),
-            ('L', 'Litros'),
-            ('G', 'Gramas(g)'),
-            ('KG', 'Quilograma(kg)'),
-            ('AGS', 'ao gosto'),
-        )
-    )
-    quantidade = models.PositiveIntegerField(
-        'Quantidade:', default=0, blank=False)
-
-    def __str__(self):
-        return self.nome_ingrediente
-
-    class Meta:
-        verbose_name_plural = 'Ingredientes'
 
 
 class Avaliacao(models.Model):

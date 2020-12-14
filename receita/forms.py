@@ -1,36 +1,16 @@
-from os import error
 from django import forms
-from django.contrib.auth.models import User
-from django.forms import fields
 from . import models
-from django.utils.datastructures import MultiValueDict
 
 
 class ReceitaForm(forms.ModelForm):
 
     nome_receita = forms.CharField(widget=forms.TextInput(
-        attrs={
-            'class': 'form-group form-control rounded-pill',
-            'placeholder': 'Nome da Receita',
-        }
     ), label='')
-
-    fotos = forms.ImageField(widget=forms.FileInput, required=False)
 
     modo_preparo = forms.CharField(widget=forms.Textarea(
         attrs={
             'class': 'form-group form-control',
-            'placeholder': 'Modo de Preparo',
-        }
-    ), label='')
-
-    tempo_preparo = forms.IntegerField(widget=forms.NumberInput(
-        attrs={
-            'class': 'form-group form-control rounded-pill',
-            'placeholder': 'Tempo de Preparo',
-            'id': 'prep-time',
-            'type': 'number',
-            'min': '1'
+            'placeholder': '1- Esquente a água...',
         }
     ), label='')
 
@@ -41,6 +21,27 @@ class ReceitaForm(forms.ModelForm):
             'id': 'portions',
             'type': 'number',
             'min': '1',
+        }
+    ), label='')
+
+    sabor_receita = forms.ChoiceField(
+        choices={
+            ('D', 'Doce'), ('S', 'Salgado')
+        },
+        widget=forms.RadioSelect(
+            attrs={
+                'class': 'form-group form-control rounded-pill',
+                'display': 'inline',
+            }
+        ),
+        label='')
+
+    tempo_preparo = forms.IntegerField(widget=forms.NumberInput(
+        attrs={
+            'class': 'form-group form-control rounded-pill',
+            'placeholder': 'Tempo de Preparo',
+            'type': 'number',
+            'min': '1'
         }
     ), label='')
 
@@ -58,6 +59,26 @@ class ReceitaForm(forms.ModelForm):
         ),
         label='')
 
+    fotos = forms.ImageField(widget=forms.FileInput, required=False, label='')
+
+    categoria = forms.ChoiceField(
+        choices=(
+            ('C', 'Café da manhã'),
+            ('A', 'Almoço'),
+            ('L', 'Lanche'),
+            ('J', 'Janta'),
+            ('S', 'Sobremesas'),
+            ('B', 'Bebidas'),
+            ('V', 'Vegana'),
+
+        ),
+        widget=forms.Select(
+            attrs={
+                'class': 'form-control custom-select rounded-pill'
+            }
+        ),
+        label='')
+
     dificuldade = forms.ChoiceField(
         choices=(
             ('F', 'Fácil'),
@@ -68,30 +89,23 @@ class ReceitaForm(forms.ModelForm):
         ),
         widget=forms.Select(
             attrs={
-                'id': 'difficulty',
                 'class': 'form-control custom-select rounded-pill'
             }
         ),
-        label='Dificuldade')
-
-    sabor_receita = forms.ChoiceField(
-        choices={
-            ('D', 'Doce'), ('S', 'Salgado')
-        },
-        widget=forms.RadioSelect(
-            attrs={
-                'class': 'form-group form-control rounded-pill',
-                'placeholder': 'Dificuldade',
-                'display': 'inline',
-            }
-        ),
         label='')
+    
+    observacoes_adicionais = forms.CharField(widget=forms.Textarea(
+        attrs={
+            'class': 'form-group form-control',
+            'placeholder': '1- Não esquece da deixar massa descançar...',
+        }
+    ), label='')
 
-    def __init__(self, receita=None, fotos=None, *args, **kwargs):
+    
+
+    def __init__(self, data=None, files=None, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        # recebendo como parâmentro requisão do formulário
-        self.receita = receita
-        self.fotos = fotos
+        self.fotos = files
 
     class Meta:
         model = models.Receita
@@ -99,10 +113,6 @@ class ReceitaForm(forms.ModelForm):
         exclude = ('slug', 'dono_receita', 'data_publicacao')
 
     def clean(self, *args, **kwargs):
-        data = self.data
-        fotos = self.fotos
-
-        # Se todos os campos do formulário for válido ele retorna True e armazena os dados em 'cleaned_data'
         cleaned = self.cleaned_data
         validation_error_msgs = {}
 
@@ -156,8 +166,7 @@ class IngredienteForm(forms.ModelForm):
         }
     ), label='')
 
-    # TODO: perguntar pra Felipão como colocar Default nos campos choices do formulário
-    unidadeMedida = forms.ChoiceField(
+    unidade_medida_ingrediente = forms.ChoiceField(
         choices={
             ('U', 'Unidade'),
             ('X', 'Xícara'),
@@ -172,38 +181,35 @@ class IngredienteForm(forms.ModelForm):
         },
         widget=forms.Select(
             attrs={
-                'id': 'difficulty',
                 'class': 'form-control custom-select rounded-pill'
             }
         ),
         label='')
-    quantidade = forms.IntegerField(widget=forms.NumberInput(
+
+    quantidade_ingrediente = forms.IntegerField(widget=forms.NumberInput(
         attrs={
             'class': 'form-control rounded-pill',
-            'placeholder': 'Porções',
-            'id': 'portions',
+            'placeholder': 'Quantidade',
             'type': 'number',
             'min': '1',
         }
     ), label='')
 
+    def __init__(self, data=None, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
     class Meta:
         model = models.Ingrediente
-        fields = ('nome_ingrediente', 'unidadeMedida', 'quantidade')
-
-    def __init__(self, instance=None, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        # recebendo como parâmentro requisão do formulário
+        fields = '__all__'
 
     def clean(self, *args, **kwargs):
-        data = self.data
         cleaned = self.cleaned_data
         validation_error_msgs = {}
 
         nome_ingrediente = cleaned.get('nome_ingrediente')
-        unidadeMedida = cleaned.get('unidadeMedida')
-        quantidade = cleaned.get('quantidade')
+        unidade_medida_ingrediente = cleaned.get('unidade_medida')
+        quantidade_ingrediente = cleaned.get('quantidade')
 
         print(f'Nome do Ingrediente: {nome_ingrediente}')
-        print(f'Und de medida: {unidadeMedida}')
-        print(f'Quantidade: {quantidade}')
+        print(f'Und de medida: {unidade_medida_ingrediente}')
+        print(f'Quantidade: {quantidade_ingrediente}')

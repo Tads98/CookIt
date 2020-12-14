@@ -1,77 +1,70 @@
-{% include 'parciais/_head.html' %} {% include 'parciais/_navbar.html'%} {% load crispy_forms_tags %}
+{% include 'parciais/_head.html' %}
+{% include 'parciais/_navbar.html'%}
+{% load static %}
+{% load crispy_forms_tags %}
 <title>Inserindo Sua Receita - CookIt</title>
 <div class="container">
     <div class="container">
         <h3>Inserindo Sua Receita</h3>
-        <form class="form" enctype="multipart/form-data" method="POST">
+        <form enctype="multipart/form-data" method="POST">
             {% csrf_token %}
             {% include 'parciais/_messages.html' %}
-            <div class="form-group">
+
+            <div class="form-group" id="form_receita_nome_receita">
+                <label>Nome da receita:</label>
                 {{ receitaform.nome_receita|as_crispy_field }}
             </div>
-            <div class="form-group" style="display: flex;">
-                {{ ingredienteform.nome_ingrediente|as_crispy_field }}
-                {{ ingredienteform.unidadeMedida|as_crispy_field }}
-                {{ ingredienteform.quantidade|as_crispy_field }}
-            </div>
-            <div class="form-group">
+
+            <div class="form-group" id="form_receita_fotos">
+                <label for="inputAddress2">Fotos:</label>
                 {{ receitaform.fotos|as_crispy_field }}
             </div>
-            <!--                <div class="form-group">
-                    <ul id="thumbnail-input-group" class="jumbotron d-flex justify-content-around p-0">
-                        <li class="form-control rounded-circle d-flex justify-content-center align-items-center" id="thumbnail-input">
-                            <a href="">
-                                <i class="fas fa-camera"></i>
-                            </a>
-                        </li>
-                        <li class="form-control rounded-circle d-flex justify-content-center align-items-center" id="thumbnail-input">
-                            <a href="">
-                                <i class="fas fa-camera"></i>
-                            </a>
-                        </li>
-                        <li class="form-control rounded-circle d-flex justify-content-center align-items-center" id="thumbnail-input">
-                            <a href="">
-                                <i class="fas fa-camera"></i>
-                            </a>
-                        </li>
-                        <li class="form-control rounded-circle d-flex justify-content-center align-items-center" id="thumbnail-input">
-                            <a href="">
-                                <i class="fas fa-camera"></i>
-                            </a>
-                        </li>
-                        <li class="form-control rounded-circle d-flex justify-content-center align-items-center" id="thumbnail-input">
-                            <a href="">
-                                <i class="fas fa-camera"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
--->
-            <div id="prep" class="row">
-                <div id="prep-mode" class="form-group col-sm">
-                    <div class="jumbotron">
-                        <h4>Modo de Preparo</h4>
 
-                        {{ receitaform.modo_preparo|as_crispy_field }}
-                    </div>
+            <div class="form-row">
+                <div class="form-group col-md-6" id="form_receita_ingredientes">
+                    <label for="inputPassword4">Ingredientes</label>
+                    {{ ingredienteform.nome_ingrediente|as_crispy_field }}
+                    {{ ingredienteform.unidade_medida_ingrediente|as_crispy_field }}
+                    {{ ingredienteform.quantidade_ingrediente|as_crispy_field }}
                 </div>
-                <div id="general" class="form-group col-sm">
-                    <div class="jumbotron">
-                        <h4>Caracteristicas gerais</h4>
-                        {{ receitaform.sabor_receita|as_crispy_field }} {{ receitaform.porcoes|as_crispy_field }}
-                        <div class="row">
-                            <div class="col">
-                                {{ receitaform.tempo_preparo|as_crispy_field }}
-                            </div>
-                            <div class="col">
-                                {{ receitaform.tempo_unidade_medida|as_crispy_field }}
-                            </div>
+                <div class="form-group col-md-6" id="form_receita_caracteristicas_gerais">
+                    <label for="inputPassword4">Características gerais</label>
+                    <div id="form_receita_caracteristicas_gerais_container">
+                        <div>
+                            {{ receitaform.sabor_receita|as_crispy_field }}
+                            {{ receitaform.categoria|as_crispy_field }}
                         </div>
-                        {{ receitaform.dificuldade|as_crispy_field }}
+                        <div>
+                            <label for="porcoes">Porções</label>
+                            {{ receitaform.porcoes|as_crispy_field }}
+
+                            <label for="tempo_preparo">Tempo de preparo</label>
+                            {{ receitaform.tempo_preparo|as_crispy_field }}
+
+                            {{ receitaform.tempo_unidade_medida|as_crispy_field }}
+
+                            {{ receitaform.dificuldade|as_crispy_field }}
+
+                        </div>
                     </div>
+
                 </div>
             </div>
-            <button id="submit-button" type="submit" class="btn btn-primary btn-block rounded-pill">Postar</button>
+
+            <div class="form-row">
+                <div class="form-group col-md-6" id="form_receita_modo-preparo">
+                    <label for="modo_preparo">Modo de preparo</label>
+                    {{ receitaform.modo_preparo|as_crispy_field }}
+                </div>
+
+                <div class="form-group col-md-6" id="form_receita_obs-adicionais">
+                    <label for="inputPassword4">Observações adicionais</label>
+                    {{ receitaform.observacoes_adicionais|as_crispy_field }}
+                </div>
+            </div>
+            <div class="form-row">
+                <button id="form_receita_button" type="submit" class="btn">Postar</button>
+            </div>
         </form>
     </div>
     </body>
