@@ -2,14 +2,14 @@
 {% include 'parciais/_navbar.html'%}
 {% load static %}
 {% load crispy_forms_tags %}
+<html>
 <title>Inserindo Sua Receita - CookIt</title>
 <div class="container">
     <div class="container">
         <h3>Inserindo Sua Receita</h3>
+        {% include 'parciais/_messages.html' %}
         <form enctype="multipart/form-data" method="POST">
             {% csrf_token %}
-            {% include 'parciais/_messages.html' %}
-
             <div class="form-group" id="form_receita_nome_receita">
                 <label>Nome da receita:</label>
                 {{ receitaform.nome_receita|as_crispy_field }}
@@ -69,4 +69,4 @@
     </div>
     </body>
 
-    </html>
+</html>

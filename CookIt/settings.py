@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'usuario',
     'core',
     'crispy_forms',
+    'extra_views',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -147,4 +148,3 @@ SESSION_COOKIE_AGE = 60 * 60 * 24 * 7
 
 # Salvar a cada requisição
 SESSION_SAVE_EVERY_REQUEST = False
-

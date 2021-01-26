@@ -1,11 +1,14 @@
-from django.shortcuts import render, redirect
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView
 from django.views import View
+from django.shortcuts import redirect
+from django.urls import reverse
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from django.db.models import Q
 from . import models
-from . import forms
+from .forms import ReceitaForm, IngredienteForm
 
 
 class ListarReceita(ListView):
@@ -74,85 +77,16 @@ class DetalheReceita(DetailView):
     slug_url_kwargs = 'slug'
 
 
-class BaseCadastrar(View):
-    template_name = 'receita/editar_receita.html'
-
-    def setup(self, *args, **kwargs):
-        super().setup(*args, **kwargs)
-
-        if self.request.user.is_authenticated:
-
-            self.contexto = {
-                'receitaform': forms.ReceitaForm(
-                    files=self.request.FILES,
-                    data=self.request.POST or None,
-                ),
-                'ingredienteform': forms.IngredienteForm(
-                    data=self.request.POST
-                )
-            }
-
-            self.renderizar = render(
-                self.request, self.template_name, self.contexto
-            )
-
-        else:
-            self.contexto = {
-                'receitaform': forms.ReceitaForm(data=self.request.POST or None),
-                'ingredienteform': forms.IngredienteForm(data=self.request.POST or None),
-            }
-
-        self.receitaform = self.contexto['receitaform']
-        self.ingredienteform = self.contexto['ingredienteform']
-
-        if self.request.user.is_authenticated:
-            self.template_name = 'receita/att_receita.html'
-
-        self.renderizar = render(self.request, self.template_name, self.contexto)
-
-    def get(self, *args, **kwargs):
-        return self.renderizar
-
-
-class CadastrarReceita(BaseCadastrar):
-    def post(self, *args, **kwargs):
-
-        if not self.receitaform.is_valid():
-            messages.error(
-                self.request,
-                'VERIFIQUE SE OS CAMPOS ESTÃO PREENCHIDOS CORRETAMENTE!!!'
-            )
-            return self.renderizar
-
-        nome_receita = self.receitaform.cleaned_data.get('nome_receita')
-        modo_preparo = self.receitaform.cleaned_data.get('modo_preparo')
-        tempo_preparo = self.receitaform.cleaned_data.get('tempo_preparo')
-        porcoes = self.receitaform.cleaned_data.get('porcoes')
-        tempo_unidade_medida = self.receitaform.cleaned_data.get(
-            'tempo_unidade_medida')
-        foto = self.receitaform.cleaned_data.get('fotos')
-        dificuldade = self.receitaform.cleaned_data.get('dificuldade')
-        sabor_receita = self.receitaform.cleaned_data.get('sabor_receita')
-
-        nome_ingrediente = self.ingredienteform.cleaned_data.get(
-            'nome_ingrediente')
-        unidadeMedida = self.ingredienteform.cleaned_data.get('unidadeMedida')
-        quantidade = self.ingredienteform.cleaned_data.get('quantidade')
-
-
-        if self.request.user.is_authenticated:
-            ingrediente = self.ingredienteform.save(commit=False)
-            ingrediente.receita = self.receitaform.save(commit=False)
-            ingrediente.receita.dono_receita = self.request.user
-            ingrediente.receita.save()
-            ingrediente.save()
-
-        else:
+class CadastrarReceita(LoginRequiredMixin, CreateView):
+    login_url = 'usuario:criar'
+    template_name = 'receita/teste.html'
+    model = models.Receita
+    form_class = ReceitaForm
     
-            ingrediente = self.ingredienteform.save(commit=False)
-            ingrediente.receita = self.receitaform.save(commit=False)
-            ingrediente.receita.dono_receita = self.request.user
-            ingrediente.receita.save()
-            ingrediente.save()
+    def get_success_url(self):
+        return reverse('receita:index')
 
-        return redirect('receita:index')
+    def form_valid(self, form_class):
+        receita = form_class.save(commit=False)
+        receita.dono_receita = self.request.user
+        return super(CadastrarReceita, self).form_valid(form_class)

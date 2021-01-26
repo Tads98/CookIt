@@ -1,5 +1,7 @@
 from django import forms
-from . import models
+from .models import Receita, Ingrediente
+from os import error
+from django.forms import fields
 
 
 class ReceitaForm(forms.ModelForm):
@@ -93,7 +95,7 @@ class ReceitaForm(forms.ModelForm):
             }
         ),
         label='')
-    
+
     observacoes_adicionais = forms.CharField(widget=forms.Textarea(
         attrs={
             'class': 'form-group form-control',
@@ -101,18 +103,18 @@ class ReceitaForm(forms.ModelForm):
         }
     ), label='')
 
-    
-
-    def __init__(self, data=None, files=None, *args, **kwargs):
+    def __init__(self, receita=None, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fotos = files
+        self.receita = receita
 
     class Meta:
-        model = models.Receita
+        model = Receita
         fields = '__all__'
         exclude = ('slug', 'dono_receita', 'data_publicacao')
 
     def clean(self, *args, **kwargs):
+        data = self.data
+
         cleaned = self.cleaned_data
         validation_error_msgs = {}
 
@@ -195,11 +197,11 @@ class IngredienteForm(forms.ModelForm):
         }
     ), label='')
 
-    def __init__(self, data=None, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
     class Meta:
-        model = models.Ingrediente
+        model = Ingrediente
         fields = '__all__'
 
     def clean(self, *args, **kwargs):
@@ -207,8 +209,8 @@ class IngredienteForm(forms.ModelForm):
         validation_error_msgs = {}
 
         nome_ingrediente = cleaned.get('nome_ingrediente')
-        unidade_medida_ingrediente = cleaned.get('unidade_medida')
-        quantidade_ingrediente = cleaned.get('quantidade')
+        unidade_medida_ingrediente = cleaned.get('unidade_medida_ingrediente')
+        quantidade_ingrediente = cleaned.get('quantidade_ingrediente')
 
         print(f'Nome do Ingrediente: {nome_ingrediente}')
         print(f'Und de medida: {unidade_medida_ingrediente}')

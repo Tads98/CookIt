@@ -6,8 +6,10 @@ from django_extensions.db.fields import AutoSlugField
 import os
 from PIL import Image
 
+
 class Ingrediente(models.Model):
-    nome_ingrediente = models.CharField('Nome Ingrediente:', max_length=100, blank=False)
+    nome_ingrediente = models.CharField(
+        'Nome Ingrediente:', max_length=100, blank=False)
     unidade_medida_ingrediente = models.CharField(
         default='U',
         max_length=3,
@@ -24,13 +26,16 @@ class Ingrediente(models.Model):
             ('AGS', 'ao gosto'),
         )
     )
-    quantidade_ingrediente = models.PositiveIntegerField('Quantidade:', default=0, blank=False)
+    quantidade_ingrediente = models.PositiveIntegerField(
+        'Quantidade:', default=0, blank=False)
 
     def __str__(self):
         return self.nome_ingrediente
+
     class Meta:
         verbose_name_plural = 'Ingredientes'
-#TODO: resolver relacionamento de usuario
+# TODO: resolver relacionamento de usuario
+
 
 class Receita(models.Model):
     nome_receita = models.CharField('Nome Receita:', max_length=255)
@@ -44,7 +49,8 @@ class Receita(models.Model):
             ('S', 'Salgada'),
         )
     )
-    tempo_preparo = models.PositiveIntegerField('Tempo de preparo:', default=0, blank=False)
+    tempo_preparo = models.PositiveIntegerField(
+        'Tempo de preparo:', default=0, blank=False)
     tempo_unidade_medida = models.CharField(
         default='M',
         max_length=1,
@@ -55,7 +61,7 @@ class Receita(models.Model):
         )
     )
     dono_receita = models.ForeignKey(User, on_delete=models.CASCADE,)
-    #TODO: configurar este model para receber somente imagens
+    # TODO: configurar este model para receber somente imagens
     fotos = models.ImageField(upload_to='receita/media', blank=True, null=True)
     categoria = models.CharField(
         default='A',
@@ -83,15 +89,17 @@ class Receita(models.Model):
     )
     data_publicacao = models.DateTimeField(auto_now_add=True)
     slug = AutoSlugField(populate_from='nome_receita', default='SOME STRING')
+
     def slugify_function(self, content):
         return content.replace(' ', '-').lower()
 
-    observacoes_adicionais = models.TextField('Observações adicionais:', max_length=800)
+    observacoes_adicionais = models.TextField(
+        'Observações adicionais:', max_length=800)
 
     ingredientes = models.ManyToManyField(Ingrediente)
-    
 
     #################### Redimensionar imagem ######################
+
     @staticmethod
     def resize_image(img, new_widht=800):
         # caminho completo da imagem
