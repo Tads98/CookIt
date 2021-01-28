@@ -5,7 +5,7 @@
     {% for receita in receitas %}
     <div class="col mb-4">
         <div class="card receita-tela-inicial h-100">
-            <a href="{{ receita.slug }}">
+            <a href="{% url 'receita:receita_completa' receita.slug %}">
                 <!--TODO: o tamanho da imagem precisa ser fixo e seu container também-->
                 {% if receita.fotos %}
                 <img src="{{ receita.fotos.url }}" alt="{{ receita.nome_receita }}" class="card-img-top">
@@ -20,8 +20,8 @@
                 <a href="{{ receita.slug }}">
                     <h5 class="card-title">{{ receita.nome_receita }}</h5>
                 </a>
-                <p class="card-text">Publicado por <a
-                             style="font-size: 10px;" href="">{{ receita.dono_receita }}</a>
+                <p class="card-text">Publicado por <a style="font-size: 12px;"
+                        href=""><strong>{{ receita.dono_receita }}</strong></a>
                 </p>
                 <p class="card-text">
                     <i class="fa fa-star"></i>
@@ -39,11 +39,11 @@
                         <div class="row">
                             <div class="col">
                                 <i style="font-size: 25px;" class="far fa-clock"></i>
-                                <p>{{ receita.tempo_preparo }} minutos</p>
+                                <p>{{ receita.tempo_preparo}} minuto{{ receita.tempo_preparo | pluralize }} </p>
                             </div>
                             <div class="col">
                                 <i style="font-size: 25px;" class="fas fa-concierge-bell"></i>
-                                <p>{{ receita.porcoes }} porções</p>
+                                <p>{{ receita.porcoes }} por{{ receita.porcoes | pluralize:"ção,ções" }} </p>
                             </div>
                         </div>
                     </div>

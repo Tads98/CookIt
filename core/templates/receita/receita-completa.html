@@ -1,4 +1,4 @@
-<title>{{ ingrediente.nome_receita }} - CookIt!</title>
+<title>{{ ingredientes.nome_receita }} - CookIt!</title>
 
 {%include 'parciais/_head.html'%} {% include 'parciais/_navbar.html'%}
 <div class="container">
@@ -6,8 +6,8 @@
         <div id="dados-receita-completa">
             <div class="row">
                 <div id="titulo-receita-completa" class="col">
-                    <h3>{{ ingrediente.nome_receita }}</h3>
-                    <p>publicado por <strong>{{ ingrediente.dono_receita }}</strong></p>
+                    <h3>{{ ingredientes.nome_receita }}</h3>
+                    <p>publicado por <strong>{{ ingredientes.dono_receita }}</strong></p>
                     <div>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -18,10 +18,10 @@
                 </div>
                 <div id="thumbnails-receita-completa" class="col">
                     <div class="row">
-                        {% if ingrediente.fotos %}
+                        {% if ingredientes.fotos %}
                         <!--TODO: ver uma formatação melhor para a imagem-->
                         <img class="receita-foto rounded-circle" style="max-width:800px"
-                            src="{{ ingrediente.fotos.url }}" alt="{{ ingrediente.nome_receita }}"></img>
+                            src="{{ ingredientes.fotos.url }}" alt="{{ ingredientes.nome_receita }}">
                         {% endif %}
                     </div>
                 </div>
@@ -42,11 +42,10 @@
                             <div class="line-receita-completa" class="col" style="border: none;">
                                 <div class="icon-text-receita-completa">
                                     <i class="far fa-clock"></i>
-                                    <br> {% if ingrediente.tempo_preparo <= 1 %}
-                                    <p>{{ingrediente.tempo_preparo}} {{ingrediente.get_tempo_unidade_medida_display}}
-                                    </p>
-                                    {% else %}
-                                    <p>{{ingrediente.tempo_preparo}} {{ingrediente.get_tempo_unidade_medida_display}}s
+                                    <br> {% if ingredientes.tempo_preparo %}
+                                    <p>
+                                        {{ingredientes.tempo_preparo}}
+                                        {{ingredientes.get_tempo_unidade_medida_display}}{{ingredientes.tempo_preparo|pluralize}}
                                     </p>
                                     {% endif %}
                                 </div>
@@ -55,10 +54,8 @@
                             <div class="line-receita-completa" class="col">
                                 <div class="icon-text-receita-completa">
                                     <i class="fas fa-concierge-bell"></i>
-                                    <br> {% if ingrediente.porcoes <= 1 %}
-                                    <p>{{ingrediente.porcoes}} Porção</p>
-                                    {% else %}
-                                    <p>{{ingrediente.porcoes}} Porções</p>
+                                    <br> {% if ingredientes.porcoes %}
+                                    <p>Por{{ingredientes.porcoes | pluralize:"ção,ções"}}: {{ingredientes.porcoes}}</p>
                                     {% endif %}
                                 </div>
                             </div>
@@ -67,7 +64,7 @@
                                 <div class="icon-text-receita-completa">
                                     <i class="fas fa-burn"></i>
                                     <br>
-                                    <p>Dificuldade: {{ingrediente.get_dificuldade_display}}</p>
+                                    <p>Dificuldade: {{ingredientes.get_dificuldade_display}}</p>
                                 </div>
                             </div>
 
@@ -92,7 +89,7 @@
                                 <div class="icon-text-receita-completa">
                                     <i class="far fa-calendar-alt"></i>
                                     <br>
-                                    <p>{{ingrediente.data_publicacao}}</p>
+                                    <p>{{ingredientes.data_publicacao|date}}</p>
                                 </div>
                             </div>
                         </div>
@@ -104,30 +101,29 @@
                 <div class="row mb-3">
 
                     <div id="ingredientes-receita-completa" class="col">
-                        <h3>Ingredientes ({{ ingrediente.ingrediente_set.all|length }})</h3>
+                        <h3>Ingredientes ({{ ingredientes.ingredientes.all|length }})</h3>
 
                         <div id="alinhamento-ingredientes">
-                            {% for ingrediente in ingrediente.ingrediente_set.all %}
-                            {%if ingrediente.unidadeMedida == 'AGS' %}
+                            {% for ingrediente in ingredientes.ingredientes.all %}
+                            {%if ingrediente.unidade_medida == 'AGS' %}
                             <p>
                                 <strong style="color: #F0A916;">{{ingrediente.nome_ingrediente}}</strong>
-                                <strong>{{ingrediente.get_unidadeMedida_display}}</strong>
+                                <strong>{{ingrediente.get_unidade_medida_display}}</strong>
                             </p>
                             {%else%}
                             <p>
-                                <strong>{{ingrediente.quantidade}} {{ingrediente.get_unidadeMedida_display}}</strong> de
+                                <strong>{{ingrediente.quantidade}} {{ingrediente.get_unidade_medida_display}}</strong>
+                                de
                                 <strong style="color: #F0A916;">{{ingrediente.nome_ingrediente}}</strong>
                             </p>
                             {%endif%} {% endfor %}
                         </div>
-
-
                     </div>
 
                     <div id="modo-de-preparo-receita-completa" class="col">
                         <h3>Modo de Preparo</h3>
-                        
-                        <p>{{ingrediente.modo_preparo}}</p>
+
+                        <p>{{ingredientes.modo_preparo}}</p>
                     </div>
 
                 </div>
@@ -137,7 +133,7 @@
                     <div class="col">
                         <h3>Observações Adicionais</h3>
 
-                        <div id="obad-receita-completa" >
+                        <div id="obad-receita-completa">
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu dapibus eros, at
                                 interdum
                                 odio. Integer at enim eu ligula fermentum gravida. Pellentesque non odio a diam accumsan

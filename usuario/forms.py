@@ -42,7 +42,7 @@ class UsuarioForm(forms.ModelForm):
 
     def __init__(self, usuario=None, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        # TODO: entender da onde vem esse 'self.usuario'
+        # 'self.usuario' está armazendo um parâmento da função acima
         self.usuario = usuario
 
     class Meta:

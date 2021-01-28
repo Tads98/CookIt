@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
-from django.contrib.messages import constants 
+from django.contrib.messages import constants
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'receita',
     'usuario',
     'core',
-    'crispy_forms', 
+    'crispy_forms',
+    'extra_views',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -132,7 +133,7 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = '/media/'
 # MEDIA_ROOT define uma pasta raiz para armazenamento de mídia. O caminho é especificado em Models
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 MESSAGE_TAGS = {
     constants.DEBUG: 'alert-info',

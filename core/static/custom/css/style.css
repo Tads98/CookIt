@@ -413,9 +413,12 @@ ul li {
     font-size: 12px;
 }
 
+
+/*
 .col-sm {
     padding-left: 0 !important;
 }
+*/
 
 .prep-mode-tela-inicial {
     border-bottom: 1px solid gray;
@@ -455,7 +458,6 @@ ul li {
 }
 
 #keywords {
-    padding-left: 1em;
     border-bottom: 1px solid black;
 }
 
@@ -705,4 +707,30 @@ textarea {
 }
 
 
-/* scrollbar */
+/* tag-container */
+
+
+.tag-container {
+    display: flex !important;
+}
+
+.tag-container input {
+    border: none;
+    outline: none;
+}
+
+.tag {
+    border-radius: 5px;
+    padding: 0 5px 0 5px;
+}
+
+.tag input {
+    width: 100px;
+    -ms-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+}
+.tag .fa-times{
+    color: white !important;
+}

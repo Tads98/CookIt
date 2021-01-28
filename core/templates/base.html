@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,18 +7,25 @@
 </head>
 <body>
     {% include  'parciais/_navbar.html'%}
-
     {% include  'parciais/_sidebar.html'%}
-
     
     <div class="container col">
         <div id="keywords" class="row">
-            <div class="col-sm form-group">
-                <input type="text" class="form-control rounded-pill" placeholder="Quero que tenha">
-            </div>
+            <button class="btn btn-primary sidebar-open" onclick="Open(sidebar)">
+                Filtragem Avançada
+            </button>
+            <form method="GET" action="{% url 'receita:busca' %}" class="col-sm form-group">
+                <div class="form-control mr-sm-2 tag-container form-control rounded-pill">
+                    <input class="" arial-label="Search">
+                </div>
+                <button class="search-button btn btn-primary" class="btn btn-success" type="submit">
+                    Filtrar
+                </button>
+            </form>
             <div class="col-sm form-group">
                 <input type="text" class="form-control rounded-pill" placeholder="Quero que não tenha">
             </div>
+            <script src="{% static 'custom/js/tags.js' %}"></script>
         </div>
         {%include 'parciais/_messages.html'%}
         <!--Depois substituir por um block de conteudo-->
@@ -27,3 +35,5 @@
     </div>
 </body>
 </html>
+
+
