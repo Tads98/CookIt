@@ -2,33 +2,29 @@
   <div
     class="cards-tela-inicial row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3"
   >
-    {% for receita in receitas %}
     <div class="col mb-4">
       <div class="card receita-tela-inicial h-100">
-        <a href="{% url 'receita:receita_completa' receita.slug %}">
+        <a href="">
           <!--TODO: o tamanho da imagem precisa ser fixo e seu container também-->
-          {% if receita.fotos %}
           <img
-            src="{{ receita.fotos.url }}"
-            alt="{{ receita.nome_receita }}"
+            src=""
+            alt=""
             class="card-img-top"
           />
-          {% else %}
           <img src="cocktail.jpeg" class="card-img-top" alt="..." />
-          {% endif %}
         </a>
         <div class="card-body">
           <a href="" class="fav-tela-inicial">
             <i class="far fa-heart"></i>
           </a>
-          <a href="{{ receita.slug }}">
-            <h5 class="card-title">{{ receita.nome_receita }}</h5>
+          <a href="">
+            <h5 class="card-title">Nome Receita</h5>
           </a>
           <p class="card-text">
             Publicado por
-            <a style="font-size: 12px" href=""
-              ><strong>{{ receita.dono_receita }}</strong></a
-            >
+            <a style="font-size: 12px" href="">
+              <strong>UwU Man</strong>
+            </a>
           </p>
           <p class="card-text">
             <i class="fa fa-star"></i>
@@ -38,7 +34,6 @@
             <i class="fa fa-star"></i>
           </p>
           <p class="card-text descricao-tela-inicial">
-            {{ receita.modo_preparo }}
           </p>
           <hr />
           <div class="row">
@@ -47,16 +42,13 @@
                 <div class="col">
                   <i style="font-size: 25px" class="far fa-clock"></i>
                   <p>
-                    {{ receita.tempo_preparo }} minuto{{
-                      receita.tempo_preparo | pluralize
-                    }}
+                    5 minutos
                   </p>
                 </div>
                 <div class="col">
                   <i style="font-size: 25px" class="fas fa-concierge-bell"></i>
                   <p>
-                    {{ receita.porcoes }}
-                    por{{ receita.porcoes }}
+                    5 porções
                   </p>
                 </div>
               </div>
@@ -64,14 +56,12 @@
           </div>
         </div>
         <button
-          onclick="window.location.href='{{ receita.slug }}';"
-          class="see-more-tela-inicial btn"
-        >
+          onclick="window.location.href='';"
+          class="see-more-tela-inicial btn">
           <i class="fas fa-book-open"></i>
         </button>
       </div>
     </div>
-    {% endfor %}
   </div>
 </template>
 
