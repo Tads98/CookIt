@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'receita',
     'usuario',
     'core',
@@ -93,7 +94,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'cookit',
         'USER': 'postgres',
-        'PASSWORD': 'postgres',
+        'PASSWORD': '04041967',
         'HOST': '127.0.0.1',  # 127.0.0.1
         'PORT': '',  # 8000 is default
     }
