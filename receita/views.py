@@ -9,7 +9,9 @@ from django.contrib import messages
 from django.db.models import Q
 from . import models
 from .forms import ReceitaForm
-
+# Rest
+from rest_framework import viewsets
+from receita.serializers import ReceitaSerializer
 
 class ListarReceita(ListView):
     model = models.Receita
@@ -97,3 +99,9 @@ class CadastrarReceita(LoginRequiredMixin, CreateView):
         receita = form_class.save(commit=False)
         receita.dono_receita = self.request.user
         return super(CadastrarReceita, self).form_valid(form_class)
+
+# Rest - Serializers
+
+class ReceitaViewSet(viewsets.ModelViewSet):
+    serializer_class = ReceitaSerializer
+    queryset = models.Receita.objects.all()

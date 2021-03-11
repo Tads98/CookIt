@@ -1,7 +1,12 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
+from rest_framework.routers import DefaultRouter
 
 app_name = 'receita'
+
+router = DefaultRouter() 
+
+router.register('receita', views.ReceitaViewSet, basename = 'receita')
 
 urlpatterns = [
     path('', views.ListarReceita.as_view(), name='index'),
@@ -10,4 +15,6 @@ urlpatterns = [
          name='cadastrar_receita'),
     path('busca/', views.Busca.as_view(), name='busca'),
     path('limpar/', views.Limpar.as_view(), name='limpar'),
+
+    path('api/', include(router.urls) ),
 ]
