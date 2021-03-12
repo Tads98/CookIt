@@ -11,7 +11,7 @@ from . import models
 from .forms import ReceitaForm
 # Rest
 from rest_framework import viewsets
-from receita.serializers import ReceitaSerializer, IngredienteSerializer
+from receita.serializers import ReceitaSerializer, IngredienteSerializer, AvaliacaoSerializer
 
 class ListarReceita(ListView):
     model = models.Receita
@@ -109,3 +109,7 @@ class ReceitaViewSet(viewsets.ModelViewSet):
 class IngredienteViewSet(viewsets.ModelViewSet):
     serializer_class = IngredienteSerializer
     queryset = models.Ingrediente.objects.all()
+
+class AvaliacaoViewSet(viewsets.ModelViewSet):
+    serializer_class = AvaliacaoSerializer
+    queryset = models.Avaliacao.objects.all()

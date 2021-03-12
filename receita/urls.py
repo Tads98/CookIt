@@ -8,6 +8,7 @@ router = DefaultRouter()
 
 router.register('receita', views.ReceitaViewSet, basename = 'receita')
 router.register('ingrediente', views.IngredienteViewSet, basename = 'ingrediente')
+router.register('avaliacao', views.AvaliacaoViewSet, basename = 'avaliacao')
 
 urlpatterns = [
     path('', views.ListarReceita.as_view(), name='index'),
