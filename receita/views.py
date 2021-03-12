@@ -84,7 +84,6 @@ class DetalheReceita(DetailView):
     context_object_name = 'ingredientes'
     slug_url_kwargs = 'slug'
 
-
 class CadastrarReceita(LoginRequiredMixin, CreateView):
     # TODO: dar um jeito enviar uma mensagem de aviso para o usuário via 'messages'
     login_url = 'usuario:criar'
@@ -113,3 +112,6 @@ class IngredienteViewSet(viewsets.ModelViewSet):
 class AvaliacaoViewSet(viewsets.ModelViewSet):
     serializer_class = AvaliacaoSerializer
     queryset = models.Avaliacao.objects.all()
+
+
+
