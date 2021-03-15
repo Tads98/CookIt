@@ -61,7 +61,7 @@ ROOT_URLCONF = 'CookIt.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'core/templates')],
+        'DIRS': [os.path.join(BASE_DIR, '../front-end/build/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'CookIt.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-'''
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -94,12 +94,12 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'cookit',
         'USER': 'postgres',
-        'PASSWORD': 'gu1994to',
+        'PASSWORD': 'postgres',
         'HOST': '127.0.0.1',  # 127.0.0.1
         'PORT': '',  # 8000 is default
     }
 }
-
+'''
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
@@ -137,12 +137,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-# STATIC_ROOT indica a pasta raiz dos arquivos estáticos
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-# STATICFILES_DIRS indica o caminho para a pasta raiz dos arquivos estáticos
-STATICFILES_DIRS = [
-    os.path.join('core/static')
-]
+STATIC_ROOT = 'static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, '../front-end/build/static')]
 
 MEDIA_URL = '/media/'
 # MEDIA_ROOT define uma pasta raiz para armazenamento de mídia. O caminho é especificado em Models
