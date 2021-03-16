@@ -24,9 +24,9 @@ SECRET_KEY = '=xkq)t3#4)mv3*(+(0oy0b*t@d7#ooq^sjtx7%w3pgvf+y(j6b'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
-
+CORS_ORIGIN_ALLOW_ALL = True
 # Application definition
 
 INSTALLED_APPS = [
@@ -42,11 +42,13 @@ INSTALLED_APPS = [
     'core',
     'crispy_forms',
     'extra_views',
+    'corsheaders',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',

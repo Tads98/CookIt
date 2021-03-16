@@ -25,7 +25,8 @@ urlpatterns = [
 #   Comentando pra dar espaço ao Vue
 #    path('', include('receita.urls')),
 #    path('usuario/', include('usuario.urls')),
-#    path('admin/', admin.site.urls),
+
+    path('admin/', admin.site.urls),
     path('', include(vue_urls)),
 
 
