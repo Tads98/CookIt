@@ -3,6 +3,7 @@
     <Navbar/>
     <Index/>
     <PaginaReceita/>
+    <FormReceita/>
   </div>
 </template>
 
@@ -10,6 +11,7 @@
 import Index from './components/Index.vue'
 import Navbar from './components/Navbar.vue'
 import PaginaReceita from './components/PaginaReceita.vue'
+import FormReceita from './components/FormReceita.vue'
 
 export default {
   name: 'App',
@@ -17,6 +19,7 @@ export default {
     Index,
     Navbar,
     PaginaReceita,
+    FormReceita,
   }
 }
 </script>
