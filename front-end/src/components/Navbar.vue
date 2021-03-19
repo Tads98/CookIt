@@ -53,13 +53,13 @@
 
                 <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
-                    <img src="{% static 'imgs/cookit_user.svg' %}" alt="" height="25px">
+                    <img src="" alt="" height="25px">
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{% url 'usuario:criar' %}">Perfil</a>
+                    <a class="dropdown-item" href="">Perfil</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{% url 'usuario:logout' %}">Sair</a>
+                    <a class="dropdown-item" href="">Sair</a>
                 </div>
 
             </li>
@@ -90,5 +90,52 @@ export default {
 </script>
 
 <style>
+.navbar {
+    background-color: #F3EFEF !important;
+    border-bottom: 1px solid #707070;
+}
 
+#nav-icon {
+    color: black;
+    vertical-align: middle;
+}
+
+.nav-link {
+    padding: 0 1vw 0 1vw;
+}
+
+.navbar-brand {
+    align-self: center;
+    justify-content: center;
+    font-size: 0;
+}
+
+#nav-icon-span {
+    font-size: 12px;
+}
+
+#search-input {
+    outline: none;
+    box-shadow: none !important;
+    border-radius: 36px 0 0 36px;
+    width: 20vw;
+}
+
+#search-button {
+    padding: 0 1em 0 1em;
+    background-color: white;
+    border: 1px solid gray;
+    color: gray;
+    margin-left: -1px;
+    border-radius: 0 36px 36px 0 !important;
+}
+
+#search-button i {
+    vertical-align: middle;
+}
+
+i {
+    text-decoration: none !important;
+    color: black;
+}
 </style>

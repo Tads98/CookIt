@@ -2,21 +2,32 @@
   <div>
     <Navbar/>
     <Index/>
+    <PaginaReceita/>
   </div>
 </template>
 
 <script>
 import Index from './components/Index.vue'
 import Navbar from './components/Navbar.vue'
-
+import PaginaReceita from './components/PaginaReceita.vue'
 
 export default {
   name: 'App',
   components: {
-    Index,Navbar
+    Index,
+    Navbar,
+    PaginaReceita,
   }
 }
 </script>
 
 <style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
 </style>

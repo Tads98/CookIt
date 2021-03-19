@@ -1,16 +1,11 @@
 <template>
   <div class="cards-tela-inicial row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3">
     
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    
     <div class="col mb-4">
       <div v-for="receita in receitas" v-bind:key="receita.id" class="card receita-tela-inicial h-100">
         <a href="">
           <!--TODO: o tamanho da imagem precisa ser fixo e seu container também-->
-          <img src="{{ receita.fotos }}" alt="" class="card-img-top" />
+          <img src="" alt="" class="card-img-top" />
           <img src="cocktail.jpeg" class="card-img-top" alt="..." />
         </a>
         <div class="card-body">
@@ -92,6 +87,17 @@ export default {
 </script>
 
 <style>
+* {
+    font-family: 'Montserrat', sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin-top: 70px !important;
+    background-color: lightgray;
+}
 .receita-tela-inicial {
   /*    padding: 2em 2em 0 2em !important; */
   background-color: white;
