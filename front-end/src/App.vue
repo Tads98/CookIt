@@ -9,9 +9,9 @@
 
 <script>
 import Index from './components/Index.vue'
-import Navbar from './components/Navbar.vue'
-import PaginaReceita from './components/PaginaReceita.vue'
-import FormReceita from './components/FormReceita.vue'
+import Navbar from './components/parciais/Navbar.vue'
+import PaginaReceita from './components/receitas/PaginaReceita.vue'
+import FormReceita from './components/receitas/FormReceita.vue'
 
 export default {
   name: 'App',

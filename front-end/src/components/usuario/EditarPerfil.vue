@@ -1,0 +1,224 @@
+<template>
+    <div class="container editarperfil">
+        <h4 class="font-weight-bold mb-3">Dados Gerais</h4>
+        <div class="row mb-3">
+            <div class="col-sm d-flex justify-content-center">
+                <img src="" />
+            </div>
+            <div class="col-sm">
+                <textarea class="form-control h-100" rows="4" id="comment"></textarea>
+            </div>
+            <div class="col-sm">
+                <form>
+                    <div class="social-editarperfil form-group input-group">
+                        <div class="input-group-prepend" for="">
+                            <h4 class="input-group-text"><i class="fab fa-instagram"></i></h4>
+                        </div>
+                        <input type="text" class="form-control" placeholder="https://www.instagram.com/">
+                    </div>
+                    <div class="social-editarperfil form-group input-group">
+                        <div class="input-group-prepend" for="">
+                            <h4 class="input-group-text"><i class="fab fa-facebook-f"></i></h4>
+                        </div>
+                        <input type="text" class="form-control" placeholder="https://www.facebook.com/">
+                    </div>
+                    <div class="social-editarperfil form-group input-group">
+                        <div class="input-group-prepend" for="">
+                            <h4 class="input-group-text"><i class="fab fa-twitter"></i></h4>
+                        </div>
+                        <input type="text" class="form-control" placeholder="https://www.twitter.com/">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <h4 class="font-weight-bold mb-3">Notificações</h4>
+        <div class="row mb-3">
+            <div class="col-sm mb-4">
+                <div class="noti-config-editarperfil card">
+                    <div class="card-body">
+                        <h5 class="card-title font-weight-bold">Postagem de receita</h5>
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="email">
+                            <label class="custom-control-label" for="email">E-mail</label>
+                        </div>
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="perfil">
+                            <label class="custom-control-label" for="perfil">Perfil CookIt</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title font-weight-bold">Comentários de minhas receitas</h5>
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="email2">
+                            <label class="custom-control-label" for="email2">E-mail</label>
+                        </div>
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="perfil2">
+                            <label class="custom-control-label" for="perfil2">Perfil CookIt</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="w-100"></div>
+            <div class="col-sm">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title font-weight-bold">Seguidores</h5>
+                        <div class="card-body">
+                            <h5 class="card-title font-weight-bold">Comentários de minhas receitas</h5>
+                            <div class="custom-control custom-switch">
+                                <input type="checkbox" class="custom-control-input" id="email3">
+                                <label class="custom-control-label" for="email3">E-mail</label>
+                            </div>
+                            <div class="custom-control custom-switch">
+                                <input type="checkbox" class="custom-control-input" id="perfil3">
+                                <label class="custom-control-label" for="perfil3">Perfil CookIt</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title font-weight-bold">Postagem de seguidores</h5>
+                        <div class="card-body">
+                            <h5 class="card-title font-weight-bold">Comentários de minhas receitas</h5>
+                            <div class="custom-control custom-switch">
+                                <input type="checkbox" class="custom-control-input" id="email4">
+                                <label class="custom-control-label" for="email4">E-mail</label>
+                            </div>
+                            <div class="custom-control custom-switch">
+                                <input type="checkbox" class="custom-control-input" id="perfil4">
+                                <label class="custom-control-label" for="perfil4">Perfil CookIt</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h4 class="font-weight-bold mb-3">Segurança e Privacidade</h4>
+        <div class="row">
+            <div class="col-sm mb-4">
+                <div class="config-1-editarperfil card">
+                    <div class="card-body">
+                        <h5 class="card-title font-weight-bold">Visibilidade de Perfil</h5>
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="visivel">
+                            <label class="custom-control-label" for="visivel">Visível para todos</label>
+                        </div>
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="somente">
+                            <label class="custom-control-label" for="somente">Somente Seguidores</label>
+                        </div>
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="somente2">
+                            <label class="custom-control-label" for="somente2">Somente quem sigo e me segue</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm mb-4">
+                <div class="card config-1-editarperfil">
+                    <div class="card-body form">
+                        <h5 class="card-title font-weight-bold">Nome de usuário</h5>
+                        <form action="">
+                            <input class="form-group form-control" type="text" placeholder="Maria Auxiliadora">
+                            <button type="form-group button" class="btn btn-secondary w-100">Trocar nome</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm mb-4">
+                <div class="card config-1-editarperfil">
+                    <div class="card-body">
+                        <h5 class="card-title font-weight-bold">Endereço de e-mail</h5>
+                        <form action="">
+                            <input class="form-group form-control" type="email" placeholder="maria@hotmail.com">
+                            <button type="button" class="form-group btn btn-primary w-100">Atualizar E-mail</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="w-100"></div>
+            <div class="col-sm mb-4">
+                <div class="config-2-editarperfil card">
+                    <div class="card-body">
+                        <h5 class="card-title font-weight-bold">Trocar Senha</h5>
+                        <form action="">
+                            <input class="form-group form-control" type="password" placeholder="Senha Atual">
+                            <input class="form-group form-control" type="password" placeholder="Nova Senha">
+                            <input class="form-group form-control" type="password" placeholder="Confirme Nova Senha">
+                            <button type="button" class="form-group btn btn-primary w-100">Salvar</button>
+                            <button type="button" class="btn btn-secondary w-100">Esqueceu a senha?</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm mb-4">
+                <div class="config-2-editarperfil card">
+                    <div class="card-body">
+                        <h5 class="card-title font-weight-bold">Celular</h5>
+                        <form action="">
+                            <input class="form-group form-control" type="text" placeholder="Número: +55 84 98654-3278">
+                            <button type="button" class="form-group btn btn-primary w-100">Salvar</button>
+                            <button type="button" class="form-group btn btn-secondary w-100">Atualizar número</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+export default {
+    name: 'EditarPerfil'
+}
+</script>
+
+<style>
+/*-editarperfil*/
+
+.container {
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+    background-color: white;
+    padding-top: 1em;
+}
+
+.card {
+    background-color: #F3EFEF;
+}
+
+.config-1-editarperfil {
+    height: 180px !important;
+}
+
+.config-2-editarperfil {
+    height: 340px !important;
+}
+
+textarea,
+.card {
+    border-radius: .75em !important;
+}
+
+.editarperfil button {
+    border-radius: 2em !important;
+}
+
+.social-editarperfil input {
+    border-radius: 0 2em 2em 0 !important;
+    width: 90%;
+}
+
+.social-editarperfil .input-group-text {
+    border-radius: 2em 0 0 2em !important;
+    width: 40px;
+}
+</style>
