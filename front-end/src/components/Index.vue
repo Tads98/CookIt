@@ -6,7 +6,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     
-    <h2>Hello</h2>
     <div class="col mb-4">
       <div v-for="receita in receitas" v-bind:key="receita.id" class="card receita-tela-inicial h-100">
         <a href="">
@@ -67,7 +66,7 @@ import axios from "axios";
 
 
 export default {
-  name: "Index",
+  name: "Index", 
   data() {
     return {
         receitas: []
