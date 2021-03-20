@@ -24,9 +24,9 @@ SECRET_KEY = '=xkq)t3#4)mv3*(+(0oy0b*t@d7#ooq^sjtx7%w3pgvf+y(j6b'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
-
+CORS_ORIGIN_ALLOW_ALL = True
 # Application definition
 
 INSTALLED_APPS = [
@@ -36,16 +36,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'receita',
     'usuario',
     'core',
     'crispy_forms',
     'extra_views',
+    'corsheaders',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -60,7 +63,7 @@ ROOT_URLCONF = 'CookIt.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'core/templates')],
+        'DIRS': [os.path.join(BASE_DIR, '../front-end/build/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -79,7 +82,7 @@ WSGI_APPLICATION = 'CookIt.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-'''
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -98,7 +101,7 @@ DATABASES = {
         'PORT': '',  # 8000 is default
     }
 }
-
+'''
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
@@ -136,12 +139,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-# STATIC_ROOT indica a pasta raiz dos arquivos estáticos
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-# STATICFILES_DIRS indica o caminho para a pasta raiz dos arquivos estáticos
-STATICFILES_DIRS = [
-    os.path.join('core/static')
-]
+STATIC_ROOT = 'static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, '../front-end/build/static')]
 
 MEDIA_URL = '/media/'
 # MEDIA_ROOT define uma pasta raiz para armazenamento de mídia. O caminho é especificado em Models

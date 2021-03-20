@@ -6,6 +6,9 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 import copy
+# Rest
+from rest_framework import viewsets
+from usuario.serializers import UsuarioSerializer
 
 from . import models
 from . import forms
@@ -167,3 +170,9 @@ class Logout(View):
 class favoritos(View):
     # TODO: adicionar retorno 'render' para tela de favoritos
     pass
+
+# Rest - Serializers
+
+class UsuarioViewSet(viewsets.ModelViewSet):
+    serializer_class = UsuarioSerializer
+    queryset = models.User.objects.all()

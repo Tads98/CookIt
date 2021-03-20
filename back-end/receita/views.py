@@ -9,7 +9,9 @@ from django.contrib import messages
 from django.db.models import Q
 from . import models
 from .forms import ReceitaForm
-
+# Rest
+from rest_framework import viewsets
+from receita.serializers import ReceitaSerializer, IngredienteSerializer, AvaliacaoSerializer
 
 class ListarReceita(ListView):
     model = models.Receita
@@ -82,7 +84,6 @@ class DetalheReceita(DetailView):
     context_object_name = 'ingredientes'
     slug_url_kwargs = 'slug'
 
-
 class CadastrarReceita(LoginRequiredMixin, CreateView):
     # TODO: dar um jeito enviar uma mensagem de aviso para o usuário via 'messages'
     login_url = 'usuario:criar'
@@ -97,3 +98,20 @@ class CadastrarReceita(LoginRequiredMixin, CreateView):
         receita = form_class.save(commit=False)
         receita.dono_receita = self.request.user
         return super(CadastrarReceita, self).form_valid(form_class)
+
+# Rest - Serializers
+
+class ReceitaViewSet(viewsets.ModelViewSet):
+    serializer_class = ReceitaSerializer
+    queryset = models.Receita.objects.all()
+
+class IngredienteViewSet(viewsets.ModelViewSet):
+    serializer_class = IngredienteSerializer
+    queryset = models.Ingrediente.objects.all()
+
+class AvaliacaoViewSet(viewsets.ModelViewSet):
+    serializer_class = AvaliacaoSerializer
+    queryset = models.Avaliacao.objects.all()
+
+
+
