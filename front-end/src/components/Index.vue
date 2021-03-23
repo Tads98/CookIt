@@ -86,7 +86,7 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
 * {
     font-family: 'Montserrat', sans-serif;
     padding: 0;

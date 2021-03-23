@@ -1,122 +1,120 @@
 <template>
   <div class="container">
-    <div class="container">
-      <h3>Inserindo Sua Receita</h3>
-      <form enctype="multipart/form-data" method="POST">
-        <div class="form-group" id="form_receita_nome_receita">
-          <label>Nome da receita:</label>
-          <input type="text" class="form-control rounded-pill" />
+    <h3>Inserindo Sua Receita</h3>
+    <form enctype="multipart/form-data" method="POST">
+      <div class="form-group" id="form_receita_nome_receita">
+        <label>Nome da receita:</label>
+        <input type="text" class="form-control rounded-pill" />
+      </div>
+
+      <div class="form-group" id="form_receita_fotos">
+        <label for="inputAddress2">Fotos:</label>
+        <input type="file" class="form-control rounded-pill" />
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6" id="form_receita_ingredientes">
+          <label for="inputPassword4">Ingredientes</label>
+          <input type="text" class="form-control" />
+          <select class="form-select" aria-label="Default select example">
+            <option selected>Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+          <input type="text" class="form-control" />
         </div>
-
-        <div class="form-group" id="form_receita_fotos">
-          <label for="inputAddress2">Fotos:</label>
-          <input type="file" class="form-control rounded-pill" />
-        </div>
-
-        <div class="form-row">
-          <div class="form-group col-md-6" id="form_receita_ingredientes">
-            <label for="inputPassword4">Ingredientes</label>
-            <input type="text" class="form-control" />
-            <select class="form-select" aria-label="Default select example">
-              <option selected>Open this select menu</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-            </select>
-            <input type="text" class="form-control" />
-          </div>
-          <div
-            class="form-group col-md-6"
-            id="form_receita_caracteristicas_gerais"
-          >
-            <label for="inputPassword4">Características gerais</label>
-            <div id="form_receita_caracteristicas_gerais_container">
-              <div>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="flexRadioDefault"
-                    id="flexRadioDefault1"
-                  />
-                  <label class="form-check-label" for="flexRadioDefault1">
-                    Default radio
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="flexRadioDefault"
-                    id="flexRadioDefault2"
-                    checked
-                  />
-                  <label class="form-check-label" for="flexRadioDefault2">
-                    Default checked radio
-                  </label>
-                </div>
-                <select class="form-select" aria-label="Default select example">
-                  <option selected>Open this select menu</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </select>
+        <div
+          class="form-group col-md-6"
+          id="form_receita_caracteristicas_gerais"
+        >
+          <label for="inputPassword4">Características gerais</label>
+          <div id="form_receita_caracteristicas_gerais_container">
+            <div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="flexRadioDefault"
+                  id="flexRadioDefault1"
+                />
+                <label class="form-check-label" for="flexRadioDefault1">
+                  Default radio
+                </label>
               </div>
-              <div>
-                <label for="porcoes">Porções</label>
-                <input type="text" class="form-control" />
-
-                <label for="tempo_preparo">Tempo de preparo</label>
-                <input type="text" class="form-control" />
-
-                <select class="form-select" aria-label="Default select example">
-                  <option selected>Open this select menu</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </select>
-
-                <select class="form-select" aria-label="Default select example">
-                  <option selected>Open this select menu</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </select>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="flexRadioDefault"
+                  id="flexRadioDefault2"
+                  checked
+                />
+                <label class="form-check-label" for="flexRadioDefault2">
+                  Default checked radio
+                </label>
               </div>
+              <select class="form-select" aria-label="Default select example">
+                <option selected>Open this select menu</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+            </div>
+            <div>
+              <label for="porcoes">Porções</label>
+              <input type="text" class="form-control" />
+
+              <label for="tempo_preparo">Tempo de preparo</label>
+              <input type="text" class="form-control" />
+
+              <select class="form-select" aria-label="Default select example">
+                <option selected>Open this select menu</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+
+              <select class="form-select" aria-label="Default select example">
+                <option selected>Open this select menu</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
             </div>
           </div>
         </div>
+      </div>
 
-        <div class="form-row">
-          <div class="form-group col-md-6" id="form_receita_modo-preparo">
-            <label for="modo_preparo">Modo de preparo</label>
-            <textarea
-              name=""
-              class="form-control"
-              id=""
-              cols="30"
-              rows="10"
-            ></textarea>
-          </div>
+      <div class="form-row">
+        <div class="form-group col-md-6" id="form_receita_modo-preparo">
+          <label for="modo_preparo">Modo de preparo</label>
+          <textarea
+            name=""
+            class="form-control"
+            id=""
+            cols="30"
+            rows="10"
+          ></textarea>
+        </div>
 
-          <div class="form-group col-md-6" id="form_receita_obs-adicionais">
-            <label for="inputPassword4">Observações adicionais</label>
-            <textarea
-              name=""
-              class="form-control"
-              id=""
-              cols="30"
-              rows="10"
-            ></textarea>
-          </div>
+        <div class="form-group col-md-6" id="form_receita_obs-adicionais">
+          <label for="inputPassword4">Observações adicionais</label>
+          <textarea
+            name=""
+            class="form-control"
+            id=""
+            cols="30"
+            rows="10"
+          ></textarea>
         </div>
-        <div class="form-row">
-          <button id="form_receita_button" type="submit" class="btn">
-            Postar
-          </button>
-        </div>
-      </form>
-    </div>
+      </div>
+      <div class="form-row">
+        <button id="form_receita_button" type="submit" class="btn">
+          Postar
+        </button>
+      </div>
+    </form>
   </div>
 </template>
 
@@ -124,7 +122,7 @@
 export default {};
 </script>
 
-<style>
+<style scoped>
 .container {
   border: none !important;
   padding-top: 4rem;

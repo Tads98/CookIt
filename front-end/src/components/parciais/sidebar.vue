@@ -110,7 +110,7 @@
                 </label>
             </div>
         </div>
-        <button class="search-button btn btn-primary" class="btn btn-success" type="submit">
+        <button class="search-button btn btn-primary" type="submit">
             Filtrar
         </button>
     </form>
@@ -123,7 +123,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
     /* Sidebar */
 
     #sidebar {

@@ -89,7 +89,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .navbar {
     background-color: #F3EFEF !important;
     border-bottom: 1px solid #707070;
