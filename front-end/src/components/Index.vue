@@ -1,6 +1,7 @@
 <template>
   <div class="cards-tela-inicial row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3">
-    
+    <Sidebar/>
+
     <div class="col mb-4">
       <div v-for="receita in receitas" v-bind:key="receita.id" class="card receita-tela-inicial h-100">
         <a href="">
@@ -18,7 +19,7 @@
           <p class="card-text">
             Publicado por
             <a style="font-size: 12px" href="">
-              <strong>{{ receita.dono_receita.usuario }}</strong>
+              <strong> {{ receita.dono_receita }} </strong>
             </a>
           </p>
           <p class="card-text">
@@ -58,15 +59,21 @@
 
 <script>
 import axios from "axios";
-
+import Sidebar from './parciais/Sidebar';
 
 export default {
-  name: "Index", 
+  name: "Index",
+
+  components: {
+    Sidebar
+  },
+
   data() {
     return {
         receitas: []
     }
   },
+  
   mounted() {
     this.getReceitas()
   },
