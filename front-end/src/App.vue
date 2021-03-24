@@ -24,13 +24,6 @@ export default {
     margin: 0;
     box-sizing: border-box;
 }
-
-body {
-    margin-top: 70px !important;
-    background-color: lightgray;
-    display: flex;
-}
-
 .descricao-tela-inicial {
     display: -webkit-box;
     -webkit-line-clamp: 4;

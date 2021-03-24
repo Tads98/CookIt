@@ -3,7 +3,7 @@
     <button onclick="Close(sidebar)" class="btn sidebar-close">
         <i class="fas fa-times"></i>
     </button>
-    <form method="GET" action="{% url 'receita:busca' %}">
+    <form method="GET" action="">
         <div id="order-by">
             <div class="form-group">
                 <label class="input-group-text input-label-sidebar">Ordenar:</label>
@@ -130,6 +130,7 @@ export default {
         width: 12%;
         background-color: #F3EFEF;
         border-right: 1px solid black;
+        float: left;
     }
 
     .stars-sidebar {
