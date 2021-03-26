@@ -22,13 +22,13 @@
            
             <li class="nav-item dropdown">
                 <a class="nav-link" href="" role="button">
-                    <h5><i style="font-size: 25px;" class="fas fa-book"></i></h5>
+                    <h5><i class="fas fa-book"></i></h5>
                 </a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
-                    <h5><i style="font-size: 25px;" class="fas fa-bell"></i></h5>
+                    <h5><i class="fas fa-bell"></i></h5>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="#">Action</a>
@@ -40,7 +40,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
-                    <h5><i style="font-size: 25px;" class="fas fa-heart"></i></h5>
+                    <h5><i class="fas fa-heart"></i></h5>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="#">Action</a>

@@ -1,121 +1,99 @@
 <template>
   <div class="container">
-    <h3>Inserindo Sua Receita</h3>
-    <form enctype="multipart/form-data" method="POST">
-      <div class="form-group" id="form_receita_nome_receita">
-        <label>Nome da receita:</label>
-        <input type="text" class="form-control form-group rounded-pill" />
-      </div>
-
-      <div class="form-group" id="form_receita_fotos">
-        <label for="inputAddress2">Fotos:</label>
-        <input type="file" class="form-control form-group rounded-pill" />
-      </div>
-
-      <div class="form-row">
-        <div class="form-group col-md-6" id="form_receita_ingredientes">
-          <label for="inputPassword4">Ingredientes</label>
-          <input type="text" class="form-control form-group rounded-pill" />
-          <select class="form-select" aria-label="Default select example">
-            <option selected>Open this select menu</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-          </select>
-          <input type="text" class="form-control form-group rounded-pill" />
-        </div>
-        <div
-          class="form-group col-md-6"
-          id="form_receita_caracteristicas_gerais"
-        >
-          <label for="inputPassword4">Características gerais</label>
-          <div id="form_receita_caracteristicas_gerais_container">
-            <div>
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="flexRadioDefault"
-                  id="flexRadioDefault1"
-                />
-                <label class="form-check-label" for="flexRadioDefault1">
-                  Default radio
-                </label>
-              </div>
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="flexRadioDefault"
-                  id="flexRadioDefault2"
-                  checked
-                />
-                <label class="form-check-label" for="flexRadioDefault2">
-                  Default checked radio
-                </label>
-              </div>
-              <select class="form-select" aria-label="Default select example">
-                <option selected>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
+        <h3>Inserindo Sua Receita</h3>
+        <form class="form">
+          <div class="form-group">
+            <input type="text" class="form-control rounded-pill" placeholder="Nome da receita">
+          </div>
+          <div class="form-group">
+          <!--  <ul id="thumbnail-input-group" class="jumbotron d-flex justify-content-around p-0">
+              <li class="form-control rounded-circle d-flex justify-content-center align-items-center" id="thumbnail-input">
+                <a href="">
+                  <i class="fas fa-camera"></i>
+                </a>
+              </li>
+              <li class="form-control rounded-circle d-flex justify-content-center align-items-center" id="thumbnail-input">
+                <a href="">
+                  <i class="fas fa-camera"></i>
+                </a>
+              </li>
+              <li class="form-control rounded-circle d-flex justify-content-center align-items-center" id="thumbnail-input">
+                <a href="">
+                  <i class="fas fa-camera"></i>
+                </a>
+              </li>
+              <li class="form-control rounded-circle d-flex justify-content-center align-items-center" id="thumbnail-input">
+                <a href="">
+                  <i class="fas fa-camera"></i>
+                </a>
+              </li>
+              <li class="form-control rounded-circle d-flex justify-content-center align-items-center" id="thumbnail-input">
+                <a href="">
+                  <i class="fas fa-camera"></i>
+                </a>
+              </li>
+            </ul>-->
+            <label for="">Foto</label>
+            <input type="file" class="form-control" name="" id=""/>
+          </div>
+          <div class="form-group row">
+            <div class="form-group col-sm">
+              <input multiple id="input" type="text" class="form-control rounded-pill" placeholder="Ingredientes">
             </div>
-            <div>
-              <label for="porcoes">Porções</label>
-              <input type="text" class="form-control form-group rounded-pill" />
-
-              <label for="tempo_preparo">Tempo de preparo</label>
-              <input type="text" class="form-control form-group rounded-pill" />
-
-              <select class="form-select" aria-label="Default select example">
-                <option selected>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
-
-              <select class="form-select" aria-label="Default select example">
-                <option selected>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
+            <div class="form-group col-sm">
+              <input id="input" type="text" class="form-control rounded-pill" placeholder="Categorias">
             </div>
           </div>
-        </div>
+          <div id="prep" class="row">
+            <div id="prep-mode" class="form-group col-sm">
+              <div class="jumbotron">
+                <h4>Modo de Preparo</h4>
+                <textarea class="form-control" type="text"></textarea>
+              </div>
+            </div>
+            <div id="general" class="form-group col-sm">
+              <div class="jumbotron">
+                <h4>Caracteristicas gerais</h4>
+                <div class="form-group">
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
+                    <label class="custom-control-label" for="customRadioInline1">Doce</label>
+                  </div>
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+                    <label class="custom-control-label" for="customRadioInline2">Salgado</label>
+                  </div>
+                </div>
+                <div class="form-group input-group">
+                  <div class="input-group-prepend">
+                    <label class="input-group-text">Porções</label>
+                  </div>
+                  <input class="form-control" id="portions" type="number" min="1">
+                </div>
+                <div class="form-group input-group">
+                  <div class="input-group-prepend">
+                    <label class="input-group-text">Tempo de preparo</label>
+                  </div>
+                  <input id="prep-time" type="time" class="form-control">
+                </div>
+                <div class="form-group input-group">
+                  <div class="input-group-prepend">
+                    <label class="input-group-text">Nível de dificuldade</label>
+                  </div>
+                  <select id="difficulty" class="form-control custom-select">
+                    <option id="easy" value="1">Fácil</option>
+                    <option id="medium" value="2">Médio</option>
+                    <option id="hard" value="3">Difícil</option>
+                    <option id="super" value="4">Super</option>
+                  </select>
+                </div>
+                <textarea type="text" class="form-group form-control" placeholder="Observações adicionais"></textarea>
+              </div>
+            </div>
+          </div>
+          <button id="submit-button" type="submit" class="btn btn-primary btn-block rounded-pill">Postar</button>
+        </form>
       </div>
-
-      <div class="form-row">
-        <div class="form-group col-md-6" id="form_receita_modo-preparo">
-          <label for="modo_preparo">Modo de preparo</label>
-          <textarea
-            name=""
-            class="form-control"
-            id=""
-            cols="30"
-            rows="10"
-          ></textarea>
-        </div>
-
-        <div class="form-group col-md-6" id="form_receita_obs-adicionais">
-          <label for="inputPassword4">Observações adicionais</label>
-          <textarea
-            name=""
-            class="form-control"
-            id=""
-            cols="30"
-            rows="10"
-          ></textarea>
-        </div>
-      </div>
-      <div class="form-row">
-        <button id="form_receita_button" type="submit" class="btn">
-          Postar
-        </button>
-      </div>
-    </form>
-  </div>
 </template>
 
 <script>
@@ -132,93 +110,130 @@ export default {};
   border-left: 1px solid darkgray;
   border-right: 1px solid darkgray;
 }
-#thumbnail-input-group-editarreceita {
-  padding: 1em 0 1em 0 !important;
+#search-input {
+    outline: none;
+    box-shadow: none !important;
+    border-radius: 36px 0 0 36px;
+    width: 20vw;
 }
+
+#search-button {
+    border-radius: 0 36px 36px 0;
+    padding: 0 1em 0 1em;
+    background-color: white;
+    border: 1px solid gray;
+    color: gray;
+    margin-left: -1px;
+}
+
+#search-button i {
+    vertical-align: middle;
+}
+
+#thumbnail-input-group {
+    padding: 1em 0 1em 0 !important;
+}
+
 .jumbotron {
-  background-color: lightgray;
-  border: 1px solid gray;
+    background-color: lightgray;
+    border: 1px solid gray;
 }
-#thumbnail-input-editarreceita {
-  list-style-type: none;
-  width: 10vw;
-  height: 10vw;
-  font-size: 4vw;
-  color: black;
-  border: 1px solid gray;
+
+#thumbnail-input {
+    list-style-type: none;
+    width: 10vw;
+    height: 10vw;
+    font-size: 4vw;
+    color: black;
+    border: 1px solid gray;
 }
-#thumbnail-input-editarreceita a {
-  color: black;
+
+#thumbnail-input a {
+    color: black
 }
-#prep-time-editarreceita,
+
+#prep-time,
 textarea,
-#portions-editarreceita {
-  border: none;
-  outline: none;
-  box-shadow: none !important;
+#portions {
+    border: none;
+    outline: none;
+    box-shadow: none !important;
 }
-#prep-input-editarreceita {
-  height: 60px;
+
+#prep-input {
+    height: 60px;
 }
-#prep-input-editarreceita textarea {
-  min-width: 40px;
-  resize: none;
-}
+
 textarea {
-  width: 100%;
-  height: 100%;
+/*    width: 100%;
+    height: 100%;
+*/    resize: none;
 }
+
 h3,
 h4 {
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 1em;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1em;
 }
+
 .form-control,
 .input-group-text,
 .custom-control-input {
-  border: 1px solid gray !important;
+    border: 1px solid gray !important;
 }
-#portions-editarreceita,
-#prep-time-editarreceita,
-#difficulty-editarreceita {
-  border-radius: 0 36px 36px 0;
+
+#portions,
+#prep-time,
+#difficulty {
+    border-radius: 0 36px 36px 0;
 }
-.input-label-editarreceita {
-  border-radius: 36px 0 0 36px !important;
+
+.input-group-text {
+    border-radius: 36px 0 0 36px !important;
 }
-#submit-button-editarreceita {
-  background-color: white;
-  font-weight: bold;
-  border: 1px solid gray !important;
-  color: black;
-  margin: 0 !important;
+
+#submit-button {
+    background-color: white;
+    font-weight: bold;
+    border: 1px solid gray !important;
+    color: black;
+    margin: 0 !important;
 }
-#prep-button-editarreceita {
-  background-color: lightgray;
-  border: 1px solid gray !important;
-  color: black;
+
+#prep button {
+    background-color: lightgray;
+    border: 1px solid gray !important;
+    color: black;
 }
+
 .form {
-  align-items: center;
-  justify-content: center;
+    align-items: center;
+    justify-content: center;
 }
-#easy-editarreceita {
-  background-color: #b1ff62;
+
+#easy {
+    background-color: #B1FF62;
 }
-#medium-editarreceita {
-  background-color: #ffe132;
+
+#medium {
+    background-color: #FFE132;
 }
-#hard-editarreceita {
-  background-color: #fc1d00;
+
+#hard {
+    background-color: #FC1D00;
 }
-#super-editarreceita {
-  background-color: #191919;
+
+#super {
+    background-color: #191919;
 }
-#prep-mode-editarreceita div div {
-  border-radius: 18px !important;
+
+textarea,
+#prep-mode div div {
+    border-radius: 18px !important;
 }
-#prep-editarreceita .jumbotron {
-  height: 460px !important;
+
+#prep .jumbotron {
+    height: 460px !important;
 }
 </style>

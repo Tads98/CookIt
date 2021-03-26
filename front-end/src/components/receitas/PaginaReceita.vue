@@ -183,10 +183,6 @@ export default {};
 </script>
 
 <style scoped>
-* {
-  margin: 0;
-  padding: 0;
-}
 .container {
   margin: 0 auto;
   margin-top: 80px;

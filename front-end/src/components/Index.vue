@@ -1,19 +1,25 @@
 <template>
   <div>
     <Sidebar />
-    
-
+    <div id="keywords" class="row">
+      <div class="col-sm form-group">
+        <input
+          type="text"
+          class="form-control rounded-pill"
+          placeholder="Quero que tenha"
+        />
+      </div>
+      <div class="col-sm form-group">
+        <input
+          type="text"
+          class="form-control rounded-pill"
+          placeholder="Quero que não tenha"
+        />
+      </div>
+    </div>
     <div
       class="cards-tela-inicial row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3"
     >
-      <div id="keywords" class="row">
-        <div class="col-sm form-group">
-            <input type="text" class="form-control rounded-pill" placeholder="Quero que tenha">
-        </div>
-        <div class="col-sm form-group">
-            <input type="text" class="form-control rounded-pill" placeholder="Quero que não tenha">
-        </div>
-    </div>
       <div class="col mb-4">
         <div
           v-for="receita in receitas"
@@ -113,6 +119,9 @@ export default {
 </script>
 
 <style scoped>
+#keywords {
+  margin-top: 70px;
+}
 .receita-tela-inicial {
   /*    padding: 2em 2em 0 2em !important; */
   background-color: white;
@@ -124,7 +133,6 @@ export default {
         border: 1px solid #707070; */
   padding-top: 1em;
   position: relative;
-  margin-top: 70px;
 }
 a {
   text-decoration: none !important;
@@ -214,5 +222,8 @@ ul li {
 }
 hr {
   border-color: black;
+}
+.form-group{
+  margin-top: 1rem;
 }
 </style>
