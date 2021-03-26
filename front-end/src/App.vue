@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Navbar />
+    <Navbar v-if="$route.name!='LoginCadastro'"/>
     <router-view />
   </div>
 </template>
@@ -27,14 +27,6 @@ export default {
   box-sizing: border-box;
 }
 
-.descricao-tela-inicial {
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  /* number of lines to show */
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
 
 i,
 svg {

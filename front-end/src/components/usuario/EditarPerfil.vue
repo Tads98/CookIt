@@ -2,8 +2,8 @@
     <div class="container editarperfil">
         <h4 class="font-weight-bold mb-3">Dados Gerais</h4>
         <div class="row mb-3">
-            <div class="col-sm d-flex justify-content-center">
-                <img src="" />
+            <div class="col-sm-2 d-flex justify-content-center">
+                <img src="@/assets/cookit_user.svg" width="120px" />
             </div>
             <div class="col-sm">
                 <textarea class="form-control h-100" rows="4" id="comment"></textarea>
@@ -189,6 +189,7 @@ export default {
     border-right: 1px solid gray;
     background-color: white;
     padding-top: 1em;
+    margin-top: 70px;
 }
 
 .card {
@@ -206,6 +207,9 @@ export default {
 textarea,
 .card {
     border-radius: .75em !important;
+}
+textarea{
+    resize: none;
 }
 
 .editarperfil button {

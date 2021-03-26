@@ -122,6 +122,14 @@ export default {
 #keywords {
   margin-top: 70px;
 }
+.descricao-tela-inicial {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  /* number of lines to show */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .receita-tela-inicial {
   /*    padding: 2em 2em 0 2em !important; */
   background-color: white;

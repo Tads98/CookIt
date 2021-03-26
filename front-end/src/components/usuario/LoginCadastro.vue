@@ -1,6 +1,6 @@
 <template>
   <div class="bg" style="">
-    <div class="container" style="background: none">
+    <div class="container" style="">
       <a href="">
         <img
           class="rounded mx-auto d-block"
@@ -75,24 +75,25 @@ export default {
 </script>
 
 <style scoped>
-body {
+
+.bg {
   width: 100%;
   height: 100%;
   position: fixed;
-}
-
-.bg {
-  margin-top: -70px !important;
-  background-size: contain;
-  width: 100%;
-  height: 100%;
   background-Image:url('~@/assets/bosch_cookit.jpg');
-
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .container {
-  margin-top: 150px;
   width: 420px;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -60%);
 }
 
 #login,
