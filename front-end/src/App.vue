@@ -23,13 +23,18 @@ export default {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-}
-.descricao-tela-inicial {
-    display: -webkit-box;
-    -webkit-line-clamp: 4;
-    /* number of lines to show */
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
+    }
+  
+  .descricao-tela-inicial {
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      /* number of lines to show */
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+  }
+
+  i{
+    color:black !important;
+  }
 </style>

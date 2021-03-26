@@ -188,6 +188,8 @@ export default {};
   padding: 0;
 }
 .container {
+  margin: 0 auto;
+  margin-top: 80px;
   border-left: 1px solid #707070;
   border-right: 1px solid #707070;
 }

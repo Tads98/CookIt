@@ -4,7 +4,7 @@
       <a href="">
         <img
           class="rounded mx-auto d-block"
-          src=""
+          src="@/assets/cookit_logo.svg"
           alt="Logo"
           height="90px"
           style="margin: 1em"
@@ -86,9 +86,12 @@ body {
   background-size: contain;
   width: 100%;
   height: 100%;
+  background-Image:url('~@/assets/bosch_cookit.jpg');
+
 }
 
 .container {
+  margin-top: 150px;
   width: 420px;
 }
 

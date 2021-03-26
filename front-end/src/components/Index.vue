@@ -1,9 +1,19 @@
 <template>
   <div>
     <Sidebar />
+    
+
     <div
       class="cards-tela-inicial row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3"
     >
+      <div id="keywords" class="row">
+        <div class="col-sm form-group">
+            <input type="text" class="form-control rounded-pill" placeholder="Quero que tenha">
+        </div>
+        <div class="col-sm form-group">
+            <input type="text" class="form-control rounded-pill" placeholder="Quero que não tenha">
+        </div>
+    </div>
       <div class="col mb-4">
         <div
           v-for="receita in receitas"

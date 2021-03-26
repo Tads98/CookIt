@@ -4,25 +4,25 @@
     <form enctype="multipart/form-data" method="POST">
       <div class="form-group" id="form_receita_nome_receita">
         <label>Nome da receita:</label>
-        <input type="text" class="form-control rounded-pill" />
+        <input type="text" class="form-control form-group rounded-pill" />
       </div>
 
       <div class="form-group" id="form_receita_fotos">
         <label for="inputAddress2">Fotos:</label>
-        <input type="file" class="form-control rounded-pill" />
+        <input type="file" class="form-control form-group rounded-pill" />
       </div>
 
       <div class="form-row">
         <div class="form-group col-md-6" id="form_receita_ingredientes">
           <label for="inputPassword4">Ingredientes</label>
-          <input type="text" class="form-control" />
+          <input type="text" class="form-control form-group rounded-pill" />
           <select class="form-select" aria-label="Default select example">
             <option selected>Open this select menu</option>
             <option value="1">One</option>
             <option value="2">Two</option>
             <option value="3">Three</option>
           </select>
-          <input type="text" class="form-control" />
+          <input type="text" class="form-control form-group rounded-pill" />
         </div>
         <div
           class="form-group col-md-6"
@@ -63,10 +63,10 @@
             </div>
             <div>
               <label for="porcoes">Porções</label>
-              <input type="text" class="form-control" />
+              <input type="text" class="form-control form-group rounded-pill" />
 
               <label for="tempo_preparo">Tempo de preparo</label>
-              <input type="text" class="form-control" />
+              <input type="text" class="form-control form-group rounded-pill" />
 
               <select class="form-select" aria-label="Default select example">
                 <option selected>Open this select menu</option>
@@ -125,6 +125,7 @@ export default {};
 <style scoped>
 .container {
   border: none !important;
+  margin-top: 70px;
   padding-top: 4rem;
   padding-bottom: 4rem;
   background-color: white;

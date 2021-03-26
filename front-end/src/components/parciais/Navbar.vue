@@ -3,7 +3,7 @@
       
 <nav class="navbar navbar-expand-lg d-flex justify-content-between fixed-top">
     <a class="navbar-brand" href="">
-        <img src="" alt="Logo" height="36px">
+        <img src="@/assets/cookit_logo.svg" alt="Logo" height="36px">
     </a>
     <form class="form-inline <!--mr-auto my-2 my-lg-0-->" method="GET" action="">
         <div id="search" class="input-group">
