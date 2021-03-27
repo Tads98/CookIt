@@ -29,6 +29,9 @@
           <a href="">
             <!--TODO: o tamanho da imagem precisa ser fixo e seu container também-->
             <img src="" alt="" class="card-img-top" />
+            <!-- ToDo: Arrumar uma forma de referenciar imagens  
+            <img src="{{ receita.fotos.url }}" alt="{{ receita.nome_receita }}" class="card-img-top">
+            -->
             <img src="cocktail.jpeg" class="card-img-top" alt="..." />
           </a>
           <div class="card-body">
@@ -51,21 +54,21 @@
               <i class="fa fa-star"></i>
               <i class="fa fa-star"></i>
             </p>
-            <p class="card-text descricao-tela-inicial"></p>
+            <p class="card-text descricao-tela-inicial"> {{ receita.modo_preparo }}    </p>
             <hr />
             <div class="row">
               <div class="info-tela-inicial col">
                 <div class="row">
                   <div class="col">
                     <i style="font-size: 25px" class="far fa-clock"></i>
-                    <p>5 minutos</p>
+                    <p>{{ receita.tempo_preparo }} {{ receita.tempo_unidade_medida }}</p>
                   </div>
                   <div class="col">
                     <i
                       style="font-size: 25px"
                       class="fas fa-concierge-bell"
                     ></i>
-                    <p>5 porções</p>
+                    <p>{{ receita.porcoes }} porções</p>
                   </div>
                 </div>
               </div>

@@ -1,12 +1,16 @@
 <template>
-  <div class="container">
+  <div
+
+   v-bind:key=" id "
+  
+   class="container">
     <div id="receita-receita-completa">
       <div id="dados-receita-completa">
         <div class="row">
           <div id="titulo-receita-completa" class="col">
             <h3> Receita </h3>
             <p>
-              publicado por <strong> Usuário </strong>
+              publicado por <strong> {{ receita.nome_receita }} </strong>
             </p>
             <div>
               <i class="fas fa-star"></i>

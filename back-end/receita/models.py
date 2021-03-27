@@ -60,6 +60,7 @@ class Receita(models.Model):
         )
     )
     dono_receita = models.ForeignKey(User, on_delete=models.CASCADE,)
+    
     # TODO: configurar este model para receber somente imagens
     fotos = models.ImageField(upload_to='receita/media', blank=True, null=True)
     categoria = models.CharField(

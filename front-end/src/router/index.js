@@ -21,7 +21,7 @@ const routes = [
         component: FormReceita
     },
     {
-        path: '/PaginaReceita/',
+        path: '/PaginaReceita/:id', 
         name: 'PaginaReceita',
         component: PaginaReceita
     },
