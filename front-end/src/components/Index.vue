@@ -20,12 +20,8 @@
     <div
       class="cards-tela-inicial row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3"
     >
-      <div class="col mb-4">
-        <div
-          v-for="receita in receitas"
-          v-bind:key="receita.id"
-          class="card receita-tela-inicial h-100"
-        >
+      <div v-for="receita in receitas" v-bind:key="receita.id" class="col mb-4">
+        <div class="card receita-tela-inicial h-100">
           <a href="">
             <!--TODO: o tamanho da imagem precisa ser fixo e seu container também-->
             <img src="" alt="" class="card-img-top" />
@@ -39,12 +35,12 @@
               <i class="far fa-heart"></i>
             </a>
             <a href="">
-              <h5 class="card-title">{{ receita.nome_receita }}</h5>
+              <h5 class="card-title">{{ receita.nome_receita}}</h5>
             </a>
             <p class="card-text">
               Publicado por
               <a style="font-size: 12px" href="">
-                <strong> {{ receita.dono_receita }} </strong>
+                <strong> {{ receita.dono_receita.first_name }} </strong>
               </a>
             </p>
             <p class="card-text">
@@ -54,14 +50,19 @@
               <i class="fa fa-star"></i>
               <i class="fa fa-star"></i>
             </p>
-            <p class="card-text descricao-tela-inicial"> {{ receita.modo_preparo }}    </p>
+            <p class="card-text descricao-tela-inicial">
+              {{ receita.modo_preparo }}
+            </p>
             <hr />
             <div class="row">
               <div class="info-tela-inicial col">
                 <div class="row">
                   <div class="col">
                     <i style="font-size: 25px" class="far fa-clock"></i>
-                    <p>{{ receita.tempo_preparo }} {{ receita.tempo_unidade_medida }}</p>
+                    <p>
+                      {{ receita.tempo_preparo }}
+                      {{ receita.tempo_unidade_medida }}
+                    </p>
                   </div>
                   <div class="col">
                     <i
@@ -234,7 +235,7 @@ ul li {
 hr {
   border-color: black;
 }
-.form-group{
+.form-group {
   margin-top: 1rem;
 }
 </style>
