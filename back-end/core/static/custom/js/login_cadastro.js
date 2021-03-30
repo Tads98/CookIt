@@ -10,5 +10,4 @@ function cadastroOpen() {
     document.getElementById("cadastro-form").style.display = "block";
     document.getElementById("login-button").style.backgroundColor = "lightgray";
     document.getElementById("cadastro-button").style.backgroundColor = "gray";
-
 }
