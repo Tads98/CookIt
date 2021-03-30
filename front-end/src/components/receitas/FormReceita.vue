@@ -180,19 +180,6 @@ export default {
   },
 
   methods: {
-    addIngredientes(){
-      axios({
-        method: "post",
-        url: "http://127.0.0.1:8000/api/ingrediente/",
-        data: {
-          
-        },
-        auth: {
-          username: "admin",
-          password: "12345",
-        },
-      })
-    },
     addReceita() {
       axios({
         method: "post",

@@ -1,13 +1,6 @@
 <template>
   <div>
     <div class="row">
-        <div class="ing-tag border border-dark p-1 rounded-pill">
-            <span class="p-1 border-right border-dark">Ingrediente</span>
-            <span class="p-1 border-right border-dark">Q</span>
-            <span class="p-1">Unidade</span>
-        </div>
-    </div>
-    <div class="row">
       <div
         class="ing-tag border border-dark p-1 rounded-pill"
         v-for="(ingrediente, index) in ingredientes"
@@ -19,9 +12,14 @@
         <span class="p-1 border-right border-dark">{{
           ingrediente.quantidade_ingrediente
         }}</span>
-        <span class="p-1">{{
+        <!--        <span class="p-1">{{
           ingrediente.unidade_medida_ingrediente
-        }}</span>
+        }}</span>-->
+        <div v-for="opt in ingredienteUnidadeData" :key="opt.char">
+          <span v-if="ingrediente.unidade_medida_ingrediente == opt.char">
+            {{ opt.text }}
+          </span>
+        </div>
         <span @click="removeTag(index)">
           <i class="fas fa-times-circle"></i>
         </span>
@@ -42,31 +40,36 @@
         id="unidade-medida"
         v-model="tagIngredienteUnidade"
       >
-        <option value="1" selected>Unidade</option>
-        <option value="2">Xícara</option>
-        <option value="3">Colher de Sopa</option>
-        <option value="4">Colher de Chá</option>
-        <option value="5">Dente de Alho</option>
-        <option value="6">Mililitro(ml)</option>
-        <option value="7">Litros</option>
-        <option value="8">Gramas</option>
-        <option value="9">Quilograma(kg)</option>
-        <option value="10">ao gosto</option>
+        <option value="U" selected>Unidade</option>
+        <option value="X">Xícara</option>
+        <option value="C">Colher de Sopa</option>
+        <option value="CH">Colher de Chá</option>
+        <option value="D">Dente de Alho</option>
+        <option value="M">Mililitro(ml)</option>
+        <option value="L">Litros</option>
+        <option value="G">Gramas</option>
+        <option value="KG">Quilograma(kg)</option>
+        <option value="AGS">ao gosto</option>
       </select>
       <input
-        min=1
+        min="1"
         class="form-control col-2"
         type="number"
         v-model="tagIngredienteQuantidade"
       />
       <button type="button" class="btn btn-secondary" @click="addTag">
-          <i class="fas fa-plus"></i>
+        <i class="fas fa-plus"></i>
+      </button>
+      <button type="button" class="btn btn-secondary" @click="addIngredientes">
+        teste
       </button>
     </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "IngredienteInput",
   data() {
@@ -77,9 +80,69 @@ export default {
       tagIngredienteNome: "",
       tagIngredienteQuantidade: 1,
       tagIngredienteUnidade: "",
+      ingredienteUnidadeData: [
+        {
+          char: "U",
+          text: "Unidade",
+        },
+        {
+          char: "X",
+          text: "Xícara",
+        },
+        {
+          char: "C",
+          text: "Colher de Sopa",
+        },
+        {
+          char: "CH",
+          text: "Colher de Chá",
+        },
+        {
+          char: "M",
+          text: "Mililitro(ml)",
+        },
+        {
+          char: "L",
+          text: "Litros",
+        },
+        {
+          char: "G",
+          text: "Gramas(g)",
+        },
+        {
+          char: "KG",
+          text: "Quilograma(kg)",
+        },
+        {
+          char: "AGS",
+          text: "a gosto",
+        },
+      ],
     };
   },
   methods: {
+    addIngredientes() {
+      let postData = {
+        ingrediente_list: this.ingredientes,
+      };
+      axios({
+        method: "post",
+        url: "http://127.0.0.1:8000/api/ingrediente/",
+        data: postData,
+        auth: {
+          username: "admin",
+          password: "12345",
+        },
+      })
+        .then((response) => {
+          // your action after success
+          console.log(response);
+        })
+        .catch((error) => {
+          // your action on error success
+          console.log(error);
+        });
+    },
     addTag() {
       if (
         this.tagIngredienteNome != "" &&
@@ -106,7 +169,7 @@ export default {
 </script>
 
 <style>
-.ing-tag{
-    background-color: #F3EFEF;
+.ing-tag {
+  background-color: #f3efef;
 }
 </style>
