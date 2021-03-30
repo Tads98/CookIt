@@ -1,43 +1,48 @@
 <template>
   <div>
-    <div
-      v-for="(ingrediente, index) in ingredientes"
-      :key="'ingrediente' + index"
-    >
-      <span></span>
+    <div class="row">
+        <div class="ing-tag border border-dark p-1 rounded-pill">
+            <span class="p-1 border-right border-dark">Ingrediente</span>
+            <span class="p-1 border-right border-dark">Q</span>
+            <span class="p-1">Unidade</span>
+        </div>
     </div>
-    <div class="row form-group">
+    <div class="row">
       <div
+        class="ing-tag border border-dark p-1 rounded-pill"
         v-for="(ingrediente, index) in ingredientes"
         :key="'ingrediente' + index"
       >
-        <span v-if="ing_ativo !== index" @click="ing_ativo = index">{{
-          ingrediente
+        <span class="p-1 border-right border-dark">{{
+          ingrediente.nome_ingrediente
         }}</span>
-        <input v-else
-          type="text"
-          v-model="ingredientes[index]"
-          v-focus
-          :style="{ width: ing_ativo + 'ch' }"
-          @keyup.enter="ing_ativo = null"
-          @blur="ing_ativo = null"
-        />
-        <span @click="removeTag(index)"
-          ><i class="fas fa-times-circle"></i
-        ></span>
+        <span class="p-1 border-right border-dark">{{
+          ingrediente.quantidade_ingrediente
+        }}</span>
+        <span class="p-1">{{
+          ingrediente.unidade_medida_ingrediente
+        }}</span>
+        <span @click="removeTag(index)">
+          <i class="fas fa-times-circle"></i>
+        </span>
       </div>
+    </div>
+    <div class="row form-group">
       <input
         multiple
         id="input"
         type="text"
         class="form-control rounded-pill col-5"
         placeholder="Ingrediente"
-        v-model="tagInput"
-        @keyup.enter="addTag"
+        v-model="tagIngredienteNome"
       />
-      <button type="button" @click="addTag">Adicionar</button>
-      <select class="form-control col-3" name="" id="unidade-medida">
-        <option value="1">Unidade</option>
+      <select
+        class="custom-select col-3"
+        name=""
+        id="unidade-medida"
+        v-model="tagIngredienteUnidade"
+      >
+        <option value="1" selected>Unidade</option>
         <option value="2">Xícara</option>
         <option value="3">Colher de Sopa</option>
         <option value="4">Colher de Chá</option>
@@ -48,7 +53,15 @@
         <option value="9">Quilograma(kg)</option>
         <option value="10">ao gosto</option>
       </select>
-      <input class="form-control col-2" type="number" />
+      <input
+        min=1
+        class="form-control col-2"
+        type="number"
+        v-model="tagIngredienteQuantidade"
+      />
+      <button type="button" class="btn btn-secondary" @click="addTag">
+          <i class="fas fa-plus"></i>
+      </button>
     </div>
   </div>
 </template>
@@ -60,17 +73,30 @@ export default {
     return {
       ingredientes: [],
       ing_ativo: null,
-      nome_ingrediente: "",
-      quant_ingrediente: "",
-      uni_ingrediente: "",
+      ingrediente: null,
+      tagIngredienteNome: "",
+      tagIngredienteQuantidade: 1,
+      tagIngredienteUnidade: "",
     };
   },
   methods: {
     addTag() {
-      if (!this.tagInput == "") {
-        this.ingredientes.push(this.tagInput);
+      if (
+        this.tagIngredienteNome != "" &&
+        this.tagIngredienteUnidade != "" &&
+        this.tagIngredienteQuantidade != ""
+      ) {
+        this.ingrediente = {
+          nome_ingrediente: this.tagIngredienteNome,
+          unidade_medida_ingrediente: this.tagIngredienteUnidade,
+          quantidade_ingrediente: this.tagIngredienteQuantidade,
+        };
+        console.log(this.ingrediente);
+        this.ingredientes.push(this.ingrediente);
       }
-      this.tagInput = "";
+      this.tagIngredienteNome = "";
+      this.tagIngredienteQuantidade = "";
+      this.tagIngredienteUnidade = "";
     },
     removeTag(index) {
       this.ingredientes.splice(index, 1);
@@ -80,4 +106,7 @@ export default {
 </script>
 
 <style>
+.ing-tag{
+    background-color: #F3EFEF;
+}
 </style>

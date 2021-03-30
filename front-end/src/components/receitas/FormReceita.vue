@@ -75,8 +75,6 @@
                   id="customRadioInline1"
                   name="customRadioInline1"
                   class="custom-control-input"
-                  v-model="tagInput"
-                  @keyup.space="addTag"
                 />
                 <label class="custom-control-label" for="customRadioInline1"
                   >Doce</label
