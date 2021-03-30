@@ -20,6 +20,11 @@ class ReceitaSerializer(serializers.ModelSerializer):
         model = Receita
         fields = '__all__'
 
+class PostReceitaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Receita
+        fields = '__all__'
+
 class IngredienteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Ingrediente

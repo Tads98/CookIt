@@ -5,7 +5,9 @@ from django.conf.urls.static import static  # Para upload de imagens
 from rest_framework.routers import DefaultRouter
 from . import views
 
-from receita.views import ReceitaViewSet, IngredienteViewSet, AvaliacaoViewSet, UserViewSet  
+from receita.views import ( ReceitaViewSet, IngredienteViewSet,
+                          AvaliacaoViewSet, UserViewSet,
+                          PostReceitaViewSet )  
 from usuario.views import UsuarioViewSet  
 
 router = DefaultRouter() 
@@ -15,6 +17,7 @@ router.register('ingrediente', IngredienteViewSet, basename = 'ingrediente')
 router.register('avaliacao', AvaliacaoViewSet, basename = 'avaliacao')
 router.register('user', UserViewSet, basename='user')
 router.register('usuario', UsuarioViewSet, basename = 'usuario')
+router.register('post-receita', PostReceitaViewSet, basename = 'post-receita')
 
 vue_urls = [
   path('', views.frontend),

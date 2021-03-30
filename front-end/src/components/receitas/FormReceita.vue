@@ -41,15 +41,9 @@
         <label for="">Foto</label>
         <input type="file" class="form-control" name="" id="" />
       </div>
-      <div class="form-group row">
+      <div class="row">
         <div class="form-group col-sm">
-          <input
-            multiple
-            id="input"
-            type="text"
-            class="form-control rounded-pill"
-            placeholder="Ingredientes"
-          />
+          <IngredienteInput/>
         </div>
         <div class="form-group col-sm">
           <input
@@ -64,8 +58,10 @@
         <div id="prep-mode" class="form-group col-sm">
           <div class="jumbotron">
             <h4>Modo de Preparo</h4>
-            <textarea class="form-control" type="text"
-            v-model="modo_preparo"
+            <textarea
+              class="form-control"
+              type="text"
+              v-model="modo_preparo"
             ></textarea>
           </div>
         </div>
@@ -79,6 +75,8 @@
                   id="customRadioInline1"
                   name="customRadioInline1"
                   class="custom-control-input"
+                  v-model="tagInput"
+                  @keyup.space="addTag"
                 />
                 <label class="custom-control-label" for="customRadioInline1"
                   >Doce</label
@@ -100,19 +98,32 @@
               <div class="input-group-prepend">
                 <label class="input-group-text">Porções</label>
               </div>
-              <input class="form-control" id="portions" type="number" min="1" v-model="porcoes" />
+              <input
+                class="form-control"
+                id="portions"
+                type="number"
+                min="1"
+                v-model="porcoes"
+              />
             </div>
             <div class="form-group input-group">
               <div class="input-group-prepend">
                 <label class="input-group-text">Tempo de preparo</label>
               </div>
-              <input id="prep-time" type="time" class="form-control" v-model="tempo_preparo" />
+              <input
+                id="prep-time"
+                type="number"
+                class="form-control"
+                v-model="tempo_preparo"
+              />
             </div>
             <div class="form-group input-group">
               <div class="input-group-prepend">
                 <label class="input-group-text">Nível de dificuldade</label>
               </div>
-              <select id="difficulty" class="form-control custom-select"
+              <select
+                id="difficulty"
+                class="form-control custom-select"
                 v-model="dificuldade"
               >
                 <option id="easy" value="1">Fácil</option>
@@ -143,34 +154,55 @@
 
 <script>
 import axios from "axios";
+import IngredienteInput from './IngredienteInput';
 
 export default {
   name: "FormReceita",
+
+  components:{
+    IngredienteInput,
+  },
+
   data() {
     return {
       nome_receita: "",
       modo_preparo: "",
       porcoes: 0,
-      sabor_receita: "",
+      sabor_receita: "D",
       tempo_preparo: 0,
-      tempo_unidade_medida: "",
+      tempo_unidade_medida: "M",
       fotos: null,
-      categoria: "",
-      dificuldade: "",
+      categoria: "A",
+      dificuldade: "F",
       data_publicacao: "",
       slug: "",
       observacoes_adicionais: "",
-      ingredientes: [],
+      //Tag Ingrediente
     };
   },
+
   methods: {
+    addIngredientes(){
+      axios({
+        method: "post",
+        url: "http://127.0.0.1:8000/api/ingrediente/",
+        data: {
+          
+        },
+        auth: {
+          username: "admin",
+          password: "12345",
+        },
+      })
+    },
     addReceita() {
       axios({
         method: "post",
-        url: "http://127.0.0.1:8000/api/receita/",
+        url: "http://127.0.0.1:8000/api/post-receita/",
         data: {
           nome_receita: this.nome_receita,
           modo_preparo: this.modo_preparo,
+          dono_receita: 1,
           porcoes: this.porcoes,
           sabor_receita: this.sabor_receita,
           tempo_preparo: this.tempo_preparo,
@@ -190,23 +222,23 @@ export default {
       })
         .then((response) => {
           let newReceita = {
-            'id': response.data.id,
-            'nome_receita': this.nome_receita,
-            'modo_preparo': this.modo_preparo,
-            'porcoes': this.porcoes,
-            'sabor_receita': this.sabor_receita,
-            'tempo_preparo': this.tempo_preparo,
-            'tempo_unidade_medida': this.tempo_unidade_medida,
-            'fotos': this.fotos,
-            'categoria': this.categoria,
-            'dificuldade': this.dificuldade,
-            'data_publicacao': this.data_publicacao,
-            'slug': this.slug,
-            'observacoes_adicionais': this.observacoes_adicionais,
-            'ingredientes': this.ingredientes,
+            id: response.data.id,
+            nome_receita: this.nome_receita,
+            modo_preparo: this.modo_preparo,
+            porcoes: this.porcoes,
+            sabor_receita: this.sabor_receita,
+            tempo_preparo: this.tempo_preparo,
+            tempo_unidade_medida: this.tempo_unidade_medida,
+            fotos: this.fotos,
+            categoria: this.categoria,
+            dificuldade: this.dificuldade,
+            data_publicacao: this.data_publicacao,
+            slug: this.slug,
+            observacoes_adicionais: this.observacoes_adicionais,
+            ingredientes: this.ingredientes,
           };
 
-          this.receitas.push(newReceita);
+          //this.receitas.push(newReceita);
 
           this.nome_receita = "";
           this.modo_preparo = "";
@@ -221,11 +253,14 @@ export default {
           this.slug = "";
           this.observacoes_adicionais = "";
           this.ingredientes = [];
+
+          return newReceita;
         })
         .catch((error) => {
           console.log(error);
         });
     },
+    /*  */
   },
 };
 </script>
