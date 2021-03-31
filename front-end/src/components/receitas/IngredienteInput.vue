@@ -75,6 +75,7 @@ export default {
   data() {
     return {
       ingredientes: [],
+      ingrediente_ids: [],
       ing_ativo: null,
       ingrediente: null,
       tagIngredienteNome: "",
@@ -122,26 +123,32 @@ export default {
   },
   methods: {
     addIngredientes() {
-      let postData = {
-        ingrediente_list: this.ingredientes,
-      };
-      axios({
+      for(var i = 0; i < this.ingredientes.length; i++){
+        axios({
         method: "post",
         url: "http://127.0.0.1:8000/api/ingrediente/",
-        data: postData,
+        data: this.ingredientes[i],
         auth: {
           username: "admin",
           password: "12345",
         },
+        headers:{
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        }
       })
         .then((response) => {
           // your action after success
+          // this.ingrediente_ids.push(response.id)
+          this.ingrediente_ids.push(response.data.id)
           console.log(response);
         })
         .catch((error) => {
           // your action on error success
           console.log(error);
         });
+      }
+      console.log(this.ingrediente_ids)
     },
     addTag() {
       if (
