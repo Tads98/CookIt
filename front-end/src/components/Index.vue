@@ -24,11 +24,14 @@
         <div class="card receita-tela-inicial h-100">
           <a href="">
             <!--TODO: o tamanho da imagem precisa ser fixo e seu container também-->
-            <img src="" alt="" class="card-img-top" />
+            <!--<img v-bind:src="article.image" alt="">-->
+            <img v-bind:src="receita.fotos" alt="" class="card-img-top" />
             <!-- ToDo: Arrumar uma forma de referenciar imagens  
             <img src="{{ receita.fotos.url }}" alt="{{ receita.nome_receita }}" class="card-img-top">
             -->
-            <img src="cocktail.jpeg" class="card-img-top" alt="..." />
+            <!--<img v-bind:src="article.image" alt="">-->
+            <!--<img v-bind:src="1843875.jpg" class="card-img-top" alt="..." />-->
+          
           </a>
           <div class="card-body">
             <a href="" class="fav-tela-inicial">
