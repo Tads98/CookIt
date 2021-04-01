@@ -79,7 +79,7 @@
             </div>
           </div>
           <button
-            onclick="window.location.href='';"
+            @click="$router.push({name: 'PaginaReceita', params: {id: 1}})"
             class="see-more-tela-inicial btn"
           >
             <i class="fas fa-book-open"></i>

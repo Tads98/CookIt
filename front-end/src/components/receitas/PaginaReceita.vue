@@ -1,16 +1,16 @@
 <template>
   <div
 
-   v-bind:key=" id "
+   v-bind:key="receita.id"
   
    class="container">
     <div id="receita-receita-completa">
       <div id="dados-receita-completa">
         <div class="row">
           <div id="titulo-receita-completa" class="col">
-            <h3> Receita </h3>
+            <h3> {{ receita.nome_receita }} </h3>
             <p>
-              publicado por <strong> {{ receita.nome_receita }} </strong>
+              publicado por <strong> {{ receita.dono_receita }} </strong>
             </p>
             <div>
               <i class="fas fa-star"></i>
@@ -51,7 +51,7 @@
                     <i class="far fa-clock"></i>
                     <br />
                     <p>
-                      Tempo de Preparo
+                      Tempo de Preparo: {{ receita.tempo_preparo }}
                     </p>
                   </div>
                 </div>
@@ -61,7 +61,7 @@
                     <i class="fas fa-concierge-bell"></i>
                     <br />
                     <p>
-                      Porções
+                      Porções: {{ receita.porcoes }}
                     </p>
                   </div>
                 </div>
@@ -71,7 +71,7 @@
                     <i class="fas fa-burn"></i>
                     <br />
                     <p>
-                      Dificuldade:
+                      Dificuldade:{{ receita.dificuldade }} 
                     </p>
                   </div>
                 </div>
@@ -96,7 +96,7 @@
                   <div class="icon-text-receita-completa">
                     <i class="far fa-calendar-alt"></i>
                     <br />
-                    <p>Data de publicação</p>
+                    <p>Data de publicação: {{ receita.data_publicacao }}</p>
                   </div>
                 </div>
               </div>
@@ -112,9 +112,9 @@
               <div id="alinhamento-ingredientes">
                 <p>
                   <strong style="color: #f0a916">
-                      Nome do Ingrediente
+                      Nome do Ingrediente : {{ receita.data_publicacao }} 
                   </strong>
-                  <strong>Unidade de Medida</strong>
+                  <strong>Unidade de Medida : {{ receita.unidade_medida_ingrediente }}</strong>
                 </p>
               </div>
             </div>
@@ -122,7 +122,7 @@
             <div id="modo-de-preparo-receita-completa" class="col">
               <h3>Modo de Preparo</h3>
 
-              <p> [[ Texto ]]</p>
+              <p>{{ receita.modo_preparo }}</p>
             </div>
           </div>
 
@@ -132,15 +132,7 @@
 
               <div id="obad-receita-completa">
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-                  eu dapibus eros, at interdum odio. Integer at enim eu ligula
-                  fermentum gravida. Pellentesque non odio a diam accumsan
-                  blandit accumsan vitae lectus. Etiam vitae placerat justo.
-                  Etiam vel volutpat nisi. Fusce eleifend arcu vel consequat
-                  vestibulum. Aliquam vulputate hendrerit tincidunt. Nulla in
-                  porta nunc, nec pulvinar lacus. Nullam vel eros justo.
-                  Phasellus quis lacus vel velit mollis bibendum. Etiam volutpat
-                  enim non gravida maximus.
+                  {{ receita.observacoes_adicionais }}
                 </p>
               </div>
             </div>
@@ -152,9 +144,7 @@
                   <div class="col">
                     <h4>Dono da Receita</h4>
                     <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Cras eu dapibus eros, at interdum odio. Integer at enim eu
-                      ligula fermentum gravida.
+                      {{ receita.dono_receita }}
                     </p>
                   </div>
                 </div>
