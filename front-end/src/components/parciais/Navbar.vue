@@ -8,9 +8,9 @@
     <form class="form-inline <!--mr-auto my-2 my-lg-0-->" method="GET" action="">
         <div id="search" class="input-group">
             <!--TODO: implementar uma forma de limpar sessões neste campo abaixo-->
-            <input id="search-input" class="form-control" type="search" placeholder="Busque sua receita"
-                aria-label="Busca" name="termo" value="">
-            <button id="search-button" class="btn btn-success" type="submit">
+            <input id="search-input" v-model="search_term" class="form-control" type="search" 
+            placeholder="Busque sua receita" aria-label="Busca" name="termo" value="">
+            <button id="search-button" class="btn btn-success" v-on:click.prevent="getReceita()" type="submit">
                 <i class="fas fa-search"></i>
             </button>
         </div>
@@ -84,9 +84,41 @@
 </template>
 
 <script>
+
 export default {
-    name:'Navbar'
+    name:'Navbar',
+
+    data() {
+        return {
+            receitas: [],
+            loading: true,
+            currentReceita: {},
+            message: null,
+            newReceita: {'receita_heading': null, 
+            'receita_body': null},
+            search_term: '', 
+        };
+    },
+    mounted: function(){ this.getReceita() },
+    methods:{
+        getReceita: function(){
+            let api_url = 'http://localhost:8000/api/receita/';
+            if(this.search_term !== '' || this.search_term !== null){
+                api_url = 'http://localhost:8000/api/receita/?search = ${this.search_term}'
+            }
+            this.loading = true;
+            this.$http.get(api_url).then((response) => {
+                this.receita = response.data;
+                this.loading = false;
+            }).catch((err) => {
+                this.loading = false;
+                console.log(err);
+            })
+        },
+    }
+
 }
+
 </script>
 
 <style scoped>

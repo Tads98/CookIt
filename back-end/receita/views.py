@@ -7,10 +7,11 @@ from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from django.db.models import Q
+from .models import Receita
 from . import models
 from .forms import ReceitaForm
 # Rest
-from rest_framework import viewsets
+from rest_framework import viewsets, filters
 from receita.serializers import ( ReceitaSerializer, IngredienteSerializer, 
                                 AvaliacaoSerializer, UserSerializer,
                                 PostReceitaSerializer )
@@ -104,8 +105,13 @@ class CadastrarReceita(LoginRequiredMixin, CreateView):
 # Rest - Serializers
 
 class ReceitaViewSet(viewsets.ModelViewSet):
-    serializer_class = ReceitaSerializer
     queryset = models.Receita.objects.all()
+    serializer_class = ReceitaSerializer
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('nome_receita')
+   
+    #serializer_class = ReceitaSerializer
+    #queryset = models.Receita.objects.all()
 
 class PostReceitaViewSet(viewsets.ModelViewSet):
     serializer_class = PostReceitaSerializer
@@ -121,3 +127,5 @@ class AvaliacaoViewSet(viewsets.ModelViewSet):
 class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
     queryset = models.User.objects.all()
+
+
