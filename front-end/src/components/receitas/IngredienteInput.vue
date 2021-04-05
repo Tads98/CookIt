@@ -71,10 +71,10 @@
 import axios from "axios";
 
 export default {
-  name: "IngredienteInput",
+  props: [ "ingredientes" ],
+
   data() {
     return {
-      ingredientes: [],
       ingrediente_ids: [],
       ing_ativo: null,
       ingrediente: null,
@@ -148,7 +148,7 @@ export default {
           console.log(error);
         });
       }
-      console.log(this.ingrediente_ids)
+      console.log(this.ingredientes)
     },
     addTag() {
       if (
@@ -170,6 +170,9 @@ export default {
     },
     removeTag(index) {
       this.ingredientes.splice(index, 1);
+    },
+    getIngredientes(){
+      return this.ingredientes;
     },
   },
 };

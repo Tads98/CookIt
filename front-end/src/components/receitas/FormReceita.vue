@@ -43,7 +43,7 @@
       </div>
       <div class="row">
         <div class="form-group col-sm">
-          <IngredienteInput/>
+          <IngredienteInput v-bind:ingredientes="ingredientes"/>
         </div>
         <div class="form-group col-sm">
           <input
@@ -124,10 +124,10 @@
                 class="form-control custom-select"
                 v-model="dificuldade"
               >
-                <option id="easy" value="1">Fácil</option>
-                <option id="medium" value="2">Médio</option>
-                <option id="hard" value="3">Difícil</option>
-                <option id="super" value="4">Super</option>
+                <option id="easy" value="F">Fácil</option>
+                <option id="medium" value="M">Médio</option>
+                <option id="hard" value="D">Difícil</option>
+                <option id="super" value="C">Super</option>
               </select>
             </div>
             <textarea
@@ -175,13 +175,15 @@ export default {
       data_publicacao: "",
       slug: "",
       observacoes_adicionais: "",
+      ingredientes: [],
       //Tag Ingrediente
     };
   },
 
+
   methods: {
     addReceita() {
-      
+      console.log(this.ingredientes)
       axios({
         method: "post",
         url: "http://127.0.0.1:8000/api/post-receita/",

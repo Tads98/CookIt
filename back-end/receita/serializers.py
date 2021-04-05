@@ -27,9 +27,17 @@ class ReceitaSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class PostReceitaSerializer(serializers.ModelSerializer):
+    ingredientes = IngredienteSerializer(many=True)
     class Meta:
         model = Receita
         fields = '__all__'
+
+    def create(self, validated_data):
+        ingredientes_data = validated_data.pop('ingredientes')
+        receita = Receita.objects.create(**validated_data)
+        for ingrediente in ingredientes_data:
+            Ingrediente.objects.create(receita=receita, **ingrediente)
+        return receita
 
 
 class AvaliacaoSerializer(serializers.ModelSerializer):
