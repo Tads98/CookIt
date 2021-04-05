@@ -10,7 +10,7 @@
           <div id="titulo-receita-completa" class="col">
             <h3> {{ receita.nome_receita }} </h3>
             <p>
-              publicado por <strong> {{ receita.dono_receita }} </strong>
+              publicado por <strong> {{ receita.dono_receita.first_name }} </strong>
             </p>
             <div>
               <i class="fas fa-star"></i>
@@ -26,7 +26,7 @@
               <img
                 class="receita-foto rounded-circle"
                 style="max-width: 800px"
-                src=""
+                v-bind:src="receita.fotos"
                 alt=""
               />
             </div>
@@ -51,7 +51,7 @@
                     <i class="far fa-clock"></i>
                     <br />
                     <p>
-                      Tempo de Preparo: {{ receita.tempo_preparo }}
+                      {{ receita.tempo_preparo }} {{ receita.tempo_unidade_medida }}
                     </p>
                   </div>
                 </div>
@@ -61,7 +61,7 @@
                     <i class="fas fa-concierge-bell"></i>
                     <br />
                     <p>
-                      Porções: {{ receita.porcoes }}
+                      {{ receita.porcoes }}
                     </p>
                   </div>
                 </div>
@@ -71,7 +71,7 @@
                     <i class="fas fa-burn"></i>
                     <br />
                     <p>
-                      Dificuldade:{{ receita.dificuldade }} 
+                      {{ receita.dificuldade }} 
                     </p>
                   </div>
                 </div>
@@ -96,7 +96,7 @@
                   <div class="icon-text-receita-completa">
                     <i class="far fa-calendar-alt"></i>
                     <br />
-                    <p>Data de publicação: {{ receita.data_publicacao }}</p>
+                    <p>{{ receita.data_publicacao  }}</p>
                   </div>
                 </div>
               </div>
@@ -110,11 +110,11 @@
               </h3>
 
               <div id="alinhamento-ingredientes">
-                <p>
+                <p v-for="ingrediente in receita.ingredientes" :key="ingrediente.id">
                   <strong style="color: #f0a916">
-                      Nome do Ingrediente : {{ receita.data_publicacao }} 
+                      {{ ingrediente.nome_ingrediente }} 
                   </strong>
-                  <strong>Unidade de Medida : {{ receita.unidade_medida_ingrediente }}</strong>
+                  <strong>{{ ingrediente.quantidade_ingrediente }} {{ ingrediente.unidade_medida_ingrediente }}</strong>
                 </p>
               </div>
             </div>
@@ -142,9 +142,9 @@
                 <div id="dados-usuario-receita-completa" class="row">
                   <i class="fas fa-user-circle col-2"></i>
                   <div class="col">
-                    <h4>Dono da Receita</h4>
+                    <h4>{{ receita.dono_receita.first_name }} {{ receita.dono_receita.last_name }}</h4>
                     <p>
-                      {{ receita.dono_receita }}
+                      
                     </p>
                   </div>
                 </div>
@@ -173,7 +173,29 @@
 </template>
 
 <script>
-export default {};
+import axios from "axios";
+export default {
+  data(){
+    return{
+      receita: '',
+    }
+  },
+  mounted() {
+    this.getReceita();
+  },
+  methods: {
+    getReceita() {
+      axios({
+        method: "get",
+        url: "http://127.0.0.1:8000/api/receita/" + this.$route.params.id,
+        auth: {
+          username: "admin",
+          password: "12345",
+        },
+      }).then((response) => (this.receita = response.data));
+    },
+  },
+};
 </script>
 
 <style scoped>

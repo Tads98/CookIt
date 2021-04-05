@@ -9,6 +9,11 @@ class UserSerializer(serializers.ModelSerializer):
         fields = '__all__'
     depth = 1
 
+class IngredienteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Ingrediente
+        fields = '__all__'
+
 class ReceitaSerializer(serializers.ModelSerializer):
 #    dono_receita = serializers.SlugRelatedField(
 #        many=False,
@@ -16,6 +21,7 @@ class ReceitaSerializer(serializers.ModelSerializer):
 #        slug_field='first_name'
 #    )
     dono_receita = UserSerializer(many=False)
+    ingredientes = IngredienteSerializer(many=True)
     class Meta:
         model = Receita
         fields = '__all__'
@@ -25,10 +31,6 @@ class PostReceitaSerializer(serializers.ModelSerializer):
         model = Receita
         fields = '__all__'
 
-class IngredienteSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Ingrediente
-        fields = '__all__'
 
 class AvaliacaoSerializer(serializers.ModelSerializer):
     class Meta:

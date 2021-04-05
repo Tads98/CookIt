@@ -38,7 +38,7 @@
               <i class="far fa-heart"></i>
             </a>
             <a href="">
-              <h5 class="card-title">{{ receita.nome_receita}}</h5>
+              <h5 class="card-title">{{ receita.nome_receita }}</h5>
             </a>
             <p class="card-text">
               Publicado por
