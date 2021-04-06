@@ -35,8 +35,13 @@ class PostReceitaSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         ingredientes_data = validated_data.pop('ingredientes')
         receita = Receita.objects.create(**validated_data)
+        i = []
+
         for ingrediente in ingredientes_data:
-            Ingrediente.objects.create(receita=receita, **ingrediente)
+            a = Ingrediente.objects.create(**ingrediente)
+            i.append(a.id)
+        
+        receita.ingredientes.set(tuple(i))
         return receita
 
 

@@ -209,7 +209,7 @@ export default {
         },
       })
         .then((response) => {
-          let newReceita = {
+          /*let newReceita = {
             id: response.data.id,
             nome_receita: this.nome_receita,
             modo_preparo: this.modo_preparo,
@@ -225,7 +225,7 @@ export default {
             observacoes_adicionais: this.observacoes_adicionais,
             ingredientes: this.ingredientes,
           };
-
+          */
           //this.receitas.push(newReceita);
 
           this.nome_receita = "";
@@ -242,7 +242,8 @@ export default {
           this.observacoes_adicionais = "";
           this.ingredientes = [];
 
-          return newReceita;
+          console.log(response);
+          this.$router.push({name: 'PaginaReceita', params: {id: response.data.id}})
         })
         .catch((error) => {
           console.log(error);
