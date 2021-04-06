@@ -79,7 +79,7 @@
             </div>
           </div>
           <button
-            @click="$router.push({name: 'PaginaReceita', params: {id: 1}})"
+            @click="$router.push({name: 'PaginaReceita', params: {id: receita.id}})"
             class="see-more-tela-inicial btn"
           >
             <i class="fas fa-book-open"></i>
