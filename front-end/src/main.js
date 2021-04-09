@@ -17,6 +17,8 @@ Vue.use(IconsPlugin)
 
 Vue.config.productionTip = false
 
+Vue.prototype.$receitas = []
+
 new Vue({
   router,
   render: h => h(App),

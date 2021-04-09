@@ -108,7 +108,7 @@ class ReceitaViewSet(viewsets.ModelViewSet):
     queryset = models.Receita.objects.all()
     serializer_class = ReceitaSerializer
     filter_backends = (filters.SearchFilter,)
-    search_fields = ('nome_receita')
+    search_fields = ('nome_receita',)
    
     #serializer_class = ReceitaSerializer
     #queryset = models.Receita.objects.all()

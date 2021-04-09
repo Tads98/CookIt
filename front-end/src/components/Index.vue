@@ -20,7 +20,7 @@
     <div
       class="cards-tela-inicial row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3"
     >
-      <div v-for="receita in receitas" v-bind:key="receita.id" class="col mb-4">
+      <div v-for="receita in $receitas" v-bind:key="receita.id" class="col mb-4">
         <div class="card receita-tela-inicial h-100">
           <a href="">
             <!--TODO: o tamanho da imagem precisa ser fixo e seu container também-->
@@ -101,12 +101,6 @@ export default {
     Sidebar,
   },
 
-  data() {
-    return {
-      receitas: [],
-    };
-  },
-
   mounted() {
     this.getReceitas();
   },
@@ -120,7 +114,7 @@ export default {
           username: "admin",
           password: "12345",
         },
-      }).then((response) => (this.receitas = response.data));
+      }).then((response) => (this.$receitas = response.data));
     },
   },
 };

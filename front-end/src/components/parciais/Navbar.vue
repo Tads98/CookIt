@@ -104,7 +104,7 @@ export default {
         getReceita: function(){
             let api_url = 'http://localhost:8000/api/receita/';
             if(this.search_term !== '' || this.search_term !== null){
-                api_url = 'http://localhost:8000/api/receita/?search = ${this.search_term}'
+                api_url = 'http://localhost:8000/api/receita/?search=' + this.search_term
             }
             this.loading = true;
             this.$http.get(api_url).then((response) => {
