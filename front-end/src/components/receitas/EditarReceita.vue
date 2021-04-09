@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div v-bind:key="receita.id" class="container">
     <h3>Inserindo Sua Receita</h3>
     <form class="form" v-on:submit.prevent="addReceita">
       <div class="form-group">
@@ -180,13 +180,14 @@ export default {
     };
   },
 
-
-  methods: {
-    addReceita() {
-      console.log(this.ingredientes)
+    setReceita(){
+      //const receita = this.receitas.filter(receita => receita.id === receita_id)[0]
       axios({
-        method: "post",
-        url: "http://127.0.0.1:8000/api/post-receita/",
+        method: 'put',
+        url: "http://127.0.0.1:8000/api/receita/" + this.$route.params.id,
+        headers: {
+          'Content-Type': 'application/json',
+        },
         data: {
           nome_receita: this.nome_receita,
           modo_preparo: this.modo_preparo,
@@ -206,51 +207,15 @@ export default {
         auth: {
           username: "admin",
           password: "12345",
-        },
+        }
+      }) .then((response) => {
+         console.log(response);
       })
-        .then((response) => {
-          /*let newReceita = {
-            id: response.data.id,
-            nome_receita: this.nome_receita,
-            modo_preparo: this.modo_preparo,
-            porcoes: this.porcoes,
-            sabor_receita: this.sabor_receita,
-            tempo_preparo: this.tempo_preparo,
-            tempo_unidade_medida: this.tempo_unidade_medida,
-            fotos: this.fotos,
-            categoria: this.categoria,
-            dificuldade: this.dificuldade,
-            data_publicacao: this.data_publicacao,
-            slug: this.slug,
-            observacoes_adicionais: this.observacoes_adicionais,
-            ingredientes: this.ingredientes,
-          };
-          */
-          //this.receitas.push(newReceita);
-
-          this.nome_receita = "";
-          this.modo_preparo = "";
-          this.porcoes = 0;
-          this.sabor_receita = "";
-          this.tempo_preparo = 0;
-          this.tempo_unidade_medida = "";
-          this.fotos = null;
-          this.categoria = "";
-          this.dificuldade = "";
-          this.data_publicacao = "";
-          this.slug = "";
-          this.observacoes_adicionais = "";
-          this.ingredientes = [];
-
-          console.log(response);
-          this.$router.push({name: 'PaginaReceita', params: {id: response.data.id}})
-        })
         .catch((error) => {
           console.log(error);
         });
     },
-  },
-};
+}
 </script>
 
 <style scoped>
