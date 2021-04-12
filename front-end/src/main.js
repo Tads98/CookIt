@@ -8,6 +8,7 @@ import router from './router'
 import '@fortawesome/fontawesome-free/css/all.css'
 import '@fortawesome/fontawesome-free/js/all.js'
 import VueHighlightJS from 'vue-highlightjs'
+import store from './store'
 
 Vue.use(VueHighlightJS);
 // Make BootstrapVue available throughout your project
@@ -17,9 +18,9 @@ Vue.use(IconsPlugin)
 
 Vue.config.productionTip = false
 
-Vue.prototype.$receitas = []
 
 new Vue({
+  store,
   router,
   render: h => h(App),
 }).$mount('#app')

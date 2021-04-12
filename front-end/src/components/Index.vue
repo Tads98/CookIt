@@ -20,7 +20,7 @@
     <div
       class="cards-tela-inicial row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3"
     >
-      <div v-for="receita in $receitas" v-bind:key="receita.id" class="col mb-4">
+      <div v-for="receita in allReceitas" v-bind:key="receita.id" class="col mb-4">
         <div class="card receita-tela-inicial h-100">
           <a href="">
             <!--TODO: o tamanho da imagem precisa ser fixo e seu container também-->
@@ -91,15 +91,31 @@
 </template>
 
 <script>
+/*
 import axios from "axios";
+*/
+import { mapGetters, mapActions } from 'vuex';
 import Sidebar from "./parciais/Sidebar";
 
 export default {
   name: "Index",
-
+  
   components: {
     Sidebar,
   },
+
+  methods: {
+    ...mapActions(['fetchReceitas'])
+  },
+
+  computed: mapGetters(['allReceitas']),
+
+  created(){
+    this.fetchReceitas();
+  }
+
+
+  /*
 
   mounted() {
     this.getReceitas();
@@ -116,7 +132,8 @@ export default {
         },
       }).then((response) => (this.$receitas = response.data));
     },
-  },
+   
+  }, */
 };
 </script>
 
