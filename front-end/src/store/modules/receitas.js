@@ -1,11 +1,13 @@
 import axios from 'axios';
 
 const state = {
-    receitas: []
+    receitas: [],
+    receita_api_url: 'http://localhost:8000/api/receita/',
 };
 
 const getters = {
-    allReceitas: state => state.receitas
+    allReceitas: state => state.receitas,
+    receitaAPI: state => state.receita_api_url
 };
 
 const actions = {
@@ -16,6 +18,13 @@ const actions = {
 
         commit ('setReceitas', response.data)
     },
+    async basicSearch({ commit }, e) {
+        const response = await axios.get(
+            'http://localhost:8000/api/receita/?search=' + e
+        );
+
+        commit ('setReceitas', response.data)
+    }
 }
 
 const mutations = {

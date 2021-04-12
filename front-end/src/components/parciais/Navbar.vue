@@ -10,7 +10,7 @@
             <!--TODO: implementar uma forma de limpar sessões neste campo abaixo-->
             <input id="search-input" v-model="search_term" class="form-control" type="search" 
             placeholder="Busque sua receita" aria-label="Busca" name="termo" value="">
-            <button id="search-button" class="btn btn-success" v-on:click.prevent="getReceita()" type="submit">
+            <button id="search-button" class="btn btn-success" v-on:click.prevent="basicSearch(search_term)" type="submit">
                 <i class="fas fa-search"></i>
             </button>
         </div>
@@ -84,10 +84,21 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 
 export default {
     name:'Navbar',
 
+    data() {
+        return {
+            search_term: '', 
+        };
+    },
+
+    methods: {
+        ...mapActions(['basicSearch'])
+    },
+    /*
     data() {
         return {
             receitas: [],
@@ -115,7 +126,7 @@ export default {
                 console.log(err);
             })
         },
-    }
+    }*/
 
 }
 
