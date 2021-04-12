@@ -3,18 +3,58 @@
     <Sidebar />
     <div id="keywords" class="row">
       <div class="col-sm form-group">
-        <input
-          type="text"
-          class="form-control rounded-pill"
-          placeholder="Quero que tenha"
-        />
+        <div class="row"
+          >
+          <div class="border border-dark p-1 rounded-pill"
+          v-for="(t, i) in tenha"
+          :key="t + i"
+          >
+            <span>
+              {{ t }}
+            </span>
+            <span @click="removeTag(tenha, i)">
+              <i class="fas fa-times-circle"></i>
+            </span>
+          </div>
+        </div>
+        <div>
+          <input
+            type="text"
+            class="form-control rounded-pill"
+            placeholder="Quero que tenha"
+            v-model="tenha_nome"
+          />
+          <button type="button" class="btn btn-secondary" @click="addTag(tenha, tenha_nome)">
+            <i class="fas fa-plus"></i>
+          </button>
+        </div>
       </div>
       <div class="col-sm form-group">
-        <input
-          type="text"
-          class="form-control rounded-pill"
-          placeholder="Quero que não tenha"
-        />
+        <div class="row"
+          >
+          <div class="border border-dark p-1 rounded-pill"
+          v-for="(n, i) in naotenha"
+          :key="n + i"
+          >
+            <span>
+              {{ n }}
+            </span>
+            <span @click="removeTag(tenha, n)">
+              <i class="fas fa-times-circle"></i>
+            </span>
+          </div>
+        </div>
+        <div>
+          <input
+            type="text"
+            class="form-control rounded-pill"
+            placeholder="Quero que tenha"
+            v-model="naotenha_nome"
+          />
+          <button type="button" class="btn btn-secondary" @click="addTag(naotenha, naotenha_nome)">
+            <i class="fas fa-plus"></i>
+          </button>
+        </div>
       </div>
     </div>
     <div
@@ -99,13 +139,34 @@ import Sidebar from "./parciais/Sidebar";
 
 export default {
   name: "Index",
+
+  data(){
+    return{
+      tenha: [],
+      naotenha: [],
+      tenha_nome: '',
+      naotenha_nome: '',
+    }
+  },
   
   components: {
     Sidebar,
   },
 
   methods: {
-    ...mapActions(['fetchReceitas'])
+    ...mapActions(['fetchReceitas']),
+    addTag(tags, nome){
+      if(nome != ''){
+        tags.push(nome);
+      }
+      if(this.tenha_nome == nome)
+        this.tenha_nome = ''
+      else
+        this.naotenha_nome = ''
+    },
+    removeTag(tags, index) {
+      tags.splice(index, 1);
+    }
   },
 
   computed: mapGetters(['allReceitas']),
@@ -138,6 +199,9 @@ export default {
 </script>
 
 <style scoped>
+.tags{
+  display: flex;
+}
 #keywords {
   margin-top: 70px;
 }
