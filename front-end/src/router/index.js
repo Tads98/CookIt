@@ -5,7 +5,7 @@ import PaginaReceita from '../components/receitas/PaginaReceita'
 import FormReceita from '../components/receitas/FormReceita'
 import EditarPerfil from '../components/usuario/EditarPerfil'
 import LoginCadastro from '../components/usuario/LoginCadastro'
-
+import EditarReceita from '../components/receitas/EditarReceita'
 
 Vue.use(VueRouter)
 
@@ -29,6 +29,11 @@ const routes = [
         path: '/EditarPerfil/',
         name: 'EditarPerfil',
         component: EditarPerfil
+    },
+    {
+        path: '/EditarReceita/:id', 
+        name: 'EditarReceita',
+        component: EditarReceita
     },
     {
         path: '/LoginCadastro/',

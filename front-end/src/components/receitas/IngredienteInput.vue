@@ -60,9 +60,11 @@
       <button type="button" class="btn btn-secondary" @click="addTag">
         <i class="fas fa-plus"></i>
       </button>
+      <!--
       <button type="button" class="btn btn-secondary" @click="addIngredientes">
         teste
       </button>
+      -->
     </div>
   </div>
 </template>
