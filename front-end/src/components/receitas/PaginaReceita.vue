@@ -167,6 +167,11 @@
         </div>
 
         <div id="comentarios-receita-completa"></div>
+        
+        <button 
+          @click="$router.push({name: 'EditarReceita', params: {id: receita.id}})" >
+        </button>
+
       </div>
     </div>
   </div>

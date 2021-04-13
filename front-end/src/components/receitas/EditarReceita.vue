@@ -1,5 +1,6 @@
 <template>
   <div v-bind:key="receita.id" class="container">
+    
     <h3>Inserindo Sua Receita</h3>
     <form class="form" v-on:submit.prevent="addReceita">
       <div class="form-group">
