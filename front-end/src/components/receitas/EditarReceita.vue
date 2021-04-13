@@ -2,13 +2,13 @@
   <div v-bind:key="receita.id" class="container">
     
     <h3>Inserindo Sua Receita</h3>
-    <form class="form" v-on:submit.prevent="addReceita">
+    <form class="form" v-on:submit.prevent="setReceita">
       <div class="form-group">
         <input
           type="text"
           class="form-control rounded-pill"
           placeholder="Nome da receita"
-          v-model="nome_receita"
+          v-model="receita.nome_receita"
         />
       </div>
       <div class="form-group">
@@ -62,7 +62,7 @@
             <textarea
               class="form-control"
               type="text"
-              v-model="modo_preparo"
+              v-model="receita.modo_preparo"
             ></textarea>
           </div>
         </div>
@@ -72,6 +72,8 @@
             <div class="form-group">
               <div class="custom-control custom-radio custom-control-inline">
                 <input
+                  value="D"
+                  v-model="receita.sabor_receita"
                   type="radio"
                   id="customRadioInline1"
                   name="customRadioInline1"
@@ -83,6 +85,8 @@
               </div>
               <div class="custom-control custom-radio custom-control-inline">
                 <input
+                  value="S"
+                  v-model="receita.sabor_receita"
                   type="radio"
                   id="customRadioInline2"
                   name="customRadioInline1"
@@ -102,7 +106,7 @@
                 id="portions"
                 type="number"
                 min="1"
-                v-model="porcoes"
+                v-model="receita.porcoes"
               />
             </div>
             <div class="form-group input-group">
@@ -113,7 +117,7 @@
                 id="prep-time"
                 type="number"
                 class="form-control"
-                v-model="tempo_preparo"
+                v-model="receita.tempo_preparo"
               />
             </div>
             <div class="form-group input-group">
@@ -123,7 +127,7 @@
               <select
                 id="difficulty"
                 class="form-control custom-select"
-                v-model="dificuldade"
+                v-model="receita.dificuldade"
               >
                 <option id="easy" value="F">Fácil</option>
                 <option id="medium" value="M">Médio</option>
@@ -135,7 +139,7 @@
               type="text"
               class="form-group form-control"
               placeholder="Observações adicionais"
-              v-model="observacoes_adicionais"
+              v-model="receita.observacoes_adicionais"
             ></textarea>
           </div>
         </div>
@@ -164,58 +168,38 @@ export default {
 
   data() {
     return {
-      nome_receita: "",
-      modo_preparo: "",
-      porcoes: 0,
-      sabor_receita: "D",
-      tempo_preparo: 0,
-      tempo_unidade_medida: "M",
-      fotos: null,
-      categoria: "A",
-      dificuldade: "F",
-      data_publicacao: "",
-      slug: "",
-      observacoes_adicionais: "",
+      receita:'',
       ingredientes: [],
       //Tag Ingrediente
     };
   },
+  mounted() {
+    this.getReceita();
+  },
+  methods: {
+    getReceita() {
+      axios.get(
+        'http://127.0.0.1:8000/api/post-receita/' + this.$route.params.id,
+      ).then((response) => (
+        this.receita = response.data,
+        this.ingredientes = response.data.ingredientes
+        ));
+    }, 
 
     setReceita(){
       //const receita = this.receitas.filter(receita => receita.id === receita_id)[0]
-      axios({
-        method: 'put',
-        url: "http://127.0.0.1:8000/api/receita/" + this.$route.params.id,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        data: {
-          nome_receita: this.nome_receita,
-          modo_preparo: this.modo_preparo,
-          dono_receita: 1,
-          porcoes: this.porcoes,
-          sabor_receita: this.sabor_receita,
-          tempo_preparo: this.tempo_preparo,
-          tempo_unidade_medida: this.tempo_unidade_medida,
-          fotos: this.fotos,
-          categoria: this.categoria,
-          dificuldade: this.dificuldade,
-          data_publicacao: this.data_publicacao,
-          slug: this.slug,
-          observacoes_adicionais: this.observacoes_adicionais,
-          ingredientes: this.ingredientes,
-        },
-        auth: {
-          username: "admin",
-          password: "12345",
-        }
-      }) .then((response) => {
-         console.log(response);
+      this.receita.ingredientes = this.ingredientes
+      axios.put(
+        'http://127.0.0.1:8000/api/post-receita/' + this.$route.params.id + '/',
+        this.receita
+      ).then((response) => {
+        console.log(response);
       })
-        .catch((error) => {
-          console.log(error);
-        });
+      .catch((error) => {
+        console.log(error);
+      });
     },
+  }
 }
 </script>
 

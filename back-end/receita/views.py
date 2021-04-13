@@ -115,6 +115,7 @@ class ReceitaViewSet(viewsets.ModelViewSet):
 
 class PostReceitaViewSet(viewsets.ModelViewSet):
     serializer_class = PostReceitaSerializer
+    queryset = models.Receita.objects.all()
 
 class IngredienteViewSet(viewsets.ModelViewSet):
     serializer_class = IngredienteSerializer
