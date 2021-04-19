@@ -8,9 +8,9 @@
     <form class="form-inline <!--mr-auto my-2 my-lg-0-->" method="GET" action="">
         <div id="search" class="input-group">
             <!--TODO: implementar uma forma de limpar sessões neste campo abaixo-->
-            <input id="search-input" v-model="search_term" class="form-control" type="search" 
+            <input id="search-input" v-model="getPesquisa.nome_receita" class="form-control" type="search" 
             placeholder="Busque sua receita" aria-label="Busca" name="termo" value="">
-            <button id="search-button" class="btn btn-success" v-on:click.prevent="basicSearch(search_term)" type="submit">
+            <button id="search-button" class="btn btn-success" v-on:click.prevent="basicSearch()" type="submit">
                 <i class="fas fa-search"></i>
             </button>
         </div>
@@ -83,10 +83,11 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapGetters} from 'vuex';
 
 export default {
     name:'Navbar',
+    computed: mapGetters(['getPesquisa']),
 
     data() {
         return {

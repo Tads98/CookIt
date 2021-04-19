@@ -107,8 +107,12 @@ class CadastrarReceita(LoginRequiredMixin, CreateView):
 class ReceitaViewSet(viewsets.ModelViewSet):
     queryset = models.Receita.objects.all()
     serializer_class = ReceitaSerializer
-    filter_backends = (filters.SearchFilter,)
-    search_fields = ('nome_receita',)
+    filterset_fields = {
+        'nome_receita': ['icontains'],
+        'sabor_receita': ['in'],
+        'dificuldade': ['exact'],
+        'categoria': ['in']
+    }
    
     #serializer_class = ReceitaSerializer
     #queryset = models.Receita.objects.all()

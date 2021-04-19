@@ -2,10 +2,17 @@ import axios from 'axios';
 
 const state = {
     receitas: [],
+    pesquisa: {
+        nome_receita: '',
+        sabor_receita: [],
+        categoria: '',
+        dificuldade: [],
+    }
 };
 
 const getters = {
     allReceitas: state => state.receitas,
+    getPesquisa: state => state.pesquisa, 
 };
 
 const actions = {
@@ -16,9 +23,11 @@ const actions = {
 
         commit ('setReceitas', response.data)
     },
-    async basicSearch({ commit }, e) {
+    async basicSearch({ commit, getters }) {
         const response = await axios.get(
-            'http://localhost:8000/api/receita/?search=' + e
+            'http://localhost:8000/api/receita/?nome_receita__icontains=' + getters.getPesquisa.nome_receita
+            + '&sabor_receita__in=' + getters.getPesquisa.sabor_receita + '&dificuldade=' + getters.getPesquisa.dificuldade
+            + '&categoria=' + getters.getPesquisa.categoria
         );
 
         commit ('setReceitas', response.data)
