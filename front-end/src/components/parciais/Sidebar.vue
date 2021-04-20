@@ -44,7 +44,8 @@
           <label class="input-group-text input-label-sidebar"
             >Dificuldade</label
           >
-          <select
+          <select 
+            v-model="getPesquisa.dificuldade"
             id="difficulty"
             name="dificuldade"
             class="form-control custom-select"
@@ -120,8 +121,16 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex';
+
 export default {
   name: "Sidebar",
+  computed: mapGetters(['getPesquisa']),
+
+  methods: {
+    ...mapActions(['basicSearch'])
+  },
+
 };
 </script>
 
