@@ -62,7 +62,7 @@
             <!--TODO: implementar como receber no backend dois valores ao mesmo tempo-->
             <span>
               <label>
-                <input type="checkbox" name="sabor" value="D" />
+                <input v-model="getPesquisa.sabor_receita" type="checkbox" name="sabor" value="D" />
                 <i class="a-icon a-icon-checkbox"></i>
               </label>
               <span>Doce</span>
@@ -70,7 +70,7 @@
             <br />
             <span>
               <label>
-                <input type="checkbox" name="sabor" value="S" />
+                <input v-model="getPesquisa.sabor_receita" type="checkbox" name="sabor" value="S" />
                 <i class="a-icon a-icon-checkbox"></i>
               </label>
               <span>Salgado</span>
@@ -81,36 +81,46 @@
       <div id="categories" class="form-group">
         <h6><b>Categorias:</b></h6>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" />
+          <input v-model="getPesquisa.categoria" class="form-check-input" type="checkbox" value="C" />
           <label class="form-check-label" for="defaultCheck1">
             Café da manhã
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" />
-          <label class="form-check-label" for="defaultCheck1"> Almoço </label>
+          <input v-model="getPesquisa.categoria" class="form-check-input" type="checkbox" value="A" />
+          <label class="form-check-label" for="defaultCheck1"> 
+            Almoço 
+          </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" />
-          <label class="form-check-label" for="defaultCheck1"> Lanche </label>
+          <input v-model="getPesquisa.categoria" class="form-check-input" type="checkbox" value="L" />
+          <label class="form-check-label" for="defaultCheck1">
+            Lanche 
+          </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" />
-          <label class="form-check-label" for="defaultCheck1"> Janta </label>
+          <input v-model="getPesquisa.categoria" class="form-check-input" type="checkbox" value="J" />
+          <label class="form-check-label" for="defaultCheck1">
+            Janta 
+          </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" />
+          <input v-model="getPesquisa.categoria" class="form-check-input" type="checkbox" value="S" />
           <label class="form-check-label" for="defaultCheck1">
             Sobremesas
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" />
-          <label class="form-check-label" for="defaultCheck1"> Bebidas </label>
+          <input v-model="getPesquisa.categoria" class="form-check-input" type="checkbox" value="B" />
+          <label class="form-check-label" for="defaultCheck1"> 
+            Bebidas 
+          </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" />
-          <label class="form-check-label" for="defaultCheck1"> Vegana </label>
+          <input v-model="getPesquisa.categoria" class="form-check-input" type="checkbox" value="V" />
+          <label class="form-check-label" for="defaultCheck1"> 
+            Vegana 
+          </label>
         </div>
       </div>
       <button class="search-button btn btn-primary" type="submit">

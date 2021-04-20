@@ -5,8 +5,8 @@ const state = {
     pesquisa: {
         nome_receita: '',
         sabor_receita: [],
-        categoria: '',
-        dificuldade: [],
+        categoria: [],
+        dificuldade: '',
     }
 };
 
