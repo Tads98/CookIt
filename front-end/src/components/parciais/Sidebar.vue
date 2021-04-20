@@ -120,182 +120,182 @@
 </template>
 
 <script>
-import axios from "axios";
+// import axios from "axios";
 
-  export default {
-    data: function () {
-      return {
-        breakfast: [],
-        lunch: [],
-        sneak: [],
-        dinner: [],
-        dessert: [],
-        drinks: [],
-        vegan: [],
-        sabor: [
-        {
-          char: "S",
-          text: "Salgado",
-        },
-        {
-          char: "D",
-          text: "Doce",
-        },
-      ],
-        loading: true,
-        selected: {
-            breakfast: [],
-            lunch: [],
-            sneak: [],
-            dinner: [],
-            dessert: [],
-            drinks: [],
-            sabor: [
-            {
-              char: "S",
-              text: "Salgado",
-            },
-            {
-              char: "D",
-              text: "Doce",
-            },
-          ],
-        }
-      }
-    },
+//   export default {
+//     data: function () {
+//       return {
+//         breakfast: [],
+//         lunch: [],
+//         sneak: [],
+//         dinner: [],
+//         dessert: [],
+//         drinks: [],
+//         vegan: [],
+//         sabor: [
+//         {
+//           char: "S",
+//           text: "Salgado",
+//         },
+//         {
+//           char: "D",
+//           text: "Doce",
+//         },
+//       ],
+//         loading: true,
+//         selected: {
+//             breakfast: [],
+//             lunch: [],
+//             sneak: [],
+//             dinner: [],
+//             dessert: [],
+//             drinks: [],
+//             sabor: [
+//             {
+//               char: "S",
+//               text: "Salgado",
+//             },
+//             {
+//               char: "D",
+//               text: "Doce",
+//             },
+//           ],
+//         }
+//       }
+//     },
 
-    mounted() {
-      this.loadBreakfast();
-      this.loadLunch();
-      this.loadSneak();
-      this.loadDinner();
-      this.loadDessert();
-      this.loadDrinks();
-      this.loadVegan();
-      this.loadSabor();
-    },
+//     mounted() {
+//       this.loadBreakfast();
+//       this.loadLunch();
+//       this.loadSneak();
+//       this.loadDinner();
+//       this.loadDessert();
+//       this.loadDrinks();
+//       this.loadVegan();
+//       this.loadSabor();
+//     },
 
-    watch:{
-      selected: {
-        handler: function() {
-            this.loadBreakfast();
-            this.loadLunch();
-            this.loadSneak();
-            this.loadDinner();
-            this.loadDessert();
-            this.loadDrinks();
-            this.loadVegan();
-            this.loadSabor();
-        },
-        deep: true
-      }
-    },
+//     watch:{
+//       selected: {
+//         handler: function() {
+//             this.loadBreakfast();
+//             this.loadLunch();
+//             this.loadSneak();
+//             this.loadDinner();
+//             this.loadDessert();
+//             this.loadDrinks();
+//             this.loadVegan();
+//             this.loadSabor();
+//         },
+//         deep: true
+//       }
+//     },
 
-    methods: {
-      loadBreakfast: function () {
-        axios.get('/api/breakfast', {
-                params: _.omit(this.selected, 'breakfast')
-        })
-        .then((response) => {
-          this.categories = response.data.data;
-        })
-        .catch(function (error){
-          console.log(error);
-        });
-      },
+//     methods: {
+//       loadBreakfast: function () {
+//         axios.get('/api/breakfast', {
+//                 params: _.omit(this.selected, 'breakfast')
+//         })
+//         .then((response) => {
+//           this.categories = response.data.data;
+//         })
+//         .catch(function (error){
+//           console.log(error);
+//         });
+//       },
       
-      loadLunch: function () {
-        axios.get('/api/lunch', {
-                params: _.omit(this.selected, 'lunch')
-        })
-        .then((response) => {
-          this.lunch = response.data.data;
-          this.loading = false;
-        })
-        .catch(function (error){
-          console.log(error);
-        });
-      },
+//       loadLunch: function () {
+//         axios.get('/api/lunch', {
+//                 params: _.omit(this.selected, 'lunch')
+//         })
+//         .then((response) => {
+//           this.lunch = response.data.data;
+//           this.loading = false;
+//         })
+//         .catch(function (error){
+//           console.log(error);
+//         });
+//       },
 
-      loadSneak: function () {
-        axios.get('/api/sneak', {
-                params: _.omit(this.selected, 'sneak')
-        })
-        .then((response) => {
-          this.sneak = response.data.data;
-          this.loading = false;
-        })
-        .catch(function (error){
-          console.log(error);
-        });
-      },
+//       loadSneak: function () {
+//         axios.get('/api/sneak', {
+//                 params: _.omit(this.selected, 'sneak')
+//         })
+//         .then((response) => {
+//           this.sneak = response.data.data;
+//           this.loading = false;
+//         })
+//         .catch(function (error){
+//           console.log(error);
+//         });
+//       },
 
-      loadDinner: function () {
-        axios.get('/api/dinner', {
-                params: _.omit(this.selected, 'dinner')
-        })
-        .then((response) => {
-          this.dinner = response.data.data;
-          this.loading = false;
-        })
-        .catch(function (error){
-          console.log(error);
-        });
-      },
+//       loadDinner: function () {
+//         axios.get('/api/dinner', {
+//                 params: _.omit(this.selected, 'dinner')
+//         })
+//         .then((response) => {
+//           this.dinner = response.data.data;
+//           this.loading = false;
+//         })
+//         .catch(function (error){
+//           console.log(error);
+//         });
+//       },
 
-      loadDessert: function () {
-        axios.get('/api/dessert', {
-                params: _.omit(this.selected, 'dessert')
-        })
-        .then((response) => {
-          this.dessert = response.data.data;
-          this.loading = false;
-        })
-        .catch(function (error){
-          console.log(error);
-        });
-      },
+//       loadDessert: function () {
+//         axios.get('/api/dessert', {
+//                 params: _.omit(this.selected, 'dessert')
+//         })
+//         .then((response) => {
+//           this.dessert = response.data.data;
+//           this.loading = false;
+//         })
+//         .catch(function (error){
+//           console.log(error);
+//         });
+//       },
 
-      loadDrink: function () {
-        axios.get('/api/drink', {
-                params: _.omit(this.selected, 'drink')
-        })
-        .then((response) => {
-          this.drink = response.data.data;
-          this.loading = false;
-        })
-        .catch(function (error){
-          console.log(error);
-        });
-      },
+//       loadDrink: function () {
+//         axios.get('/api/drink', {
+//                 params: _.omit(this.selected, 'drink')
+//         })
+//         .then((response) => {
+//           this.drink = response.data.data;
+//           this.loading = false;
+//         })
+//         .catch(function (error){
+//           console.log(error);
+//         });
+//       },
 
-      loadVegan: function () {
-        axios.get('/api/vegan', {
-                params: _.omit(this.selected, 'vegan')
-        })
-        .then((response) => {
-          this.vegan = response.data.data;
-          this.loading = false;
-        })
-        .catch(function (error){
-          console.log(error);
-        });
-      }
-    },
+//       loadVegan: function () {
+//         axios.get('/api/vegan', {
+//                 params: _.omit(this.selected, 'vegan')
+//         })
+//         .then((response) => {
+//           this.vegan = response.data.data;
+//           this.loading = false;
+//         })
+//         .catch(function (error){
+//           console.log(error);
+//         });
+//       }
+//     },
 
-    loadSabor: function () {
-        axios.get('/api/sabor', {
-                params: _.omit(this.selected, 'sabor')
-        })
-        .then((response) => {
-          this.sabor = response.data;
-          this.loading = false;
-        })
-        .catch(function (error){
-          console.log(error);
-        });
-      }
-    };
+//     loadSabor: function () {
+//         axios.get('/api/sabor', {
+//                 params: _.omit(this.selected, 'sabor')
+//         })
+//         .then((response) => {
+//           this.sabor = response.data;
+//           this.loading = false;
+//         })
+//         .catch(function (error){
+//           console.log(error);
+//         });
+//       }
+//     };
 </script>
 
 <style scoped>
