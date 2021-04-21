@@ -7,6 +7,7 @@ const state = {
         sabor_receita: [],
         categoria: [],
         dificuldade: '',
+        ingredientes: [],
     }
 };
 
@@ -27,15 +28,24 @@ const actions = {
         const response = await axios.get(
             'http://localhost:8000/api/receita/?nome_receita__icontains=' + getters.getPesquisa.nome_receita
             + '&sabor_receita__in=' + getters.getPesquisa.sabor_receita + '&dificuldade=' + getters.getPesquisa.dificuldade
-            + '&categoria=' + getters.getPesquisa.categoria
+            + '&categoria__in=' + getters.getPesquisa.categoria
+            + '&ingredientes__nome_ingrediente__in=' + getters.getPesquisa.ingredientes
         );
 
         commit ('setReceitas', response.data)
+    },
+
+    async deleteReceita({ commit }, id) {
+        await axios.delete(`http://localhost:8000/api/receita/${id}`);
+        
+        commit('removeReceita', id);
     }
 }
 
 const mutations = {
     setReceitas: (state, receitas) => (state.receitas = receitas),
+    RemoveReceitas: (state, id) =>
+        (state.receitas = state.receitas.filter(receita => receita.id !== id)),
 };
 
 export default {

@@ -171,6 +171,10 @@
         <button 
           @click="$router.push({name: 'EditarReceita', params: {id: receita.id}})" >
         </button>
+        
+        <button @click="deleteReceita(Receita.id)" class="fas fa-trash-alt" >
+        </button>
+        
 
       </div>
     </div>
@@ -179,6 +183,8 @@
 
 <script>
 import axios from "axios";
+import { mapActions } from "vuex";
+
 export default {
   data(){
     return{
@@ -199,6 +205,7 @@ export default {
         },
       }).then((response) => (this.receita = response.data));
     },
+    ...mapActions(["deleteReceita"])
   },
 };
 </script>

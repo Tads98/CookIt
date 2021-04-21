@@ -111,7 +111,8 @@ class ReceitaViewSet(viewsets.ModelViewSet):
         'nome_receita': ['icontains'],
         'sabor_receita': ['in'],
         'dificuldade': ['exact'],
-        'categoria': ['in']
+        'categoria': ['in'],
+        'ingredientes__nome_ingrediente': ['in']
     }
    
     #serializer_class = ReceitaSerializer
