@@ -168,6 +168,25 @@ export default {
       tags.splice(index, 1);
     }
   },
+  //=======================================
+  /*
+  methods: {
+    ...mapActions(['fetchReceitas']),
+    addTag(tags, nome){
+      if(nome != ''){
+        tags.push(nome);
+      }
+      if(this.tenha_nome != nome)
+        this.tenha_nome = ''
+      else
+        this.naotenha_nome = ''
+    },
+    removeTag(tags, index) {
+      tags.splice(index, 1);
+    }
+  },
+  */
+  //=======================================
 
   computed: mapGetters(['allReceitas', 'getPesquisa']),
 
