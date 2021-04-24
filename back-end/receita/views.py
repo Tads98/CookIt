@@ -10,6 +10,8 @@ from django.db.models import Q
 from .models import Receita
 from . import models
 from .forms import ReceitaForm
+from django_filters.rest_framework import FilterSet
+import django_filters
 # Rest
 from rest_framework import viewsets, filters
 from receita.serializers import ( ReceitaSerializer, IngredienteSerializer, 
@@ -104,19 +106,23 @@ class CadastrarReceita(LoginRequiredMixin, CreateView):
 
 # Rest - Serializers
 
+class ReceitaFilter(FilterSet):
+    ingredientes_not = django_filters.BaseInFilter(field_name='ingredientes__nome_ingrediente', lookup_expr='in', exclude=True)
+    
+    class Meta:
+        model = Receita
+        fields = {
+            'nome_receita': ['icontains'],
+            'sabor_receita': ['in'],
+            'dificuldade': ['exact'],
+            'categoria': ['in'],
+            'ingredientes__nome_ingrediente': ['in'],
+        }
+
 class ReceitaViewSet(viewsets.ModelViewSet):
     queryset = models.Receita.objects.all()
     serializer_class = ReceitaSerializer
-    filterset_fields = {
-        'nome_receita': ['icontains'],
-        'sabor_receita': ['in'],
-        'dificuldade': ['exact'],
-        'categoria': ['in'],
-        'ingredientes__nome_ingrediente': ['in']
-    }
-   
-    #serializer_class = ReceitaSerializer
-    #queryset = models.Receita.objects.all()
+    filterset_class = ReceitaFilter
 
 class PostReceitaViewSet(viewsets.ModelViewSet):
     serializer_class = PostReceitaSerializer

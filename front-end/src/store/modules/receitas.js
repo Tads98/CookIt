@@ -8,6 +8,7 @@ const state = {
         categoria: [],
         dificuldade: '',
         ingredientes: [],
+        n_ingredientes: [],
     }
 };
 
@@ -30,6 +31,7 @@ const actions = {
             + '&sabor_receita__in=' + getters.getPesquisa.sabor_receita + '&dificuldade=' + getters.getPesquisa.dificuldade
             + '&categoria__in=' + getters.getPesquisa.categoria
             + '&ingredientes__nome_ingrediente__in=' + getters.getPesquisa.ingredientes
+            + '&ingredientes_not=' + getters.getPesquisa.n_ingredientes
         );
 
         commit ('setReceitas', response.data)

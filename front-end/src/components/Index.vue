@@ -12,7 +12,7 @@
             <span>
               {{ t }}
             </span>
-            <span @click="removeTag(getPesquisa.ingredientes, i)">
+            <span @click="removeTag(getPesquisa.ingredientes, i), basicSearch()">
               <i class="fas fa-times-circle"></i>
             </span>
           </div>
@@ -24,7 +24,7 @@
             placeholder="Quero que tenha"
             v-model="tenha_nome"
           />
-          <button type="button" class="btn btn-secondary" @click="addTag(getPesquisa.ingredientes, tenha_nome)">
+          <button type="button" class="btn btn-secondary" @click="addTag(getPesquisa.ingredientes, tenha_nome), basicSearch()">
             <i class="fas fa-plus"></i>
           </button>
         </div>
@@ -33,13 +33,13 @@
         <div class="row"
           >
           <div class="border border-dark p-1 rounded-pill"
-          v-for="(n, i) in naotenha"
+          v-for="(n, i) in getPesquisa.n_ingredientes"
           :key="n + i"
           >
             <span>
               {{ n }}
             </span>
-            <span @click="removeTag(getPesquisa.ingredientes, n)">
+            <span @click="removeTag(getPesquisa.n_ingredientes, n), basicSearch()">
               <i class="fas fa-times-circle"></i>
             </span>
           </div>
@@ -51,7 +51,7 @@
             placeholder="Quero que tenha"
             v-model="naotenha_nome"
           />
-          <button type="button" class="btn btn-secondary" @click="addTag(naotenha, naotenha_nome)">
+          <button type="button" class="btn btn-secondary" @click="addTag(getPesquisa.n_ingredientes, naotenha_nome), basicSearch()">
             <i class="fas fa-plus"></i>
           </button>
         </div>
@@ -155,6 +155,7 @@ export default {
 
   methods: {
     ...mapActions(['fetchReceitas']),
+    ...mapActions(['basicSearch']),
     addTag(tags, nome){
       if(nome != ''){
         tags.push(nome);

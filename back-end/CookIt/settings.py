@@ -99,7 +99,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'cookit',
         'USER': 'postgres',
-        'PASSWORD': 'gu1994to',
+        'PASSWORD': 'postgres',
         'HOST': '127.0.0.1',  # 127.0.0.1
         'PORT': '',  # 8000 is default
     }
