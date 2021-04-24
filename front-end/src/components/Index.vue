@@ -48,7 +48,7 @@
           <input
             type="text"
             class="form-control rounded-pill"
-            placeholder="Quero que tenha"
+            placeholder="Quero que não tenha"
             v-model="naotenha_nome"
           />
           <button type="button" class="btn btn-secondary" @click="addTag(getPesquisa.n_ingredientes, naotenha_nome), basicSearch()">
